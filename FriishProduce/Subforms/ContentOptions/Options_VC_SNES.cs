@@ -63,6 +63,13 @@ namespace FriishProduce
                 UsesKeymap = patch_wiimote.Checked;
             }
             // *******
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                controller_box.Enabled = false;
+            }
         }
 
         protected override void SaveOptions()
@@ -78,6 +85,8 @@ namespace FriishProduce
             Options["patch_gcremap"] = patch_gcremap.Checked.ToString();
 
             UsesKeymap = patch_wiimote.Checked;
+
+            base.SaveOptions();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

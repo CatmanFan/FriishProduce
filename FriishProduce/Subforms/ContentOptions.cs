@@ -63,11 +63,56 @@ namespace FriishProduce
                 // Code logic in derived Form
             }
             // *******
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                controller_box.Enabled = false;
+            }
         }
 
         protected virtual void SaveOptions()
         {
             // Code logic in derived Form
+
+            if (Binding != null)
+            {
+                foreach (var key in Options.Keys)
+                {
+                    var prop = Binding.GetType().GetProperty(key.ToString().Replace('.', '_'));
+
+                    if (prop != null)
+                    {
+                        var val = prop.GetValue(Binding, null);
+
+                        if (val != null)
+                        {
+                            if (val.GetType() == typeof(string))
+                                prop.SetValue(Binding, Options[key]);
+
+                            else if (val.GetType() == typeof(int))
+                            {
+                                int x = 0;
+                                int.TryParse(Options[key], out x);
+                                prop.SetValue(Binding, x);
+                            }
+
+                            else if (val.GetType() == typeof(bool))
+                            {
+                                bool x = false;
+                                bool.TryParse(Options[key], out x);
+                                prop.SetValue(Binding, x);
+                            }
+                        }
+
+                        else if (prop.GetMethod.ReturnType.FullName == "System.String")
+                        {
+                            prop.SetValue(Binding, Options[key]);
+                        }
+                    }
+                }
+            }
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -90,8 +135,13 @@ namespace FriishProduce
         // /!\ REMAINING FUNCTIONS AND VALUES NEEDED FOR THE FORM BELOW. THERE IS NO NEED TO COPY THEM. /!\
         // ---------------------------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Determines whether the content options form is binded to the config.json or to the project file.
+        /// </summary>
+        public dynamic Binding { get; set; } = null;
+
         public IDictionary<string, string> Options { get; set; }
-        public int EmuType { get; set; }
+        public int? EmuType { get; set; } = null;
 
         protected ControllerMapping controllerForm { get; set; }
 

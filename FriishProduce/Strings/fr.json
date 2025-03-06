@@ -378,7 +378,7 @@
 		},
 
 		"vc_sega": {
-			"console_disableresetbutton":		"Désactiver le bouton Reset",
+			"console_disable_resetbutton":		"Désactiver le bouton Reset",
 			"dev_mdpad_enable_6b":				"Utiliser la manette à 6 boutons ({0})"
 		},
 

@@ -388,7 +388,7 @@
 		},
 
 		"vc_sega": {
-			"console_disableresetbutton":		"재설정 버튼 비활성화",
+			"console_disable_resetbutton":		"재설정 버튼 비활성화",
 			"dev_mdpad_enable_6b":				"{0} 6 버튼 컨트롤 패드 활성화"
 		},
 

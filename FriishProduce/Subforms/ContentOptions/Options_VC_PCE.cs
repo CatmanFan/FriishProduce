@@ -80,6 +80,8 @@ namespace FriishProduce
             Options["BACKUPRAM"]                    = backupram.Checked ? "1" : "0";
             Options["NOFPA"]                        = "1";
             Options["PAD5"]                         = "0";
+
+            base.SaveOptions();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

@@ -55,6 +55,8 @@ namespace FriishProduce
         {
             Options["palette"]                      = PaletteList.SelectedIndex.ToString();
             Options["use_tImg"]                     = palette_banner_usage.Checked.ToString();
+
+            base.SaveOptions();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

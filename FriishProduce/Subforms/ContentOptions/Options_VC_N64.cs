@@ -48,7 +48,7 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                patch_autosizerom.Enabled = patch_fixcrashes.Enabled = EmuType <= 1;
+                patch_autosizerom.Enabled = patch_fixcrashes.Enabled = EmuType.HasValue && EmuType <= 1;
 
                 patch_fixbrightness.Checked         = bool.Parse(Options["brightness"]);
                 patch_fixcrashes.Checked            = bool.Parse(Options["crash"]);
@@ -61,16 +61,25 @@ namespace FriishProduce
 
             if (!patch_autosizerom.Enabled) patch_autosizerom.Checked = false;
             if (!patch_fixcrashes.Enabled) patch_fixcrashes.Checked = false;
+            // *******
 
             // ROMC visibility control
             // *******
-            bool isRomc = EmuType == 3;
+            bool isRomc = !EmuType.HasValue || EmuType == 3;
 
             g2.Enabled = g2.Visible = isRomc;
 
             if (MaximumSize.IsEmpty) MaximumSize = Size;
             if (MinimumSize.IsEmpty) MinimumSize = new(Size.Width, Size.Height - g2.Height - 4);
             Size = isRomc ? MaximumSize : MinimumSize;
+            // *******
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                controller_box.Enabled = false;
+            }
         }
 
         protected override void SaveOptions()
@@ -82,6 +91,8 @@ namespace FriishProduce
             Options["clean_textures"]               = patch_cleantextures.Checked.ToString();
             // Options["widescreen"]                   = patch_widescreen.Checked.ToString();
             Options["romc"]                         = romc_type_list.SelectedIndex.ToString();
+
+            base.SaveOptions();
         }
     }
 }

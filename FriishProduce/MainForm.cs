@@ -586,7 +586,7 @@ namespace FriishProduce
                 }
             }
 
-            // Resort slots in case of empty ones
+            // Re-sort slots in case of empty ones
             // ********
             for (int i = 0; i < max - 1; i++)
             {

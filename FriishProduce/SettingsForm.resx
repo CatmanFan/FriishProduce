@@ -605,7 +605,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="vc_n64_romc_type_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1160,268 +1160,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="vc_sega_countries.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <data name="vc_sega_countries.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_countries.Name" xml:space="preserve">
-    <value>vc_sega_countries</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_countries.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_countries.Parent" xml:space="preserve">
-    <value>vc_sega_country</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_countries.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="vc_sega_country.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 68</value>
-  </data>
-  <data name="vc_sega_country.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 50</value>
-  </data>
-  <data name="vc_sega_country.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="vc_sega_country.Text" xml:space="preserve">
-    <value>region</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_country.Name" xml:space="preserve">
-    <value>vc_sega_country</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_country.Type" xml:space="preserve">
-    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_country.Parent" xml:space="preserve">
-    <value>vc_sega</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_country.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="vc_sega_console_disableresetbutton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_sega_console_disableresetbutton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vc_sega_console_disableresetbutton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 42</value>
-  </data>
-  <data name="vc_sega_console_disableresetbutton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 17</value>
-  </data>
-  <data name="vc_sega_console_disableresetbutton.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="vc_sega_console_disableresetbutton.Text" xml:space="preserve">
-    <value>console_disableresetbutton</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_console_disableresetbutton.Name" xml:space="preserve">
-    <value>vc_sega_console_disableresetbutton</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_console_disableresetbutton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_console_disableresetbutton.Parent" xml:space="preserve">
-    <value>vc_sega_system</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_console_disableresetbutton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="vc_sega_save_sram.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_sega_save_sram.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vc_sega_save_sram.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 64</value>
-  </data>
-  <data name="vc_sega_save_sram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
-  </data>
-  <data name="vc_sega_save_sram.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="vc_sega_save_sram.Text" xml:space="preserve">
-    <value>save_data_enable</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_save_sram.Name" xml:space="preserve">
-    <value>vc_sega_save_sram</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_save_sram.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_save_sram.Parent" xml:space="preserve">
-    <value>vc_sega_system</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_save_sram.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="vc_sega_dev_mdpad_enable_6b.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_sega_dev_mdpad_enable_6b.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vc_sega_dev_mdpad_enable_6b.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
-  </data>
-  <data name="vc_sega_dev_mdpad_enable_6b.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 17</value>
-  </data>
-  <data name="vc_sega_dev_mdpad_enable_6b.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="vc_sega_dev_mdpad_enable_6b.Text" xml:space="preserve">
-    <value>dev_mdpad_enable_6b</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_dev_mdpad_enable_6b.Name" xml:space="preserve">
-    <value>vc_sega_dev_mdpad_enable_6b</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_dev_mdpad_enable_6b.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_dev_mdpad_enable_6b.Parent" xml:space="preserve">
-    <value>vc_sega_system</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_dev_mdpad_enable_6b.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="vc_sega_system.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 124</value>
-  </data>
-  <data name="vc_sega_system.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 88</value>
-  </data>
-  <data name="vc_sega_system.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="vc_sega_system.Text" xml:space="preserve">
-    <value>vc_options</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_system.Name" xml:space="preserve">
-    <value>vc_sega_system</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_system.Type" xml:space="preserve">
-    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_system.Parent" xml:space="preserve">
-    <value>vc_sega</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_system.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 21</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 13</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>vc_sega_display</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="SEGA_console_brightness.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SEGA_console_brightness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SEGA_console_brightness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 19</value>
-  </data>
-  <data name="SEGA_console_brightness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 20</value>
-  </data>
-  <data name="SEGA_console_brightness.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;SEGA_console_brightness.Name" xml:space="preserve">
-    <value>SEGA_console_brightness</value>
-  </data>
-  <data name="&gt;&gt;SEGA_console_brightness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SEGA_console_brightness.Parent" xml:space="preserve">
-    <value>vc_sega_display</value>
-  </data>
-  <data name="&gt;&gt;SEGA_console_brightness.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="vc_sega_display.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
-  </data>
-  <data name="vc_sega_display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 52</value>
-  </data>
-  <data name="vc_sega_display.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="vc_sega_display.Text" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_display.Name" xml:space="preserve">
-    <value>vc_sega_display</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_display.Type" xml:space="preserve">
-    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_display.Parent" xml:space="preserve">
-    <value>vc_sega</value>
-  </data>
-  <data name="&gt;&gt;vc_sega_display.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="vc_sega.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 0</value>
-  </data>
-  <data name="vc_sega.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 410</value>
-  </data>
-  <data name="vc_sega.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;vc_sega.Name" xml:space="preserve">
-    <value>vc_sega</value>
-  </data>
-  <data name="&gt;&gt;vc_sega.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_sega.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="vc_pce_note.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1826,7 +1565,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2186,7 +1925,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2387,7 +2126,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2552,652 +2291,58 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
-  <data name="flash_anti_aliasing.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_anti_aliasing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="default_settings_sega.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="flash_anti_aliasing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 64</value>
+  <data name="default_settings_sega.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 28</value>
   </data>
-  <data name="flash_anti_aliasing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 17</value>
+  <data name="default_settings_sega.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 23</value>
   </data>
-  <data name="flash_anti_aliasing.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="flash_anti_aliasing.Text" xml:space="preserve">
-    <value>anti_aliasing</value>
-  </data>
-  <data name="&gt;&gt;flash_anti_aliasing.Name" xml:space="preserve">
-    <value>flash_anti_aliasing</value>
-  </data>
-  <data name="&gt;&gt;flash_anti_aliasing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_anti_aliasing.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_anti_aliasing.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flash_zoom_vl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_zoom_vl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_zoom_vl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>373, 38</value>
-  </data>
-  <data name="flash_zoom_vl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="flash_zoom_vl.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="flash_zoom_vl.Text" xml:space="preserve">
-    <value>V</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_vl.Name" xml:space="preserve">
-    <value>flash_zoom_vl</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_vl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_vl.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_vl.ZOrder" xml:space="preserve">
+  <data name="default_settings_sega.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="flash_fullscreen.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="default_settings_sega.Text" xml:space="preserve">
+    <value>sega</value>
   </data>
-  <data name="flash_fullscreen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;default_settings_sega.Name" xml:space="preserve">
+    <value>default_settings_sega</value>
   </data>
-  <data name="flash_fullscreen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 64</value>
+  <data name="&gt;&gt;default_settings_sega.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="flash_fullscreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 17</value>
-  </data>
-  <data name="flash_fullscreen.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="flash_fullscreen.Text" xml:space="preserve">
-    <value>fullscreen</value>
-  </data>
-  <data name="&gt;&gt;flash_fullscreen.Name" xml:space="preserve">
-    <value>flash_fullscreen</value>
-  </data>
-  <data name="&gt;&gt;flash_fullscreen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_fullscreen.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_fullscreen.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flash_zoom_hl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_zoom_hl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_zoom_hl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 38</value>
-  </data>
-  <data name="flash_zoom_hl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 13</value>
-  </data>
-  <data name="flash_zoom_hl.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="flash_zoom_hl.Text" xml:space="preserve">
-    <value>H</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_hl.Name" xml:space="preserve">
-    <value>flash_zoom_hl</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_hl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_hl.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_hl.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="flash_quality_l.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_quality_l.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_quality_l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 18</value>
-  </data>
-  <data name="flash_quality_l.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
-  </data>
-  <data name="flash_quality_l.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="flash_quality_l.Text" xml:space="preserve">
-    <value>quality</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_l.Name" xml:space="preserve">
-    <value>flash_quality_l</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_l.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_l.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="flash_zoom_v.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 36</value>
-  </data>
-  <data name="flash_zoom_v.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
-  </data>
-  <data name="flash_zoom_v.Suffix" xml:space="preserve">
-    <value>%</value>
-  </data>
-  <data name="flash_zoom_v.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_v.Name" xml:space="preserve">
-    <value>flash_zoom_v</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_v.Type" xml:space="preserve">
-    <value>FriishProduce.NumericUpDownEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_v.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_v.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="flash_quality_list.Items" xml:space="preserve">
-    <value>auto</value>
-  </data>
-  <data name="flash_quality_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 36</value>
-  </data>
-  <data name="flash_quality_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 21</value>
-  </data>
-  <data name="flash_quality_list.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_list.Name" xml:space="preserve">
-    <value>flash_quality_list</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_list.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_list.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_list.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="flash_zoom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_zoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_zoom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 19</value>
-  </data>
-  <data name="flash_zoom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
-  </data>
-  <data name="flash_zoom.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="flash_zoom.Text" xml:space="preserve">
-    <value>zoom</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom.Name" xml:space="preserve">
-    <value>flash_zoom</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="flash_zoom_h.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 36</value>
-  </data>
-  <data name="flash_zoom_h.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
-  </data>
-  <data name="flash_zoom_h.Suffix" xml:space="preserve">
-    <value>%</value>
-  </data>
-  <data name="flash_zoom_h.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_h.Name" xml:space="preserve">
-    <value>flash_zoom_h</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_h.Type" xml:space="preserve">
-    <value>FriishProduce.NumericUpDownEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_h.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_zoom_h.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="display.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 66</value>
-  </data>
-  <data name="display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 90</value>
-  </data>
-  <data name="display.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="display.Text" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;display.Name" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;display.Type" xml:space="preserve">
-    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;display.Parent" xml:space="preserve">
+  <data name="&gt;&gt;default_settings_sega.Parent" xml:space="preserve">
     <value>adobe_flash</value>
   </data>
-  <data name="&gt;&gt;display.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;default_settings_sega.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flash_strap_reminder_list.Items" xml:space="preserve">
-    <value>auto</value>
+  <data name="default_settings_flash.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 28</value>
   </data>
-  <data name="flash_strap_reminder_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
+  <data name="default_settings_flash.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 23</value>
   </data>
-  <data name="flash_strap_reminder_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <data name="flash_strap_reminder_list.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder_list.Name" xml:space="preserve">
-    <value>flash_strap_reminder_list</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder_list.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder_list.Parent" xml:space="preserve">
-    <value>flash_strap_reminder</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder_list.ZOrder" xml:space="preserve">
+  <data name="default_settings_flash.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="flash_strap_reminder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
+  <data name="default_settings_flash.Text" xml:space="preserve">
+    <value>flash</value>
   </data>
-  <data name="flash_strap_reminder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 50</value>
+  <data name="&gt;&gt;default_settings_flash.Name" xml:space="preserve">
+    <value>default_settings_flash</value>
   </data>
-  <data name="flash_strap_reminder.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+  <data name="&gt;&gt;default_settings_flash.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="flash_strap_reminder.Text" xml:space="preserve">
-    <value>strap_reminder</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder.Name" xml:space="preserve">
-    <value>flash_strap_reminder</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder.Type" xml:space="preserve">
-    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder.Parent" xml:space="preserve">
+  <data name="&gt;&gt;default_settings_flash.Parent" xml:space="preserve">
     <value>adobe_flash</value>
   </data>
-  <data name="&gt;&gt;flash_strap_reminder.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;default_settings_flash.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="flash_qwerty_keyboard.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_qwerty_keyboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_qwerty_keyboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 41</value>
-  </data>
-  <data name="flash_qwerty_keyboard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 17</value>
-  </data>
-  <data name="flash_qwerty_keyboard.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="flash_qwerty_keyboard.Text" xml:space="preserve">
-    <value>qwerty_keyboard</value>
-  </data>
-  <data name="&gt;&gt;flash_qwerty_keyboard.Name" xml:space="preserve">
-    <value>flash_qwerty_keyboard</value>
-  </data>
-  <data name="&gt;&gt;flash_qwerty_keyboard.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_qwerty_keyboard.Parent" xml:space="preserve">
-    <value>flash_controls</value>
-  </data>
-  <data name="&gt;&gt;flash_qwerty_keyboard.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flash_mouse.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_mouse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_mouse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
-  </data>
-  <data name="flash_mouse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
-  </data>
-  <data name="flash_mouse.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="flash_mouse.Text" xml:space="preserve">
-    <value>mouse</value>
-  </data>
-  <data name="&gt;&gt;flash_mouse.Name" xml:space="preserve">
-    <value>flash_mouse</value>
-  </data>
-  <data name="&gt;&gt;flash_mouse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_mouse.Parent" xml:space="preserve">
-    <value>flash_controls</value>
-  </data>
-  <data name="&gt;&gt;flash_mouse.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flash_controls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 288</value>
-  </data>
-  <data name="flash_controls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 66</value>
-  </data>
-  <data name="flash_controls.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="flash_controls.Text" xml:space="preserve">
-    <value>controls</value>
-  </data>
-  <data name="&gt;&gt;flash_controls.Name" xml:space="preserve">
-    <value>flash_controls</value>
-  </data>
-  <data name="&gt;&gt;flash_controls.Type" xml:space="preserve">
-    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;flash_controls.Parent" xml:space="preserve">
-    <value>adobe_flash</value>
-  </data>
-  <data name="&gt;&gt;flash_controls.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flash_vff_sync_on_write.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_vff_sync_on_write.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_vff_sync_on_write.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 41</value>
-  </data>
-  <data name="flash_vff_sync_on_write.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 17</value>
-  </data>
-  <data name="flash_vff_sync_on_write.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="flash_vff_sync_on_write.Text" xml:space="preserve">
-    <value>vff_sync_on_write</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_sync_on_write.Name" xml:space="preserve">
-    <value>flash_vff_sync_on_write</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_sync_on_write.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_sync_on_write.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_sync_on_write.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flash_vff_cache_size_l.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_vff_cache_size_l.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_vff_cache_size_l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 66</value>
-  </data>
-  <data name="flash_vff_cache_size_l.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 13</value>
-  </data>
-  <data name="flash_vff_cache_size_l.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
-  </data>
-  <data name="flash_vff_cache_size_l.Text" xml:space="preserve">
-    <value>vff_cache_size</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size_l.Name" xml:space="preserve">
-    <value>flash_vff_cache_size_l</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size_l.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size_l.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flash_vff_cache_size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 84</value>
-  </data>
-  <data name="flash_vff_cache_size.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 21</value>
-  </data>
-  <data name="flash_vff_cache_size.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size.Name" xml:space="preserve">
-    <value>flash_vff_cache_size</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie_l.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie_l.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie_l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>355, 66</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie_l.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 13</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie_l.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie_l.Text" xml:space="preserve">
-    <value>persistent_storage_per_movie</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie_l.Name" xml:space="preserve">
-    <value>flash_persistent_storage_per_movie_l</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie_l.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie_l.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 84</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 21</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie.Name" xml:space="preserve">
-    <value>flash_persistent_storage_per_movie</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="flash_persistent_storage_total_l.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_persistent_storage_total_l.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_persistent_storage_total_l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 66</value>
-  </data>
-  <data name="flash_persistent_storage_total_l.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 13</value>
-  </data>
-  <data name="flash_persistent_storage_total_l.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="flash_persistent_storage_total_l.Text" xml:space="preserve">
-    <value>persistent_storage_total</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total_l.Name" xml:space="preserve">
-    <value>flash_persistent_storage_total_l</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total_l.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total_l.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="flash_persistent_storage_total.Location" type="System.Drawing.Point, System.Drawing">
-    <value>191, 84</value>
-  </data>
-  <data name="flash_persistent_storage_total.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 21</value>
-  </data>
-  <data name="flash_persistent_storage_total.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total.Name" xml:space="preserve">
-    <value>flash_persistent_storage_total</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="flash_save_data_enable.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_save_data_enable.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_save_data_enable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
-  </data>
-  <data name="flash_save_data_enable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
-  </data>
-  <data name="flash_save_data_enable.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="flash_save_data_enable.Text" xml:space="preserve">
-    <value>save_data_enable</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data_enable.Name" xml:space="preserve">
-    <value>flash_save_data_enable</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data_enable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data_enable.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data_enable.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="flash_save_data.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 162</value>
-  </data>
-  <data name="flash_save_data.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 120</value>
-  </data>
-  <data name="flash_save_data.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="flash_save_data.Text" xml:space="preserve">
-    <value>save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Name" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Type" xml:space="preserve">
-    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Parent" xml:space="preserve">
-    <value>adobe_flash</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="adobe_flash.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 0</value>

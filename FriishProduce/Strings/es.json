@@ -387,7 +387,7 @@
 		},
 
 		"vc_sega": {
-			"console_disableresetbutton":		"Deshabilitar botón de reinicio",
+			"console_disable_resetbutton":		"Deshabilitar botón de reinicio",
 			"dev_mdpad_enable_6b":				"Utilizar mando de 6 botones para {0}"
 		},
 

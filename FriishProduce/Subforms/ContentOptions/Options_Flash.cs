@@ -134,6 +134,16 @@ namespace FriishProduce
                 midi.Checked = false;
             }
             // *******
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                controller_box.Enabled = false;
+
+                midi.Enabled = false;
+                swf_metadata.Enabled = false;
+            }
         }
 
         protected override void SaveOptions()
@@ -155,6 +165,8 @@ namespace FriishProduce
             Options["anti_aliasing"] = anti_aliasing.Checked ? "on" : "off";
             Options["zoom"] = $"{zoom_h.Value}_{zoom_v.Value}";
             Options["fullscreen"] = fullscreen.Checked ? "yes" : "no";
+
+            base.SaveOptions();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

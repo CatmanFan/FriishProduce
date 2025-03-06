@@ -394,7 +394,7 @@
 		},
 
 		"vc_sega": {
-			"console_disableresetbutton":		"Disable reset button",
+			"console_disable_resetbutton":		"Disable reset button",
 			"dev_mdpad_enable_6b":				"Enable Six Button Control Pad for {0}"
 		},
 

@@ -30,7 +30,6 @@ namespace FriishProduce
             Program.Lang.Control(vc_nes);
             Program.Lang.Control(vc_snes);
             Program.Lang.Control(vc_n64);
-            Program.Lang.Control(vc_sega);
             Program.Lang.Control(vc_pce);
             Program.Lang.Control(vc_neo);
             Program.Lang.Control(adobe_flash);
@@ -63,9 +62,6 @@ namespace FriishProduce
 
             Program.Lang.ToolTip(tip, use_online_wad_enabled, null, use_online_wad_enabled.Text);
             Program.Lang.ToolTip(tip, bypass_rom_size, null, bypass_rom_size.Text);
-            Program.Lang.ToolTip(tip, flash_vff_cache_size, "vff_cache_size", flash_vff_cache_size_l.Text);
-            Program.Lang.ToolTip(tip, flash_persistent_storage_total, "persistent_storage_total", flash_persistent_storage_total_l.Text);
-            Program.Lang.ToolTip(tip, flash_persistent_storage_per_movie, "persistent_storage_per_movie", flash_persistent_storage_per_movie_l.Text);
 
             #endregion
 
@@ -96,8 +92,6 @@ namespace FriishProduce
             default_target_project_tb.Width = default_target_wad_tb.Width = maxWidth;
 
             banner_region.Text = Program.Lang.String(banner_region.Name, "banner").TrimEnd(':').Trim();
-
-            flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 
             // -----------------------------
 
@@ -165,15 +159,6 @@ namespace FriishProduce
 
             // -----------------------------
 
-            vc_sega_country.Text = Program.Lang.String("region");
-            vc_sega_dev_mdpad_enable_6b.Text = Program.Lang.Format(("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
-            Program.Lang.String(vc_sega_console_disableresetbutton, "vc_sega");
-
-            vc_sega_countries.Items.Clear();
-            vc_sega_countries.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
-
-            // -----------------------------
-
             vc_pce_note.Text = Program.Lang.Format(("additional", null), Program.Lang.Console(Platform.PCECD));
 
             Program.Lang.Control(vc_pce_region, "vc_pce");
@@ -187,33 +172,6 @@ namespace FriishProduce
             Program.Lang.String(vc_neo_bios, "vc_neo");
             Program.Lang.String(vc_neo_bios_list, "vc_neo");
             vc_neo_bios_list.Items.RemoveAt(0);
-
-            // -----------------------------
-
-            Program.Lang.String(flash_save_data, "projectform");
-            Program.Lang.String(flash_save_data_enable, "projectform");
-            Program.Lang.String(flash_vff_sync_on_write, "adobe_flash");
-            Program.Lang.String(flash_vff_cache_size_l, "adobe_flash");
-            Program.Lang.String(flash_persistent_storage_total_l, "adobe_flash");
-            Program.Lang.String(flash_persistent_storage_per_movie_l, "adobe_flash");
-            Program.Lang.String(flash_controls, "adobe_flash");
-            Program.Lang.String(flash_mouse, "adobe_flash");
-            Program.Lang.String(flash_qwerty_keyboard, "adobe_flash");
-            Program.Lang.String(flash_quality_l, "adobe_flash");
-            Program.Lang.String(flash_quality_list, "adobe_flash");
-            Program.Lang.String(flash_strap_reminder, "adobe_flash");
-            Program.Lang.String(flash_strap_reminder_list, "adobe_flash");
-            Program.Lang.String(flash_fullscreen, "adobe_flash");
-            Program.Lang.String(flash_anti_aliasing, "adobe_flash");
-            Program.Lang.String(flash_zoom, "adobe_flash");
-
-            flash_vff_cache_size.Items.Clear();
-            flash_persistent_storage_total.Items.Clear();
-            flash_persistent_storage_per_movie.Items.Clear();
-
-            flash_vff_cache_size.Items.AddRange(Injectors.Flash.SaveDataSizes);
-            flash_persistent_storage_total.Items.AddRange(Injectors.Flash.SaveDataSizes);
-            flash_persistent_storage_per_movie.Items.AddRange(Injectors.Flash.SaveDataSizes);
 
             #endregion
 
@@ -282,14 +240,6 @@ namespace FriishProduce
             // vc_n64_patch_widescreen.Checked = Program.Config.n64.patch_widescreen;
             vc_n64_romc_type_list.SelectedIndex = Program.Config.n64.romc_type;
 
-            // SEGA
-            label1.Text = Program.Config.sega.console_brightness;
-            SEGA_console_brightness.Value = int.Parse(label1.Text);
-            vc_sega_save_sram.Checked = Program.Config.sega.save_sram == "1";
-            vc_sega_dev_mdpad_enable_6b.Checked = Program.Config.sega.dev_mdpad_enable_6b == "1";
-            vc_sega_countries.SelectedIndex = Program.Config.sega.country switch { "jp" => 0, "us" => 1, _ => 2 };
-            vc_sega_console_disableresetbutton.Checked = Program.Config.sega.console_disableresetbutton == "1";
-
             // PCE
             vc_pce_region.SelectedIndex = int.Parse(Program.Config.pce.EUROPE);
             vc_pce_padbutton_switch.Checked = Program.Config.pce.PADBUTTON == "6";
@@ -302,27 +252,6 @@ namespace FriishProduce
 
             // NEO-GEO
             vc_neo_bios_list.SelectedIndex = Program.Config.neo.bios switch { "VC2" => 1, "VC3" => 2, _ => 0 };
-
-            // FLASH
-            flash_save_data_enable.Checked = Program.Config.flash.shared_object_capability == "on";
-            flash_vff_sync_on_write.Checked = Program.Config.flash.vff_sync_on_write == "on";
-            flash_vff_cache_size.SelectedItem = flash_vff_cache_size.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Program.Config.flash.vff_cache_size);
-            flash_persistent_storage_total.SelectedItem = flash_persistent_storage_total.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Program.Config.flash.persistent_storage_total);
-            flash_persistent_storage_per_movie.SelectedItem = flash_persistent_storage_per_movie.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Program.Config.flash.persistent_storage_per_movie);
-            flash_quality_list.SelectedIndex = Program.Config.flash.quality switch { "high" => 0, "medium" => 1, _ => 2 };
-            flash_mouse.Checked = Program.Config.flash.mouse == "on";
-            flash_qwerty_keyboard.Checked = Program.Config.flash.qwerty_keyboard == "on";
-            flash_strap_reminder_list.SelectedIndex = Program.Config.flash.strap_reminder switch { "none" => 0, "normal" => 1, _ => 2 };
-            flash_fullscreen.Checked = Program.Config.flash.fullscreen == "yes";
-            flash_anti_aliasing.Checked = Program.Config.flash.anti_aliasing == "on";
-            (flash_zoom_h.Value, flash_zoom_v.Value) =
-                (int.Parse(Program.Config.flash.zoom.Substring(0, Program.Config.flash.zoom.IndexOf('_'))),
-                 int.Parse(Program.Config.flash.zoom.Substring(Program.Config.flash.zoom.IndexOf('_') + 1)));
-
-            flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
-            flash_vff_cache_size_l.Enabled = flash_vff_cache_size.Enabled = flash_save_data_enable.Checked;
-            flash_persistent_storage_total_l.Enabled = flash_persistent_storage_total.Enabled = flash_save_data_enable.Checked;
-            flash_persistent_storage_per_movie_l.Enabled = flash_persistent_storage_per_movie.Enabled = flash_save_data_enable.Checked;
 
             ToggleSwitchText();
 
@@ -441,12 +370,6 @@ namespace FriishProduce
             // Program.Config.n64.patch_widescreen = vc_n64_patch_widescreen.Checked;
             Program.Config.n64.romc_type = vc_n64_romc_type_list.SelectedIndex;
 
-            Program.Config.sega.console_brightness = label1.Text;
-            Program.Config.sega.save_sram = vc_sega_save_sram.Checked ? "1" : "0";
-            Program.Config.sega.dev_mdpad_enable_6b = vc_sega_dev_mdpad_enable_6b.Checked ? "1" : "0";
-            Program.Config.sega.country = vc_sega_countries.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
-            Program.Config.sega.console_disableresetbutton = vc_sega_console_disableresetbutton.Checked ? "1" : null;
-
             Program.Config.pce.EUROPE = vc_pce_region.SelectedIndex.ToString();
             Program.Config.pce.PADBUTTON = vc_pce_padbutton_switch.Checked ? "6" : "2";
             Program.Config.pce.SGENABLE = vc_pce_sgenable.Checked ? "1" : "0";
@@ -455,20 +378,6 @@ namespace FriishProduce
             Program.Config.pce.HIDEOVERSCAN = vc_pce_hide_overscan.Checked ? "1" : "0";
             Program.Config.pce.RASTER = vc_pce_raster.Checked ? "1" : "0";
             Program.Config.pce.SPRLINE = vc_pce_sprline.Checked ? "1" : "0";
-
-            Program.Config.flash.shared_object_capability = flash_save_data_enable.Checked ? "on" : "off";
-            Program.Config.flash.vff_sync_on_write = flash_vff_sync_on_write.Checked ? "on" : "off";
-            Program.Config.flash.vff_cache_size = flash_vff_cache_size.SelectedItem.ToString();
-            Program.Config.flash.persistent_storage_total = flash_persistent_storage_total.SelectedItem.ToString();
-            Program.Config.flash.persistent_storage_per_movie = flash_persistent_storage_per_movie.SelectedItem.ToString();
-            Program.Config.flash.quality = flash_quality_list.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
-            Program.Config.flash.mouse = flash_mouse.Checked ? "on" : "off";
-            Program.Config.flash.qwerty_keyboard = flash_qwerty_keyboard.Checked ? "on" : "off";
-            Program.Config.flash.strap_reminder = flash_strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
-            Program.Config.flash.hbm_no_save = Program.Config.flash.shared_object_capability == "on" ? "no" : "yes";
-            Program.Config.flash.fullscreen = flash_fullscreen.Checked ? "yes" : "no";
-            Program.Config.flash.anti_aliasing = flash_anti_aliasing.Checked ? "on" : "off";
-            Program.Config.flash.zoom = $"{flash_zoom_h.Value}_{flash_zoom_v.Value}";
 
             switch (vc_neo_bios_list.SelectedIndex)
             {
@@ -593,7 +502,6 @@ namespace FriishProduce
                     vc_nes.Visible = isVisible[4];
                     vc_snes.Visible = isVisible[5];
                     vc_n64.Visible = isVisible[6];
-                    vc_sega.Visible = isVisible[7];
                     vc_pce.Visible = isVisible[8];
                     vc_neo.Visible = isVisible[9];
                     adobe_flash.Visible = isVisible[10];
@@ -605,19 +513,12 @@ namespace FriishProduce
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
             ToggleSwitchText();
-
-            flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
-            flash_vff_cache_size_l.Enabled = flash_vff_cache_size.Enabled = flash_save_data_enable.Checked;
-            flash_persistent_storage_total_l.Enabled = flash_persistent_storage_total.Enabled = flash_save_data_enable.Checked;
-            flash_persistent_storage_per_movie_l.Enabled = flash_persistent_storage_per_movie.Enabled = flash_save_data_enable.Checked;
         }
 
         private void ToggleSwitchText()
         {
             vc_pce_padbutton.Text = Program.Lang.Toggle(vc_pce_padbutton_switch.Checked, "padbutton", vc_pce.Tag.ToString());
         }
-
-        private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = SEGA_console_brightness.Value.ToString();
 
         private void BrowseBIOS(object sender, EventArgs e)
         {
@@ -657,6 +558,23 @@ namespace FriishProduce
 
             else if (dialog == DialogResult.Cancel)
                 textbox.Clear();
+        }
+
+        private void OpenContentOptions(object sender, EventArgs e)
+        {
+            ContentOptions options = null;
+
+            if (sender == default_settings_flash)
+                options = new Options_Flash() { Binding = Program.Config.flash };
+
+            else if (sender == default_settings_sega)
+                options = new Options_VC_SEGA() { Binding = Program.Config.sega };
+
+            if (options != null)
+            {
+                options.Text = (sender as Control).Text;
+                options.ShowDialog(this);
+            }
         }
     }
 }
