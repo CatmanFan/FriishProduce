@@ -43,7 +43,7 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-- [ ] Tidyup Flash content options interface, implement zoom/widescreen feature
+- [X] Tidyup Flash content options interface, implement zoom/widescreen feature
 - [ ] Re-add console icons?
 
 ### Potential

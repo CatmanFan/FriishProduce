@@ -212,7 +212,7 @@ namespace FriishProduce
         public class SEGA
         {
             public string console_brightness { get; set; } = "100";
-            public string console_disable_resetbutton { get; set; } = null;
+            public string console_disableresetbutton { get; set; } = null;
             public string country { get; set; } = "jp";
             public string dev_mdpad_enable_6b { get; set; } = "1";
             public string save_sram { get; set; } = "1";

@@ -33,6 +33,21 @@ namespace FriishProduce
             };
         }
 
+        protected override void BindConfig()
+        {
+            AppConfig = new string[]
+            {
+                "bios"
+            };
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
+            }
+        }
+
         protected override void ResetOptions()
         {
             // Form control
@@ -59,11 +74,15 @@ namespace FriishProduce
                 bios_list.SelectedIndex = biosIndex;
             }
             // *******
+
+            BindConfig();
         }
 
         protected override void SaveOptions()
         {
             Options["BIOS"] = biosName;
+
+            base.SaveOptions();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

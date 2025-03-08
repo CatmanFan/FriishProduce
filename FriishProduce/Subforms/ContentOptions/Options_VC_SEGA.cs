@@ -29,7 +29,7 @@ namespace FriishProduce
 
             region.Text = Program.Lang.String("region");
             save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
-            console_disable_resetbutton.Text = Program.Lang.String("console_disable_resetbutton", "vc_sega");
+            console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
             dev_mdpad_enable_6b.Text = Program.Lang.Format(("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
 
             country.Items.Clear();
@@ -44,13 +44,34 @@ namespace FriishProduce
             Options = new SortedDictionary<string, string>
             {
                 { "console.brightness", Program.Config.sega.console_brightness },
-                { "console.disable_resetbutton", Program.Config.sega.console_disable_resetbutton },
+                { "console.disable_resetbutton", Program.Config.sega.console_disableresetbutton },
                 { "country", Program.Config.sega.country },
                 { "dev.mdpad.enable_6b", Program.Config.sega.dev_mdpad_enable_6b },
                 { "save_sram", Program.Config.sega.save_sram },
                 { "machine_md.use_4ptap", null },
                 { "nplayers", null }
             };
+        }
+
+        protected override void BindConfig()
+        {
+            AppConfig = new string[]
+            {
+                "console_brightness",
+                "console_disableresetbutton",
+                "country",
+                "dev_mdpad_enable_6b",
+                "save_sram",
+                null,
+                null
+            };
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
+            }
         }
 
         protected override void ResetOptions()
@@ -67,7 +88,8 @@ namespace FriishProduce
                 controllerForm = new Controller_SEGA(IsSMS);
                 vc_options.Size = vc_options.MinimumSize;
             }
-            else if ((!EmuType.HasValue || EmuType < 3) && controllerForm != null)
+
+            else if (Binding != null || (EmuType < 3 && controllerForm != null))
             {
                 controllerForm = null;
                 vc_options.Size = vc_options.MaximumSize;
@@ -83,26 +105,21 @@ namespace FriishProduce
                 
                 console_brightness.Value                = int.Parse(Options["console.brightness"]);
                 country.SelectedIndex                   = Options["country"] switch { "jp" => 0, "us" => 1, _ => 2 };
-                console_disable_resetbutton.CheckState  = Options["console.disable_resetbutton"] switch { "1" => CheckState.Checked, "0" => CheckState.Indeterminate, _ => CheckState.Unchecked };
+                console_disableresetbutton.CheckState  = Options["console.disable_resetbutton"] switch { "1" => CheckState.Checked, "0" => CheckState.Indeterminate, _ => CheckState.Unchecked };
                 dev_mdpad_enable_6b.CheckState          = Options["dev.mdpad.enable_6b"] switch { "1" => CheckState.Checked, "0" => CheckState.Indeterminate, _ => CheckState.Unchecked };
                 save_sram.CheckState                    = Options["save_sram"] switch { "1" => CheckState.Checked, "0" => CheckState.Indeterminate, _ => CheckState.Unchecked };
                 changeBrightness();
             }
             // *******
 
-            // Disable certain options if configuring application settings
-            // *******
-            if (Binding != null)
-            {
-                controller_box.Enabled = false;
-            }
+            BindConfig();
         }
 
         protected override void SaveOptions()
         {
             Options["console.brightness"]           = console_brightness.Enabled ? label1.Text : null;
             Options["country"]                      = country.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
-            Options["console.disable_resetbutton"]  = console_disable_resetbutton.CheckState switch { CheckState.Checked => "1", CheckState.Indeterminate => "0", _ => null };
+            Options["console.disable_resetbutton"]  = console_disableresetbutton.CheckState switch { CheckState.Checked => "1", CheckState.Indeterminate => "0", _ => null };
             Options["dev.mdpad.enable_6b"]          = dev_mdpad_enable_6b.CheckState switch { CheckState.Checked => "1", CheckState.Indeterminate => "0", _ => null };
             Options["save_sram"]                    = save_sram.CheckState switch { CheckState.Checked => "1", CheckState.Indeterminate => "0", _ => null };
 

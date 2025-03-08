@@ -54,6 +54,23 @@ namespace FriishProduce
             // ************************************************
         }
 
+        protected virtual void BindConfig()
+        {
+            // Equivalent settings in Settings.cs, used for config binding if the names are different
+            // ************************************************
+            AppConfig = new string[]
+            {
+            };
+            // ************************************************
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
+            }
+        }
+
         protected virtual void ResetOptions()
         {
             // Form control
@@ -64,51 +81,54 @@ namespace FriishProduce
             }
             // *******
 
-            // Disable certain options if configuring application settings
-            // *******
-            if (Binding != null)
-            {
-                controller_box.Enabled = false;
-            }
+            BindConfig();
         }
 
         protected virtual void SaveOptions()
         {
             // Code logic in derived Form
 
+            // ---------------------------------------------------------------------------------------------------------------
+            // /!\ THE CODE BELOW SHOULD BE INCLUDED IN THE DERIVED FORM AT THE END AS base.SaveOptions() /!\
+            // ---------------------------------------------------------------------------------------------------------------
             if (Binding != null)
             {
-                foreach (var key in Options.Keys)
+                for (int i = 0; i < Options.Count; i++)
                 {
-                    var prop = Binding.GetType().GetProperty(key.ToString().Replace('.', '_'));
-
-                    if (prop != null)
+                    var key = AppConfig?.Length == Options.Keys.Count ? AppConfig[i] : Options.Keys.ElementAt(i);
+                    
+                    if (!string.IsNullOrWhiteSpace(key))
                     {
-                        var val = prop.GetValue(Binding, null);
+                        var prop = Binding.GetType().GetProperty(key.ToString().Replace('.', '_'));
 
-                        if (val != null)
+                        if (prop != null)
                         {
-                            if (val.GetType() == typeof(string))
-                                prop.SetValue(Binding, Options[key]);
+                            var val = prop.GetValue(Binding, null);
 
-                            else if (val.GetType() == typeof(int))
+                            if (val != null)
                             {
-                                int x = 0;
-                                int.TryParse(Options[key], out x);
-                                prop.SetValue(Binding, x);
+                                if (val.GetType() == typeof(string))
+                                    prop.SetValue(Binding, Options.Values.ElementAt(i));
+
+                                else if (val.GetType() == typeof(int))
+                                {
+                                    int x = 0;
+                                    int.TryParse(Options.Values.ElementAt(i), out x);
+                                    prop.SetValue(Binding, x);
+                                }
+
+                                else if (val.GetType() == typeof(bool))
+                                {
+                                    bool x = false;
+                                    bool.TryParse(Options.Values.ElementAt(i), out x);
+                                    prop.SetValue(Binding, x);
+                                }
                             }
 
-                            else if (val.GetType() == typeof(bool))
+                            else if (prop.GetMethod.ReturnType.FullName == "System.String")
                             {
-                                bool x = false;
-                                bool.TryParse(Options[key], out x);
-                                prop.SetValue(Binding, x);
+                                prop.SetValue(Binding, Options.Values.ElementAt(i));
                             }
-                        }
-
-                        else if (prop.GetMethod.ReturnType.FullName == "System.String")
-                        {
-                            prop.SetValue(Binding, Options[key]);
                         }
                     }
                 }
@@ -141,7 +161,8 @@ namespace FriishProduce
         public dynamic Binding { get; set; } = null;
 
         public IDictionary<string, string> Options { get; set; }
-        public int? EmuType { get; set; } = null;
+        protected string[] AppConfig { get; set; } = null;
+        public int EmuType { get; set; }
 
         protected ControllerMapping controllerForm { get; set; }
 

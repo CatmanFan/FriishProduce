@@ -230,11 +230,17 @@
 			"browse_bios":						"Choisir un fichier BIOS ...",
 			
 			"default_settings":					"Paramètres par défaut",
+			"default_settings_app":				"Application",
+			"default_settings_plat":			"Plateformes",
 			"default_injection_methods":		"Méthodes d'injection par défaut",
 			"default_target_filename":			"Nom des fichiers enregistrés",
 			"default_target_project":			"Projets :",
 			"default_target_wad":				"Fichiers WAD ou ZIP :",
 			"default_target_parameters":		"Parties remplaçables :",
+
+			"default_content_options":			"Paramètres de méthode d'injection par défaut",
+			"default_content_options_l":		"Sélectionnez une plateforme pour laquelle ses paramètres par défaut seront modifiés.",
+			"default_content_options_e":		"Modifier ...",
 
 			"use_online_wad_enabled":           "Activer l'option de téléchargement des WADs",
 
@@ -378,7 +384,7 @@
 		},
 
 		"vc_sega": {
-			"console_disable_resetbutton":		"Désactiver le bouton Reset",
+			"console_disableresetbutton":		"Désactiver le bouton Reset",
 			"dev_mdpad_enable_6b":				"Utiliser la manette à 6 boutons ({0})"
 		},
 

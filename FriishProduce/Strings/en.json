@@ -247,11 +247,17 @@
 			"browse_bios":						"Select a BIOS file...",
 			
 			"default_settings":					"Default settings",
+			"default_settings_app":				"Application",
+			"default_settings_plat":			"Platforms",
 			"default_injection_methods":		"Default injection methods",
 			"default_target_filename":			"Target filenames",
 			"default_target_project":			"Projects:",
 			"default_target_wad":				"Exported WADs:",
 			"default_target_parameters":		"Replaceable parameters:",
+
+			"default_content_options":			"Default content options",
+			"default_content_options_l":		"Select a platform for which the default content options should be changed.",
+			"default_content_options_e":		"Edit...",
 
 			"use_online_wad_enabled":           "Enable downloadable WADs feature",
 
@@ -394,7 +400,7 @@
 		},
 
 		"vc_sega": {
-			"console_disable_resetbutton":		"Disable reset button",
+			"console_disableresetbutton":		"Disable reset button",
 			"dev_mdpad_enable_6b":				"Enable Six Button Control Pad for {0}"
 		},
 

@@ -61,6 +61,19 @@ namespace FriishProduce
             };
         }
 
+        protected override void BindConfig()
+        {
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
+
+                midi.Enabled = false;
+                swf_metadata.Enabled = false;
+            }
+        }
+
         protected override void ResetOptions()
         {
             // Form control
@@ -135,15 +148,7 @@ namespace FriishProduce
             }
             // *******
 
-            // Disable certain options if configuring application settings
-            // *******
-            if (Binding != null)
-            {
-                controller_box.Enabled = false;
-
-                midi.Enabled = false;
-                swf_metadata.Enabled = false;
-            }
+            BindConfig();
         }
 
         protected override void SaveOptions()

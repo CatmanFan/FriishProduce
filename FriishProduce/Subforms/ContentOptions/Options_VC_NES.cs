@@ -39,6 +39,22 @@ namespace FriishProduce
             };
         }
 
+        protected override void BindConfig()
+        {
+            AppConfig = new string[]
+            {
+                "palette",
+                "palette_banner_usage"
+            };
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
+            }
+        }
+
         protected override void ResetOptions()
         {
             // Form control
@@ -49,6 +65,8 @@ namespace FriishProduce
                 palette_banner_usage.Checked       = bool.Parse(Options["use_tImg"]);
             }
             // *******
+
+            BindConfig();
         }
 
         protected override void SaveOptions()

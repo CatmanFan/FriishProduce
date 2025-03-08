@@ -50,6 +50,34 @@ namespace FriishProduce
             };
         }
 
+        protected override void BindConfig()
+        {
+            AppConfig = new string[]
+            {
+                "BACKUPRAM",
+                "PADBUTTON",
+                null,
+                "EUROPE",
+                "SGENABLE",
+                "HIDEOVERSCAN",
+                "YOFFSET",
+                null,
+                null,
+                "RASTER",
+                null,
+                "SPRLINE",
+                null,
+                null
+            };
+
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
+            }
+        }
+
         protected override void ResetOptions()
         {
             // Form control
@@ -66,6 +94,8 @@ namespace FriishProduce
                 backupram.Checked                   = Options["BACKUPRAM"] == "1";
             }
             // *******
+
+            BindConfig();
         }
 
         protected override void SaveOptions()

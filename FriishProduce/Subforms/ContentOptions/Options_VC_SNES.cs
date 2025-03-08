@@ -44,6 +44,17 @@ namespace FriishProduce
             };
         }
 
+        protected override void BindConfig()
+        {
+            // Disable certain options if configuring application settings
+            // *******
+            if (Binding != null)
+            {
+                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
+                Size = new(Width, Height - controller_box.Height);
+            }
+        }
+
         protected override void ResetOptions()
         {
             // Form control
@@ -64,12 +75,7 @@ namespace FriishProduce
             }
             // *******
 
-            // Disable certain options if configuring application settings
-            // *******
-            if (Binding != null)
-            {
-                controller_box.Enabled = false;
-            }
+            BindConfig();
         }
 
         protected override void SaveOptions()

@@ -242,11 +242,17 @@
 			"browse_bios":						"바이오스 파일 선택...",
 			
 			"default_settings":					"기본값 설정",
+			"default_settings_app":				"Application",
+			"default_settings_plat":			"Platforms",
 			"default_injection_methods":		"기본 주입 방법",
 			"default_target_filename":			"내보낸 WAD의 기본 파일 이름",
 			"default_target_project":			"프로젝트:",
 			"default_target_wad":				"내보낸 WAD:",
 			"default_target_parameters":		"교체 가능한 매개변수:",
+
+			"default_content_options":			"Default content options",
+			"default_content_options_l":		"Change the default content options for each platform.",
+			"default_content_options_e":		"Edit...",
 
 			"use_online_wad_enabled":           "다운로드 가능한 WAD 기능 활성화",
 
@@ -388,7 +394,7 @@
 		},
 
 		"vc_sega": {
-			"console_disable_resetbutton":		"재설정 버튼 비활성화",
+			"console_disableresetbutton":		"재설정 버튼 비활성화",
 			"dev_mdpad_enable_6b":				"{0} 6 버튼 컨트롤 패드 활성화"
 		},
 

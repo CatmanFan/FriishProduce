@@ -37,7 +37,7 @@ namespace FriishProduce
             this.vc_options = new GroupBoxEx();
             this.dev_mdpad_enable_6b = new System.Windows.Forms.CheckBox();
             this.save_sram = new System.Windows.Forms.CheckBox();
-            this.console_disable_resetbutton = new System.Windows.Forms.CheckBox();
+            this.console_disableresetbutton = new System.Windows.Forms.CheckBox();
             this.region = new GroupBoxEx();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
@@ -116,7 +116,7 @@ namespace FriishProduce
             // 
             this.vc_options.Controls.Add(this.dev_mdpad_enable_6b);
             this.vc_options.Controls.Add(this.save_sram);
-            this.vc_options.Controls.Add(this.console_disable_resetbutton);
+            this.vc_options.Controls.Add(this.console_disableresetbutton);
             this.vc_options.Location = new System.Drawing.Point(330, 66);
             this.vc_options.MaximumSize = new System.Drawing.Size(312, 220);
             this.vc_options.MinimumSize = new System.Drawing.Size(312, 160);
@@ -150,18 +150,18 @@ namespace FriishProduce
             this.save_sram.ThreeState = true;
             this.save_sram.UseVisualStyleBackColor = true;
             // 
-            // console_disable_resetbutton
+            // console_disableresetbutton
             // 
-            this.console_disable_resetbutton.AutoSize = true;
-            this.console_disable_resetbutton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.console_disable_resetbutton.Location = new System.Drawing.Point(10, 43);
-            this.console_disable_resetbutton.Name = "console_disable_resetbutton";
-            this.console_disable_resetbutton.Size = new System.Drawing.Size(164, 17);
-            this.console_disable_resetbutton.TabIndex = 21;
-            this.console_disable_resetbutton.Tag = "console_disable_resetbutton";
-            this.console_disable_resetbutton.Text = "console_disable_resetbutton";
-            this.console_disable_resetbutton.ThreeState = true;
-            this.console_disable_resetbutton.UseVisualStyleBackColor = true;
+            this.console_disableresetbutton.AutoSize = true;
+            this.console_disableresetbutton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.console_disableresetbutton.Location = new System.Drawing.Point(10, 43);
+            this.console_disableresetbutton.Name = "console_disableresetbutton";
+            this.console_disableresetbutton.Size = new System.Drawing.Size(158, 17);
+            this.console_disableresetbutton.TabIndex = 21;
+            this.console_disableresetbutton.Tag = "console_disableresetbutton";
+            this.console_disableresetbutton.Text = "console_disableresetbutton";
+            this.console_disableresetbutton.ThreeState = true;
+            this.console_disableresetbutton.UseVisualStyleBackColor = true;
             // 
             // region
             // 
@@ -208,7 +208,7 @@ namespace FriishProduce
         private GroupBoxEx vc_options;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox save_sram;
-        private System.Windows.Forms.CheckBox console_disable_resetbutton;
+        private System.Windows.Forms.CheckBox console_disableresetbutton;
         private System.Windows.Forms.CheckBox dev_mdpad_enable_6b;
         private GroupBoxEx region;
     }
