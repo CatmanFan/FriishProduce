@@ -445,6 +445,7 @@
 			"background_color":					"배경색",
 			"anti_aliasing":					"안티에일리어싱",
 			"zoom":								"확대/축소",
+			"zoom1":							"Custom",
 			"fullscreen":						"Fullscreen"
 		},
 

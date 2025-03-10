@@ -675,22 +675,36 @@ namespace FriishProduce.Injectors
                     {
                         if (line.Contains("ortho_rect"))
                         {
-                            (int h_setting, int v_setting) = (int.Parse(Settings["zoom"].Substring(0, Settings["zoom"].IndexOf('_'))), int.Parse(Settings["zoom"].Substring(Settings["zoom"].IndexOf('_') + 1)));
+                            bool wide = Path.GetFileNameWithoutExtension(file).Contains("wide") && Settings["fullscreen"] != "yes";
 
-                            // - The smaller the rectangle, the larger the SWF appears
-                            double h_value = SWF.Header.Width / (h_setting / 100.0);
-                            double v_value = SWF.Header.Height / (v_setting / 100.0);
+                            // Automatic adjustment
+                            // **********************************************
+                            if (Settings["zoom"].Contains("auto"))
+                            {
+                                // TO-DO
+                            }
 
-                            // - The value is automatically adjusted for widescreen presets to avoid being stretched out on 16:9 display
-                            if (Path.GetFileNameWithoutExtension(file).Contains("wide"))
-                                h_value *= (416.0 / 304.0);
+                            // Custom value
+                            // **********************************************
+                            else if (Settings["zoom"].Contains('_'))
+                            {
+                                (int h_setting, int v_setting) = (int.Parse(Settings["zoom"].Substring(0, Settings["zoom"].IndexOf('_'))), int.Parse(Settings["zoom"].Substring(Settings["zoom"].IndexOf('_') + 1)));
 
-                            // Original rectangle size values in Flash Placeholder: 304 (H) 228 (V) for SD resolution, 416 (H) for wide
-                            (int h, int v) = (Convert.ToInt32(Math.Round(h_value)), Convert.ToInt32(Math.Round(v_value)));
-                            (h, v) = (304, 228);
+                                // - The smaller the rectangle, the larger the SWF appears
+                                double h_value = SWF.Header.Width / (h_setting / 100.0);
+                                double v_value = SWF.Header.Height / (v_setting / 100.0);
 
-                            txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
-                            modified = true;
+                                // - The value is automatically adjusted for widescreen presets to avoid being stretched out on 16:9 display
+                                if (wide)
+                                    h_value *= (416.0 / 304.0);
+
+                                // Original rectangle size values in Flash Placeholder: 304 (H) 228 (V) for SD resolution, 416 (H) for wide
+                                (int h, int v) = (Convert.ToInt32(Math.Round(h_value)), Convert.ToInt32(Math.Round(v_value)));
+                                (h, v) = (304, 228);
+
+                                txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
+                                modified = true;
+                            }
                         }
 
                         else if (line.Contains("anti_aliasing"))

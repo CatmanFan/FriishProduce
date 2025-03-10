@@ -443,6 +443,7 @@
 			"background_color":					"Color de fondo",
 			"anti_aliasing":					"Antialias",
 			"zoom":								"Zoom",
+			"zoom1":							"Valor personalizado",
 			"fullscreen":						"Pantalla completa"
 		},
 

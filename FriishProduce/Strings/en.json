@@ -452,6 +452,8 @@
 			"background_color":					"Background color",
 			"anti_aliasing":					"Anti-aliasing",
 			"zoom":								"Zoom",
+			"zoom0":							"{by_default}",
+			"zoom1":							"Custom",
 			"fullscreen":						"Fullscreen"
 		},
 

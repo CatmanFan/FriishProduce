@@ -428,6 +428,7 @@
 			"background_color":					"Couleur d'arrière-plan",
 			"anti_aliasing":					"Anti-aliasing",
 			"zoom":								"Zoom",
+			"zoom1":							"Valeur personnalisée",
 			"fullscreen":						"Plein écran"
 		},
 

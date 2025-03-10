@@ -61,7 +61,7 @@ namespace FriishProduce
             this.background_color_l = new System.Windows.Forms.Label();
             this.content_domain_l = new System.Windows.Forms.Label();
             this.content_domain = new FriishProduce.PlaceholderTextBox();
-            this.zoom = new System.Windows.Forms.GroupBox();
+            this.zoom = new FriishProduce.GroupBoxEx();
             this.zoom_list = new System.Windows.Forms.ComboBox();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
@@ -467,6 +467,7 @@ namespace FriishProduce
             this.zoom_list.Size = new System.Drawing.Size(340, 21);
             this.zoom_list.TabIndex = 17;
             this.zoom_list.Tag = "zoom";
+            this.zoom_list.SelectedIndexChanged += new System.EventHandler(this.valueChanged);
             // 
             // Options_Flash
             // 
@@ -540,7 +541,7 @@ namespace FriishProduce
         private NumericUpDownEx zoom_v;
         private System.Windows.Forms.Label zoom_hl;
         private System.Windows.Forms.Label zoom_vl;
-        private System.Windows.Forms.GroupBox zoom;
+        private FriishProduce.GroupBoxEx zoom;
         private System.Windows.Forms.ComboBox zoom_list;
     }
 }
