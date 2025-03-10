@@ -175,8 +175,10 @@ namespace FriishProduce
             // Debug-only options
 #if DEBUG
             GetBanners.Visible = true;
+            debug_mode.Visible = true;
 #else
             GetBanners.Visible = false;
+            debug_mode.Visible = false;
 #endif
             theme.Enabled = Program.DebugMode;
 
@@ -297,6 +299,17 @@ namespace FriishProduce
                 Program.MainForm.UpdateConfig();
 
             isShown = false;
+
+            if (debug_mode.Checked)
+            {
+                Program.Config.application.debug_mode = !Program.Config.application.debug_mode;
+                Program.Config.Save();
+
+                Close();
+                Application.Exit();
+                return;
+            }
+
             DialogResult = DialogResult.OK;
         }
 

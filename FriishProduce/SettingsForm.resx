@@ -268,7 +268,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="TreeView.Indent" type="System.Int32, mscorlib">
     <value>15</value>
@@ -348,7 +348,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TreeView.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
+  </data>
+  <data name="debug_mode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="debug_mode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 215</value>
+  </data>
+  <data name="debug_mode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 17</value>
+  </data>
+  <data name="debug_mode.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="debug_mode.Text" xml:space="preserve">
+    <value>Toggle debug mode</value>
+  </data>
+  <data name="&gt;&gt;debug_mode.Name" xml:space="preserve">
+    <value>debug_mode</value>
+  </data>
+  <data name="&gt;&gt;debug_mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;debug_mode.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;debug_mode.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="themes.Items" xml:space="preserve">
     <value>Default</value>
@@ -396,7 +423,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;theme.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="bypass_rom_size.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -426,7 +453,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;bypass_rom_size.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="use_online_wad_enabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -456,7 +483,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;use_online_wad_enabled.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="use_custom_database.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -486,7 +513,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;use_custom_database.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="reset_all_dialogs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -516,7 +543,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;reset_all_dialogs.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="languages.Items" xml:space="preserve">
     <value>System default</value>
@@ -564,7 +591,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;language.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 0</value>
@@ -585,7 +612,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -732,7 +759,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1092,7 +1119,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1293,7 +1320,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1458,7 +1485,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="border.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 0</value>
@@ -1479,7 +1506,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;border.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="htmlLabel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 178</value>
@@ -1602,7 +1629,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>7</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

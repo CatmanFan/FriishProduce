@@ -49,6 +49,7 @@ namespace FriishProduce
             this.bios_files = new System.Windows.Forms.Panel();
             this.border = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.htmlLabel1 = new TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel();
             this.default_content_options_list = new System.Windows.Forms.ListBox();
             this.default_content_options_l = new System.Windows.Forms.Label();
             this.default_content_options_e = new System.Windows.Forms.Button();
@@ -86,7 +87,7 @@ namespace FriishProduce
             this.bios_psx = new FriishProduce.GroupBoxEx();
             this.browse_bios_psx = new System.Windows.Forms.Button();
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
-            this.htmlLabel1 = new TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel();
+            this.debug_mode = new System.Windows.Forms.CheckBox();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -169,6 +170,7 @@ namespace FriishProduce
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.debug_mode);
             this.panel1.Controls.Add(this.theme);
             this.panel1.Controls.Add(this.bypass_rom_size);
             this.panel1.Controls.Add(this.use_online_wad_enabled);
@@ -269,6 +271,13 @@ namespace FriishProduce
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             this.panel3.Tag = "";
+            // 
+            // htmlLabel1
+            // 
+            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Control;
+            this.htmlLabel1.BaseStylesheet = "";
+            resources.ApplyResources(this.htmlLabel1, "htmlLabel1");
+            this.htmlLabel1.Name = "htmlLabel1";
             // 
             // default_content_options_list
             // 
@@ -567,12 +576,11 @@ namespace FriishProduce
             this.bios_filename_psx.Name = "bios_filename_psx";
             this.bios_filename_psx.ReadOnly = true;
             // 
-            // htmlLabel1
+            // debug_mode
             // 
-            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Control;
-            this.htmlLabel1.BaseStylesheet = "";
-            resources.ApplyResources(this.htmlLabel1, "htmlLabel1");
-            this.htmlLabel1.Name = "htmlLabel1";
+            resources.ApplyResources(this.debug_mode, "debug_mode");
+            this.debug_mode.Name = "debug_mode";
+            this.debug_mode.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -581,15 +589,15 @@ namespace FriishProduce
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.border);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.default_injection_methods);
             this.Controls.Add(this.bios_files);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -689,5 +697,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label default_content_options_l;
         private System.Windows.Forms.ListBox default_content_options_list;
         private TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel htmlLabel1;
+        private System.Windows.Forms.CheckBox debug_mode;
     }
 }
