@@ -252,6 +252,12 @@ namespace FriishProduce
                 isEligible = flat;
             }
 
+            if (c.GetType() == typeof(ListBox))
+            {
+                isEligible = flat;
+                useTextBox = true;
+            }
+
             if (c.GetType() == typeof(RadioButton))
             {
                 if (flat) (c as RadioButton).FlatStyle = FlatStyle.Flat;

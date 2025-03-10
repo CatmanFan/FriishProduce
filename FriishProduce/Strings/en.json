@@ -256,7 +256,7 @@
 			"default_target_parameters":		"Replaceable parameters:",
 
 			"default_content_options":			"Default content options",
-			"default_content_options_l":		"Select a platform for which the default content options should be changed.",
+			"default_content_options_l":		"Select a platform from the list, then click \"{0}\" to change its default content options.",
 			"default_content_options_e":		"Edit...",
 
 			"use_online_wad_enabled":           "Enable downloadable WADs feature",

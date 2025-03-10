@@ -130,6 +130,12 @@ namespace FriishProduce
             default_content_options_list.Items.Add(Program.Lang.Console(Platform.NEO));
             default_content_options_list.Items.Add(Program.Lang.Console(Platform.Flash));
             // default_content_options_l.Items.Add(Program.Lang.Console(Platform.RPGM));
+            default_content_options_list.SelectedIndex = 0;
+            default_content_options_l.Text = string.Format(Program.Lang.String(default_content_options_l.Name, Name), default_content_options_e.Text);
+
+            htmlLabel1.BaseStylesheet = HTML.BaseStylesheet;
+            htmlLabel1.BackColor = default_content_options_l.BackColor;
+            htmlLabel1.Text = "<div><b>WARNING:</b> This page is still work-in-progress and there is a possibility that some options may not save properly. This will be fixed in a future commit.</div>";
 
             #endregion
 

@@ -250,7 +250,7 @@
 			"default_target_parameters":		"Partidos reemplazables:",
 
 			"default_content_options":			"Ajustes del método de inyección por defecto",
-			"default_content_options_l":		"Selecciona una plataforma para la que se cambiarán los ajustes predeterminados.",
+			"default_content_options_l":		"Selecciona una plataforma de la lista y haz clic en \"{0}\" para cambiar sus ajustes predeterminados.",
 			"default_content_options_e":		"Editar...",
 
 			"use_online_wad_enabled":           "Habilitar opción de descargar canales de origen",
