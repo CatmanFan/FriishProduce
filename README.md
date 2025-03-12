@@ -45,14 +45,7 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ## To-Do
 - [X] Tidyup Flash content options interface, implement zoom/widescreen feature
 - [ ] Re-add console icons?
-* Test migrated settings forms
-  - [X] NES (all working)
-  - [X] SNES (all working)
-  - [X] N64 (all working)
-  - [X] SEGA (one option does not save)
-  - [X] PC Engine/TG-16 (all working)
-  - [X] NEO-GEO (all working)
-  - [ ] Adobe Flash
+- [ ] Test Adobe Flash migrated settings form
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
