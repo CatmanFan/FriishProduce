@@ -133,10 +133,6 @@ namespace FriishProduce
             default_content_options_list.SelectedIndex = 0;
             default_content_options_l.Text = string.Format(Program.Lang.String(default_content_options_l.Name, Name), default_content_options_e.Text);
 
-            htmlLabel1.BaseStylesheet = HTML.BaseStylesheet;
-            htmlLabel1.BackColor = default_content_options_l.BackColor;
-            htmlLabel1.Text = "<div><b>WARNING:</b> This page is still work-in-progress and there is a possibility that some options may not save properly. This will be fixed in a future commit.</div>";
-
             #endregion
 
             // -----------------------------
@@ -302,11 +298,15 @@ namespace FriishProduce
 
             if (debug_mode.Checked)
             {
-                Program.Config.application.debug_mode = !Program.Config.application.debug_mode;
-                Program.Config.Save();
+                if (MessageBox.Show("This will restart the application.\nContinue anyway?", MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
+                {
+                    Program.Config.application.debug_mode = !Program.Config.application.debug_mode;
+                    Program.Config.Save();
 
-                Close();
-                Application.Exit();
+                    Close();
+                    Application.Exit();
+                }
+
                 return;
             }
 
