@@ -174,7 +174,7 @@ namespace FriishProduce
 
             // Debug-only options
 #if DEBUG
-            GetBanners.Visible = true;
+            GetBanners.Visible = Program.DebugMode;
             debug_mode.Visible = true;
 #else
             GetBanners.Visible = false;
