@@ -50,8 +50,11 @@ namespace FriishProduce
             // *******
             if (Binding != null)
             {
-                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
-                Size = new(Width, Height - controller_box.Height);
+                if (Controls.Contains(controller_box))
+                {
+                    Controls.Remove(controller_box);
+                    Size = new(Width, Height - controller_box.Height);
+                }
             }
         }
 

@@ -67,11 +67,28 @@ namespace FriishProduce
             // *******
             if (Binding != null)
             {
-                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
-                zoom.Location = controller_box.Location;
+                if (Controls.Contains(controller_box))
+                {
+                    Controls.Remove(controller_box);
+                    zoom.Location = controller_box.Location;
+                }
 
                 midi.Enabled = false;
                 swf_metadata.Enabled = false;
+
+                if (controls.Controls.Contains(midi))
+                {
+                    controls.Controls.Remove(midi);
+                    controls.Height -= midi.Height;
+                    zoom.Location = controller_box.Location = new(controller_box.Location.X, controller_box.Location.Y - midi.Height);
+                }
+
+                if (Controls.Contains(swf_metadata))
+                {
+                    Controls.Remove(swf_metadata);
+                    Height = Height - swf_metadata.Height - strap_reminder.Height + zoom.Height;
+                    strap_reminder.Location = swf_metadata.Location;
+                }
             }
         }
 

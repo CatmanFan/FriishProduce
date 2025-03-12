@@ -59,9 +59,12 @@ namespace FriishProduce
             // *******
             if (Binding != null)
             {
-                if (Controls.Contains(controller_box)) Controls.Remove(controller_box);
-                g2.Location = controller_box.Location;
-                MaximumSize = MinimumSize = new(MinimumSize.Width, (MinimumSize.Height - controller_box.Height) + g2.Height);
+                if (Controls.Contains(controller_box))
+                {
+                    Controls.Remove(controller_box);
+                    g2.Location = controller_box.Location;
+                    MaximumSize = MinimumSize = new(MinimumSize.Width, (MinimumSize.Height - controller_box.Height) + g2.Height);
+                }
 
                 patch_autosizerom.Enabled = patch_fixcrashes.Enabled = true;
             }
