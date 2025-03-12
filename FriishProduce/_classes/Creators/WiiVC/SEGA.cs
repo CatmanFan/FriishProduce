@@ -236,9 +236,11 @@ namespace FriishProduce.Injectors
 
                     // Read config file
                     // ****************
-                    string[] configFile = encoding.GetString(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
+                    string[] origConfig = encoding.GetString(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
 
-                    IDictionary<string, string> Settings = this.Settings;
+                    // Copy settings as sorted dictionary and remove SMS/MD incompatible variables
+                    // ****************
+                    SortedDictionary<string, string> Settings = new(this.Settings);
 
                     foreach (var line in Settings.Keys.ToArray())
                         if (line == "smsui.has_opll") Settings.Remove(line);
@@ -256,6 +258,8 @@ namespace FriishProduce.Injectors
                             break;
                     }
 
+                    // Add keymap if it exists
+                    // ****************
                     if (Keymap?.Count >= 34)
                     {
                         bool notAdded = false;
@@ -320,31 +324,30 @@ namespace FriishProduce.Injectors
                         }
                     }
 
-                    // newConfig is the new file which includes the modified values
-                    // alreadyAdded exists to avoid duplicate entries being added to the above
+                    // "finalSettings" is the new file which includes the modified values
+                    // "exists" is to avoid duplicate entries being added to the above
                     // ****************
-                    List<string> newConfig = new();
-                    List<string> alreadyAdded = new();
-                    Dictionary<string, string> Alt = new();
+                    List<string> finalSettings = new(), exists = new();
 
-                    foreach (var line in configFile)
+                    Dictionary<string, string> altNames = new();
+                    foreach (var line in origConfig)
                     {
                         // Settings that are known by alternative names in newer revisions:
                         // ****************
                         if (line.ToLower().Contains("console.machine_country"))
-                            Alt.Add("country", "console.machine_country");
+                            altNames.Add("country", "console.machine_country");
                     }
 
-                    for (int i = 0; i < Alt.Count; i++)
-                        foreach (var newLine in Settings)
-                            if (newLine.Key == Alt.ElementAt(i).Key)
+                    foreach (var altName in altNames)
+                        foreach (var setting in Settings)
+                            if (setting.Key == altName.Key)
                             {
-                                newConfig.Add($"{Alt.ElementAt(i).Value}=\"{newLine.Value}\"");
-                                if (!alreadyAdded.Contains(newLine.Key)) alreadyAdded.Add(newLine.Key);
-                                if (!alreadyAdded.Contains(Alt.ElementAt(i).Value)) alreadyAdded.Add(Alt.ElementAt(i).Value);
+                                finalSettings.Add($"{altName.Value}=\"{setting.Value}\"");
+                                if (!exists.Contains(setting.Key)) exists.Add(setting.Key);
+                                if (!exists.Contains(altName.Value)) exists.Add(altName.Value);
                             }
 
-                    foreach (var line in configFile)
+                    foreach (var line in origConfig)
                     {
                         var undeleted = new List<string>()
                         {
@@ -376,29 +379,28 @@ namespace FriishProduce.Injectors
                         }
 
                         foreach (var name in undeleted)
-                            if (line.StartsWith(name)) { newConfig.Add(line); alreadyAdded.Add(line); }
+                            if (line.StartsWith(name)) { finalSettings.Add(line); exists.Add(line); }
                     }
 
                     foreach (var newLine in Settings)
                     {
                         bool doNotAdd = false;
-                        foreach (var added in alreadyAdded)
+                        foreach (var added in exists)
                             if (added.Contains(newLine.Key))
                                 doNotAdd = true;
 
                         if (!doNotAdd && !string.IsNullOrEmpty(newLine.Value))
                         {
-                            newConfig.Add($"{newLine.Key}=\"{newLine.Value}\"");
-                            alreadyAdded.Add(newLine.Key);
+                            finalSettings.Add($"{newLine.Key}=\"{newLine.Value}\"");
+                            exists.Add(newLine.Key);
                         }
                     }
 
-                    newConfig.Sort();
+                    finalSettings.Sort();
 
-                    var newConfigFile = encoding.GetBytes(string.Join("\r\n", newConfig.ToArray()) + "\r\n");
-
-                    while (!Byte.IsSame(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)], newConfigFile))
-                        MainCCF.ReplaceFile(item, newConfigFile);
+                    var finalConfig = encoding.GetBytes(string.Join("\r\n", finalSettings.ToArray()) + "\r\n");
+                    while (!Byte.IsSame(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)], finalConfig))
+                        MainCCF.ReplaceFile(item, finalConfig);
                 }
             }
         }
