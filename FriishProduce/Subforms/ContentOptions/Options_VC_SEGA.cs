@@ -41,7 +41,7 @@ namespace FriishProduce
 
         protected override void ClearOptions()
         {
-            Options = new SortedDictionary<string, string>
+            Options = new Dictionary<string, string>
             {
                 { "console.brightness", Program.Config.sega.console_brightness },
                 { "console.disable_resetbutton", Program.Config.sega.console_disableresetbutton },
@@ -105,7 +105,7 @@ namespace FriishProduce
                 
                 console_brightness.Value                = int.Parse(Options["console.brightness"]);
                 country.SelectedIndex                   = Options["country"] switch { "jp" => 0, "us" => 1, _ => 2 };
-                console_disableresetbutton.CheckState  = Options["console.disable_resetbutton"] switch { "1" => CheckState.Checked, "0" => CheckState.Indeterminate, _ => CheckState.Unchecked };
+                console_disableresetbutton.CheckState   = Options["console.disable_resetbutton"] switch { "1" => CheckState.Checked, "0" => CheckState.Indeterminate, _ => CheckState.Unchecked };
                 dev_mdpad_enable_6b.CheckState          = Options["dev.mdpad.enable_6b"] switch { "1" => CheckState.Checked, "0" => CheckState.Indeterminate, _ => CheckState.Unchecked };
                 save_sram.CheckState                    = Options["save_sram"] switch { "1" => CheckState.Checked, "0" => CheckState.Indeterminate, _ => CheckState.Unchecked };
                 changeBrightness();

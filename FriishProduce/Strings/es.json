@@ -99,7 +99,7 @@
 			"008":								"La aplicación ya está actualizada.",
 			"009":								"¿Extraer el archivo Opening.bnr (incluye la cabecera IMET)?",
 			"010":								"Se restablecerán la configuración predefinida y los archivos utilizados por FriishProduce.\n¿Seguro que quieres continuar?",
-			"011":								"¿Quieres verificar la base de datos?\nEsto puede tardar varios minutos.",
+			"011":								"¿Seguro que deseas verificar la base de datos?\nEsto puede tardar varios minutos.",
 			"012":								"No se ha encontrado ninguna entrada no válida en la base de datos.",
 			"013":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínalas del archivo \"database.json\".",
 			"014":								"Se han restablecido los ajustes del método de inyección.\nPor favor, vuelva a configurarlos.",
