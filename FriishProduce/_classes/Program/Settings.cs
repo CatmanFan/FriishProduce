@@ -257,7 +257,7 @@ namespace FriishProduce
             public string hbm_no_save { get; set; } = "true";
             public string strap_reminder { get; set; } = "none";
             public string anti_aliasing { get; set; } = "on";
-            public string zoom { get; set; } = "100_100";
+            public string zoom { get; set; } = "default";
             public string fullscreen { get; set; } = "no";
         }
     }
