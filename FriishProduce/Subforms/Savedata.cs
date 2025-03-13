@@ -30,8 +30,6 @@ namespace FriishProduce
             Fill.Text = Program.Lang.String("fill_save_data", "projectform");
             label1.Text = Program.Lang.String(label1.Tag.ToString(), "projectform");
             label2.Text = Program.Lang.String(label2.Tag.ToString(), "projectform");
-            notice.BaseStylesheet = notice.BaseStylesheet.Replace("\"REPLACEME\"", $"\"{label1.Font.FontFamily.Name}\"");
-            notice.BackColor = BackColor;
             #endregion
 
             Theme.ChangeColors(this, false);
@@ -95,6 +93,7 @@ namespace FriishProduce
 
             // Write length to label
             // ********
+            notice.BaseStylesheet = notice.BaseStylesheet.Replace("\"REPLACEME\"", $"\"{label1.Font.FontFamily.Name}\"").Replace("#555", System.Drawing.ColorTranslator.ToHtml(Theme.Colors.Text).ToLower());
             notice.Text = "<div>" + Program.Lang.Format(("edit_save_data_max", "projectform"), "<b>" + MaxLength + "</b>") + "</div>";
         }
 

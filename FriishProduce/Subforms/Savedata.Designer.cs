@@ -116,7 +116,6 @@
             // 
             // notice
             // 
-            this.notice.BackColor = System.Drawing.SystemColors.Window;
             this.notice.BaseStylesheet = "div { color: #555; font-family: \"REPLACEME\"; font-size: 11px !important; }";
             resources.ApplyResources(this.notice, "notice");
             this.notice.IsContextMenuEnabled = false;

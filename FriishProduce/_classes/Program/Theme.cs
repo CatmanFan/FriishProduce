@@ -111,8 +111,8 @@ namespace FriishProduce
                         ToolStrip_Top = Color.FromArgb(50, 50, 50),
                         ToolStrip_Bottom = Color.FromArgb(28, 28, 28),
                         ToolStrip_Border = Color.FromArgb(70, 70, 70),
-                        LogoBG_Top = Color.FromArgb(46, 46, 46),
-                        LogoBG_Bottom = Color.FromArgb(70, 70, 70),
+                        LogoBG_Top = Color.FromArgb(44, 44, 44),
+                        LogoBG_Bottom = Color.FromArgb(52, 52, 52),
 
                         Controls = new()
                         {
@@ -137,7 +137,7 @@ namespace FriishProduce
                         },
 
                         Text = Color.White,
-                        Headline = Color.FromArgb(15, 220, 255),
+                        Headline = Color.FromArgb(55, 195, 240),
                     };
                     break;
             }
@@ -315,12 +315,14 @@ namespace FriishProduce
                 useTextBox = true;
             }
 
-            if (c.GetType() == typeof(TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel))
+            if (c.GetType() == typeof(TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel) || c.GetType() == typeof(TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel))
             {
+                bool isPanel = c.GetType() == typeof(TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel);
+
                 isEligible = flat;
                 useFormBG = true;
-                if (isEligible)
-                    (c as TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel).BorderStyle = BorderStyle.Fixed3D;
+                if (isEligible && isPanel)
+                    (c as TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel).BorderStyle = flat ? BorderStyle.FixedSingle : BorderStyle.Fixed3D;
             }
 
             if (flat && isEligible)

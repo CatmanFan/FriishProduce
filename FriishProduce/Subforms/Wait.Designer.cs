@@ -47,10 +47,10 @@ namespace FriishProduce
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.loading;
             this.pictureBox1.Location = new System.Drawing.Point(342, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
