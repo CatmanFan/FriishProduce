@@ -51,7 +51,10 @@ namespace FriishProduce.Injectors
             try { File.Delete(Paths.FrodoRom); } catch { }
             try { File.Delete(Paths.FrodoSnapshot); } catch { }
             try { File.Delete(Paths.FrodoOutput); } catch { }
-            
+
+            try { File.Delete(Paths.Tools + "c64\\c1541\\stderr.txt"); } catch { }
+            try { File.Delete(Paths.Tools + "c64\\c1541\\stdout.txt"); } catch { }
+
             if (File.Exists(@"C:\1541 ROM") || File.Exists(@"C:\Basic ROM") || File.Exists(@"C:\Char ROM") || File.Exists(@"C:\Kernal ROM"))
                 Setup(true);
         }
@@ -62,6 +65,9 @@ namespace FriishProduce.Injectors
         protected override void ReplaceROM()
         {
             ROM.CheckSize();
+
+            if (!File.Exists(Paths.Frodo + "Frodo.exe") || !Directory.Exists(Paths.Frodo))
+                throw new Exception(string.Format(Program.Lang.Msg(6, 1), Paths.Frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
 
             // Define variables
             // ****************
@@ -80,6 +86,8 @@ namespace FriishProduce.Injectors
 
                 if (item.ToLower().Contains("lz77") && item.ToLower().Contains("snapshot"))
                 {
+                    // Extract compressed ik.fss and decompress
+                    // ****************
                     ik_fss_index = MainContent.GetNodeIndex(item);
 
                     File.WriteAllBytes(Paths.WorkingFolder + "ik.fss.comp", MainContent.Data[ik_fss_index]);
@@ -91,9 +99,8 @@ namespace FriishProduce.Injectors
                     );
                     try { File.Delete(Paths.WorkingFolder + "ik.fss.comp"); } catch { }
 
-                    if (!File.Exists(Paths.Frodo + "Frodo.exe"))
-                        throw new Exception(string.Format(Program.Lang.Msg(6, 1), Paths.Frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
-
+                    // Copy decompressed snapshot to Frodo directory
+                    // ****************
                     File.Copy(Paths.WorkingFolder + "ik.fss", Paths.FrodoSnapshot, true);
                     try { File.Delete(Paths.WorkingFolder + "ik.fss"); } catch { }
                 }
@@ -177,7 +184,10 @@ namespace FriishProduce.Injectors
             // ****************
             if (Program.GUI)
                 using (MessageBoxHTML h = new(string.Format(Program.Lang.HTML(0, false), tries)))
+                {
+                    h.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
                     h.ShowDialog();
+                }
 
             Utils.Run(Paths.Frodo + "Frodo.exe", Paths.Frodo, null, true);
 

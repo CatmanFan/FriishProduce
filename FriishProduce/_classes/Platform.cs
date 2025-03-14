@@ -130,7 +130,7 @@
                 { Platform.PCE, new string[] { ".pce" } },
                 { Platform.NEO, new string[] { ".zip" } },
                 { Platform.MSX, new string[] { ".rom", ".mx1", ".mx2" } },
-                { Platform.C64, new string[] { ".d64", /* ".t64" */ } },
+                { Platform.C64, new string[] { ".d64", ".t64" } },
                 { Platform.GB, new string[] { ".gb" } },
                 { Platform.GBC, new string[] { ".gbc" } },
                 { Platform.GBA, new string[] { ".gba" } },
