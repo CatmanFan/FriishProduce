@@ -93,6 +93,7 @@ namespace FriishProduce
 
             // Write length to label
             // ********
+            notice.BackColor = BackColor;
             notice.BaseStylesheet = notice.BaseStylesheet.Replace("\"REPLACEME\"", $"\"{label1.Font.FontFamily.Name}\"").Replace("#555", System.Drawing.ColorTranslator.ToHtml(Theme.Colors.Text).ToLower());
             notice.Text = "<div>" + Program.Lang.Format(("edit_save_data_max", "projectform"), "<b>" + MaxLength + "</b>") + "</div>";
         }

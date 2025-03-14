@@ -188,7 +188,6 @@ namespace FriishProduce
             // theme
             // 
             this.theme.Controls.Add(this.themes);
-            this.theme.Flat = false;
             resources.ApplyResources(this.theme, "theme");
             this.theme.Name = "theme";
             this.theme.TabStop = false;
@@ -235,7 +234,6 @@ namespace FriishProduce
             // language
             // 
             this.language.Controls.Add(this.languages);
-            this.language.Flat = false;
             resources.ApplyResources(this.language, "language");
             this.language.Name = "language";
             this.language.TabStop = false;
@@ -260,7 +258,6 @@ namespace FriishProduce
             // forwarder_root_device
             // 
             this.forwarder_root_device.Controls.Add(this.forwarder_type);
-            this.forwarder_root_device.Flat = false;
             resources.ApplyResources(this.forwarder_root_device, "forwarder_root_device");
             this.forwarder_root_device.Name = "forwarder_root_device";
             this.forwarder_root_device.TabStop = false;
@@ -281,7 +278,6 @@ namespace FriishProduce
             // 
             this.bios_settings.Controls.Add(this.show_bios_screen);
             this.bios_settings.Controls.Add(this.toggleSwitch2);
-            this.bios_settings.Flat = false;
             resources.ApplyResources(this.bios_settings, "bios_settings");
             this.bios_settings.Name = "bios_settings";
             this.bios_settings.TabStop = false;
@@ -327,7 +323,6 @@ namespace FriishProduce
             // image_interpolation_mode
             // 
             this.image_interpolation_mode.Controls.Add(this.image_interpolation_modes);
-            this.image_interpolation_mode.Flat = false;
             resources.ApplyResources(this.image_interpolation_mode, "image_interpolation_mode");
             this.image_interpolation_mode.Name = "image_interpolation_mode";
             this.image_interpolation_mode.TabStop = false;
@@ -344,7 +339,6 @@ namespace FriishProduce
             // banner_region
             // 
             this.banner_region.Controls.Add(this.banner_regions);
-            this.banner_region.Flat = false;
             resources.ApplyResources(this.banner_region, "banner_region");
             this.banner_region.Name = "banner_region";
             this.banner_region.TabStop = false;
@@ -366,7 +360,6 @@ namespace FriishProduce
             this.default_target_filename.Controls.Add(this.default_target_wad);
             this.default_target_filename.Controls.Add(this.default_target_wad_tb);
             this.default_target_filename.Controls.Add(this.default_target_parameters);
-            this.default_target_filename.Flat = false;
             resources.ApplyResources(this.default_target_filename, "default_target_filename");
             this.default_target_filename.Name = "default_target_filename";
             this.default_target_filename.TabStop = false;
@@ -420,7 +413,6 @@ namespace FriishProduce
             // sega_default
             // 
             this.sega_default.Controls.Add(this.injection_methods_sega);
-            this.sega_default.Flat = false;
             resources.ApplyResources(this.sega_default, "sega_default");
             this.sega_default.Name = "sega_default";
             this.sega_default.TabStop = false;
@@ -437,7 +429,6 @@ namespace FriishProduce
             // snes_default
             // 
             this.snes_default.Controls.Add(this.injection_methods_snes);
-            this.snes_default.Flat = false;
             resources.ApplyResources(this.snes_default, "snes_default");
             this.snes_default.Name = "snes_default";
             this.snes_default.TabStop = false;
@@ -454,7 +445,6 @@ namespace FriishProduce
             // nes_default
             // 
             this.nes_default.Controls.Add(this.injection_methods_nes);
-            this.nes_default.Flat = false;
             resources.ApplyResources(this.nes_default, "nes_default");
             this.nes_default.Name = "nes_default";
             this.nes_default.TabStop = false;
@@ -471,7 +461,6 @@ namespace FriishProduce
             // n64_default
             // 
             this.n64_default.Controls.Add(this.injection_methods_n64);
-            this.n64_default.Flat = false;
             resources.ApplyResources(this.n64_default, "n64_default");
             this.n64_default.Name = "n64_default";
             this.n64_default.TabStop = false;
@@ -496,7 +485,6 @@ namespace FriishProduce
             // 
             this.bios_neo.Controls.Add(this.browse_bios_neo);
             this.bios_neo.Controls.Add(this.bios_filename_neo);
-            this.bios_neo.Flat = false;
             resources.ApplyResources(this.bios_neo, "bios_neo");
             this.bios_neo.Name = "bios_neo";
             this.bios_neo.TabStop = false;
@@ -519,7 +507,6 @@ namespace FriishProduce
             // 
             this.bios_psx.Controls.Add(this.browse_bios_psx);
             this.bios_psx.Controls.Add(this.bios_filename_psx);
-            this.bios_psx.Flat = false;
             resources.ApplyResources(this.bios_psx, "bios_psx");
             this.bios_psx.Name = "bios_psx";
             this.bios_psx.TabStop = false;

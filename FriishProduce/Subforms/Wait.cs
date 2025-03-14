@@ -63,5 +63,11 @@ namespace FriishProduce
                 return;
             }
         }
+
+        private void IsShown(object sender, EventArgs e)
+        {
+            Activate();
+            try { CenterToParent(); } catch { CenterToScreen(); }
+        }
     }
 }

@@ -139,6 +139,7 @@ namespace FriishProduce
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Msg_Close);
             this.Load += new System.EventHandler(this.Msg_Load);
+            this.Shown += new System.EventHandler(this.Msg_Shown);
             this.bottomPanel2.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             this.bottomPanel1.PerformLayout();

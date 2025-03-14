@@ -59,7 +59,6 @@ namespace FriishProduce
             this.g1.Controls.Add(this.patch_expandedram);
             this.g1.Controls.Add(this.patch_fixcrashes);
             this.g1.Controls.Add(this.patch_fixbrightness);
-            this.g1.Flat = false;
             this.g1.Location = new System.Drawing.Point(12, 10);
             this.g1.Name = "g1";
             this.g1.Size = new System.Drawing.Size(530, 134);
@@ -154,7 +153,6 @@ namespace FriishProduce
             // g2
             // 
             this.g2.Controls.Add(this.romc_type_list);
-            this.g2.Flat = false;
             this.g2.Location = new System.Drawing.Point(12, 210);
             this.g2.Name = "g2";
             this.g2.Size = new System.Drawing.Size(530, 50);

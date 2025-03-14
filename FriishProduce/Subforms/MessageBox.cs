@@ -232,7 +232,11 @@ namespace FriishProduce
                     Size = SizeFromClientSize(ClientSize);
                 do_not_show.MaximumSize = new Size(button1.Location.X - do_not_show.Location.X - dns_spacing, 0);
             }
+        }
 
+        private void Msg_Shown(object sender, EventArgs e)
+        {
+            Activate();
             try { CenterToParent(); } catch { CenterToScreen(); }
         }
 
@@ -244,5 +248,6 @@ namespace FriishProduce
                 Result = MessageBox.Result.Cancel;
             }
         }
+
     }
 }

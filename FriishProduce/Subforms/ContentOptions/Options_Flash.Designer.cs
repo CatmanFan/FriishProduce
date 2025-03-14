@@ -107,7 +107,6 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.persistent_storage_total_l);
             this.groupBox1.Controls.Add(this.persistent_storage_total);
             this.groupBox1.Controls.Add(this.save_data_enable);
-            this.groupBox1.Flat = false;
             this.groupBox1.Location = new System.Drawing.Point(378, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(360, 170);
@@ -201,7 +200,6 @@ namespace FriishProduce
             this.display.Controls.Add(this.anti_aliasing);
             this.display.Controls.Add(this.quality_l);
             this.display.Controls.Add(this.quality);
-            this.display.Flat = false;
             this.display.Location = new System.Drawing.Point(12, 12);
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size(360, 90);
@@ -303,7 +301,6 @@ namespace FriishProduce
             this.controls.Controls.Add(this.midi);
             this.controls.Controls.Add(this.qwerty_keyboard);
             this.controls.Controls.Add(this.mouse);
-            this.controls.Flat = false;
             this.controls.Location = new System.Drawing.Point(12, 108);
             this.controls.Name = "controls";
             this.controls.Size = new System.Drawing.Size(360, 89);
@@ -360,7 +357,6 @@ namespace FriishProduce
             // strap_reminder
             // 
             this.strap_reminder.Controls.Add(this.strap_reminder_list);
-            this.strap_reminder.Flat = false;
             this.strap_reminder.Location = new System.Drawing.Point(378, 302);
             this.strap_reminder.Name = "strap_reminder";
             this.strap_reminder.Size = new System.Drawing.Size(360, 50);
@@ -393,7 +389,6 @@ namespace FriishProduce
             this.swf_metadata.Controls.Add(this.content_domain_l);
             this.swf_metadata.Controls.Add(this.background_color_img);
             this.swf_metadata.Controls.Add(this.content_domain);
-            this.swf_metadata.Flat = false;
             this.swf_metadata.Location = new System.Drawing.Point(378, 186);
             this.swf_metadata.Name = "swf_metadata";
             this.swf_metadata.Size = new System.Drawing.Size(360, 110);

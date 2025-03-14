@@ -135,6 +135,7 @@ namespace FriishProduce
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IsClosing);
+            this.Shown += new System.EventHandler(this.IsShown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.bottomPanel2.ResumeLayout(false);
