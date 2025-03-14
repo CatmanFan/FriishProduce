@@ -36,6 +36,7 @@ namespace FriishProduce
                 "* **[ROMC VC Compressor](https://www.elotrolado.net/hilo_romc-vc-compressor_1015640)** by Jurai, with additional LZSS code by Haruhiko Okumura.",
                 "* [libertyernie](https://github.com/libertyernie)'s **[fork of BrawlLib](https://github.com/libertyernie/brawllib-wit)** by soopercool101.",
                 "* **[bincuesplit](https://archive.org/details/bincuesplit)** by Francisco Muñoz (Hermes).",
+                "* **[c1541](https://vice-emu.sourceforge.io/vice_14.html)** from the **[VICE](https://vice-emu.sourceforge.io/)** emulator.",
                 "* **[Custom Frodo](http://www.tepetaklak.com/wii/#Custom%20Frodo)** by [Nejat Dilek (WiiCrazy)](http://www.tepetaklak.com/).",
                 "* [Static WAD Base](https://github.com/Brawl345/customizemii/blob/master/Base_WADs/StaticBase.wad) from **CustomizeMii**.",
                 null,
