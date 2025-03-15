@@ -165,6 +165,8 @@ namespace FriishProduce
                 }
 
                 string name = MarioCube[index] + reg;
+
+                if (GetUpperID(index).StartsWith("XAF")) name += " (v256)"; // Metal Gear
                 if (!string.IsNullOrWhiteSpace(console)) name += " (" + console + ")";
 
                 // ****************
@@ -178,17 +180,17 @@ namespace FriishProduce
                 // ****************
                 string folder = int.TryParse(name[0].ToString(), out int result) ? "0-9" : name[0].ToString().ToUpper();
                 string URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + folder + "/" + Uri.EscapeDataString(name + " (Virtual Console)") + ".wad";
-                if (GetUpperID(index).StartsWith("WNA"))
+                if (GetUpperID(index).StartsWith("WNA")) // Flash Placeholder
                 {
                     URL = "https://repo.mariocube.com/WADs/Flash%20Injects/Base/" + Uri.EscapeDataString(name) + ".wad";
                     tID = "WNAP";
                 }
-                else if (GetUpperID(index).StartsWith("HCJ"))
+                else if (GetUpperID(index).StartsWith("HCJ")) // BBC iPlayer
                 {
                     int ver = 768;
                     URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + folder + "/" + Uri.EscapeDataString(name + $" (v{ver}) (Channel)") + ".wad";
                 }
-                else if (GetUpperID(index).StartsWith("HCX"))
+                else if (GetUpperID(index).StartsWith("HCX")) // YouTube
                 {
                     int ver = Regions[index] == 0 ? 768 : Regions[index] == 3 ? 1537 : 1536;
                     URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + folder + "/" + Uri.EscapeDataString(name + $" (v{ver}) (Channel)") + ".wad";

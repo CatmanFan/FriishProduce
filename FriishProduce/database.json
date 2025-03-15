@@ -796,6 +796,13 @@
         },
 
         {
+            "id": "00010001-584146__",
+            "region": [0],
+            "titles": ["メタルギア", "Metal Gear"],
+            "wad_titles": ["Metal Gear"]
+        },
+
+        {
             "id": "00010001-584150__",
             "region": [0],
             "titles": ["メタルギア２ ソリッドスネーク", "Metal Gear 2: Solid Snake"],
