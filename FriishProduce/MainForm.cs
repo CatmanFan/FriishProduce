@@ -958,7 +958,8 @@ namespace FriishProduce
 
                 else if (sender == extract_wad_manual)
                 {
-                    U8 u8, extManual = null;
+                    U8 u8 = null;
+                    List<(string FileName, byte[] Data)> Manuals = new();
 
                     try
                     {
@@ -978,11 +979,7 @@ namespace FriishProduce
                                     // ****************
                                     foreach (var item in target.Nodes)
                                         if (item.Name.ToLower().Contains("man.arc"))
-                                        {
-                                            extManual = U8.Load(target.Data[target.GetNodeIndex(item.Name)]);
-                                            u8.Dispose();
-                                            break;
-                                        }
+                                            Manuals.Add((item.Name, target.Data[target.GetNodeIndex(item.Name)]));
                                 }
 
                                 else
@@ -1004,18 +1001,16 @@ namespace FriishProduce
                                             try { File.Delete(Paths.WorkingFolder + "html.dec"); } catch { }
                                             try { File.Delete(Paths.WorkingFolder + "html.arc"); } catch { }
 
-                                            extManual = U8.Load(bytes);
-                                            u8.Dispose();
-                                            break;
+                                            Manuals.Add((item, bytes));
                                         }
 
-                                        else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
+                                        else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc") || (item.ToLower() is "chn.arc" or "eur.arc" or "jpn.arc" or "kor.arc" or "usa.arc"))
                                         {
                                             var file = u8.Data[u8.GetNodeIndex(item)];
 
                                             try
                                             {
-                                                extManual = U8.Load(file);
+                                                Manuals.Add((item, file));
                                             }
                                             catch // File is compressed
                                             {
@@ -1044,7 +1039,7 @@ namespace FriishProduce
 
                                                 // Load manual
                                                 // ****************
-                                                try { extManual = U8.Load(file); }
+                                                try { Manuals.Add((item, file)); }
                                                 catch
                                                 {
                                                     if (type == 0)
@@ -1057,15 +1052,15 @@ namespace FriishProduce
                                                 }
                                             }
 
-                                            u8.Dispose();
-                                            break;
                                         }
                                 }
                                 #endregion
+
+                                u8.Dispose();
                             }
                         }
 
-                        if (extManual != null)
+                        if (Manuals?.Count > 0)
                         {
                             using FolderBrowserDialog saveDialog = new()
                             {
@@ -1075,8 +1070,11 @@ namespace FriishProduce
 
                             if (saveDialog.ShowDialog() == DialogResult.OK)
                             {
-                                extManual.Unpack(saveDialog.SelectedPath);
-                                extManual.Dispose();
+                                foreach (var Manual in Manuals)
+                                {
+                                    using U8 u = U8.Load(Manual.Data);
+                                    u.Unpack(!string.IsNullOrWhiteSpace(Manual.FileName) ? Path.Combine(saveDialog.SelectedPath, $"{Manual.FileName}\\") : saveDialog.SelectedPath);
+                                }
                             }
 
                             goto Succeeded;
