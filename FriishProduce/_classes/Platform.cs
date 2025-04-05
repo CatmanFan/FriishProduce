@@ -29,83 +29,113 @@
         {
             get
             {
-                System.Collections.Generic.Dictionary<Platform, System.Drawing.Icon> orig = new()
+                System.Collections.Generic.List<(Platform Platform, System.Drawing.Icon Icon, bool Resize)> orig = new()
                 {
-                    {
+                    (
                         Platform.NES,
                         Program.Lang.GetRegion() is Language.Region.Japan or Language.Region.Korea
-                        ? FileDatas.Icons.fc : FileDatas.Icons.nes
-                    },
+                        ? FileDatas.Icons.fc : FileDatas.Icons.nes,
+                        true
+                    ),
 
-                    {
+                    (
                         Platform.SNES,
                         Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
-                        ? FileDatas.Icons.snes : FileDatas.Icons.sfc
-                    },
+                        ? FileDatas.Icons.snes : FileDatas.Icons.sfc,
+                        true
+                    ),
 
-                    {
+                    (
                         Platform.N64,
-                        FileDatas.Icons.n64
-                    },
+                        FileDatas.Icons.n64,
+                        true
+                    ),
 
-                    {
+                    (
                         Platform.SMS,
-                        FileDatas.Icons.sms
-                    },
+                        FileDatas.Icons.sms,
+                        true
+                    ),
 
-                    {
+                    (
                         Platform.SMD,
-                        FileDatas.Icons.smd
-                    },
-                    
-                    {
+                        FileDatas.Icons.smd,
+                        true
+                    ),
+
+                    (
                         Platform.PCE, 
                         Program.Lang.GetRegion() is Language.Region.Japan
-                        ? FileDatas.Icons.pce : FileDatas.Icons.tg16
-                    },
+                        ? FileDatas.Icons.pce : FileDatas.Icons.tg16,
+                        true
+                    ),
 
-                    {
+                    (
                         Platform.PCECD,
-                        FileDatas.Icons.pcecd
-                    },
+                        Program.Lang.GetRegion() is Language.Region.Japan
+                        ? FileDatas.Icons.pce : FileDatas.Icons.tg16,
+                        true
+                    ),
 
-                    {
+                    (
                         Platform.NEO,
-                        FileDatas.Icons.neo
-                    },
+                        FileDatas.Icons.neo,
+                        true
+                    ),
 
-                    {
+                    (
+                        Platform.C64,
+                        FileDatas.Icons.c64,
+                        true
+                    ),
+
+                    (
+                        Platform.MSX,
+                        FileDatas.Icons.msx,
+                        true
+                    ),
+
+                    (
                         Platform.PSX,
-                        FileDatas.Icons.psx
-                    },
+                        FileDatas.Icons.psx,
+                        true
+                    ),
 
-                    {
+                    (
                         Platform.RPGM,
-                        FileDatas.Icons.rpg2000
-                    }
+                        FileDatas.Icons.rpg2000,
+                        false
+                    )
                 };
 
                 System.Collections.Generic.Dictionary<Platform, System.Drawing.Bitmap> resized = new();
 
                 foreach (var item in orig)
-                    if (item.Value != null)
+                    if (item.Icon != null)
                     {
-                        System.Drawing.Bitmap bmp = new(16, 16);
-                        using System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmp);
-                        using System.Drawing.Bitmap origBmp = item.Value.ToBitmap();
+                        if (item.Resize)
+                        {
+                            System.Drawing.Bitmap bmp = new(16, 16);
+                            using System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmp);
+                            using System.Drawing.Bitmap origBmp = item.Icon.ToBitmap();
 
-                        g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-                        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-                        g.DrawImage(origBmp, 0, 0, bmp.Width, bmp.Height);
+                            g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+                            g.DrawImage(origBmp, 0, 0, bmp.Width, bmp.Height);
 
-                        resized.Add(item.Key, bmp);
+                            resized.Add(item.Platform, bmp);
+                        }
+                        else
+                        {
+                            resized.Add(item.Platform, new System.Drawing.Icon(item.Icon, new(16, 16)).ToBitmap());
+                        }
                     }
 
                 foreach (var missing in new System.Collections.Generic.Dictionary<Platform, System.Drawing.Bitmap>()
                 {
-                    { Platform.C64, FileDatas.Icons.c64 },
-                    { Platform.MSX, FileDatas.Icons.msx },
+                    // { Platform.C64, FileDatas.Icons.c64 },
+                    // { Platform.MSX, FileDatas.Icons.msx },
                     { Platform.Flash, FileDatas.Icons.flash },
                 })
                 {

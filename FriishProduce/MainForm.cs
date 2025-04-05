@@ -42,26 +42,35 @@ namespace FriishProduce
             Platform.RPGM.ToString(),
         };
 
-        private MenuItem[] platformsMenuItemList()
+        private (MenuItem[] Items, Bitmap[] Icons) platformsMenuItemList()
         {
-            var list = new List<MenuItem>();
+            var items = new List<MenuItem>();
+            var icons = new List<Bitmap>();
+
             foreach (var platform in platformsList)
             {
                 if (!string.IsNullOrWhiteSpace(platform))
                 {
                     Platform converted = (Platform)Enum.Parse(typeof(Platform), platform);
 
-                    list.Add(new MenuItem(platform, addProject)
+                    items.Add(new MenuItem(platform, addProject)
                     {
                         Text = Program.Lang.Format(("project_type", Name), Program.Lang.Console(converted)),
-                        Name = platform
+                        Name = platform,
                     });
+
+                    var i = Platforms.Icons[converted];
+                    if (i != null) icons.Add(i);
                 }
 
-                else list.Add(new MenuItem("-"));
+                else
+                {
+                    items.Add(new MenuItem("-"));
+                    icons.Add(null);
+                }
             }
 
-            return list.ToArray();
+            return (items.ToArray(), icons.ToArray());
         }
 
         private ToolStripItem[] platformsStripItemList()
@@ -123,10 +132,17 @@ namespace FriishProduce
 
             #endregion
 
+            var items = platformsMenuItemList();
             new_project.MenuItems.Clear();
-            new_project.MenuItems.AddRange(platformsMenuItemList());
+            new_project.MenuItems.AddRange(items.Items);
             new_project_menu.MenuItems.Clear();
-            new_project_menu.MenuItems.AddRange(platformsMenuItemList());
+            new_project_menu.MenuItems.AddRange(platformsMenuItemList().Items);
+
+            for (int i = 0; i < new_project.MenuItems.OfType<MenuItem>().Count(); i++)
+            {
+                vistaMenu.SetImage(new_project.MenuItems[i], items.Icons[i]);
+                vistaMenu.SetImage(new_project_menu.MenuItems[i], items.Icons[i]);
+            }
 
             #region -- Localization --
 

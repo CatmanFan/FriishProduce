@@ -38,12 +38,12 @@ The following platforms are currently supported:
   * RPG Maker 2000 / 2003
 
 ## Wiki
-Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tutorial on how to use/translate the app, and other useful tips.
+Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tutorial on how to use the app, and more useful tips.
 
 ---
 
 ## To-Do
-- [ ] Re-add console icons?
+- [X] Re-add console icons?
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
