@@ -105,6 +105,8 @@ namespace FriishProduce
         {
             #region -- Appearance --
 
+            tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
+
             if (Theme.ChangeColors(this, false))
             {
                 if (mainPanel.BackgroundImage == null)

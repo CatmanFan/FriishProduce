@@ -304,7 +304,7 @@ namespace FriishProduce
                     Program.Config.Save();
 
                     Close();
-                    Application.Exit();
+                    Environment.Exit(0);
                 }
 
                 return;
