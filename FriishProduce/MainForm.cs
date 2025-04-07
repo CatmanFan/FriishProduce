@@ -106,7 +106,8 @@ namespace FriishProduce
             #region -- Appearance --
 
             toolStrip.Renderer = new Theme.CustomToolStrip();
-            tabControl.BackgroundImage = mainPanel.BackgroundImage = Theme.GenerateBG(ClientRectangle);
+            tabControl.TabBackHighColor = tabControl.TabBackLowColor = Theme.Colors.Form.BG;
+            tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
 
             if (Theme.ChangeColors(this, false))
             {
@@ -116,8 +117,8 @@ namespace FriishProduce
 
                 // toolStrip.Renderer = new Theme.CustomToolStrip();
                 // tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
-                tabControl.TabBackHighColor = Theme.Colors.Form.BG;
-                tabControl.TabBackLowColor = Theme.Colors.Form.BG;
+                // tabControl.TabBackHighColor = Theme.Colors.Form.BG;
+                // tabControl.TabBackLowColor = Theme.Colors.Form.BG;
                 tabControl.TabBackHighColorDisabled = Theme.Colors.Form.Bottom;
                 tabControl.TabBackLowColorDisabled = Theme.Colors.Form.Bottom;
                 tabControl.ForeColor = Theme.Colors.Text;

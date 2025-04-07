@@ -408,6 +408,8 @@ namespace FriishProduce
                 status_label.Text = "No identical strings were found.";
         }
 
+        private void About(object sender, EventArgs e) { using var about = new About(true); about.ShowDialog(); }
+
         private void Text_Changed(object sender, EventArgs e) => Unsaved = true;
 
         private void Languages_SelectedIndexChanged(object sender, EventArgs e)

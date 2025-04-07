@@ -6,12 +6,12 @@ namespace FriishProduce
 {
     partial class About : Form
     {
-        public About()
+        public About(bool isLanguageEditor = false)
         {
             InitializeComponent();
             Text = Program.Lang.Format(("about_app", null), Program.Lang.ApplicationTitle);
             labelProductName.Text = AssemblyProduct;
-            labelDescription.Text = string.Format("{0}" + Environment.NewLine + "Current language: {1} ({2})", AssemblyDescription, System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);
+            labelDescription.Text = isLanguageEditor ? "Language JSON Editor" : string.Format("{0}" + Environment.NewLine + "Current language: {1} ({2})", AssemblyDescription, System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);
             labelVersion.Text = "v" + Updater.VerName;
             labelCopyright.Text = AssemblyCopyright;
             b_close.Text = Program.Lang.String("b_close");
@@ -42,7 +42,8 @@ namespace FriishProduce
                 null,
                 "Icons and interface:",
                 null,
-                "* **[Farm-Fresh Web Icons](https://github.com/gammasoft/fatcow)** by FatCow.",
+                "* **[Silk Icons](https://web.archive.org/web/20070514055728/http://www.famfamfam.com/lab/icons/silk/)** by FamFamFam.",
+                // "* **[Farm-Fresh Web Icons](https://github.com/gammasoft/fatcow)** by FatCow.",
                 "* **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.",
                 "* **[SCE-PS3 Rodin LATIN](https://github.com/skrptktty/ps3-firmware-beginners-luck/blob/master/PS3_411/update_files/dev_flash/data/font/SCE-PS3-RD-R-LATIN.TTF) font** from [this repo](https://github.com/skrptktty/ps3-firmware-beginners-luck) (Solar Storm License).",
                 null,

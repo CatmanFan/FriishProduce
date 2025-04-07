@@ -45,6 +45,8 @@ namespace FriishProduce
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.menuItem9 = new System.Windows.Forms.MenuItem();
+            this.menuItem10 = new System.Windows.Forms.MenuItem();
+            this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.languages_list = new System.Windows.Forms.ComboBox();
@@ -81,7 +83,8 @@ namespace FriishProduce
             // 
             this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem1,
-            this.menuItem8});
+            this.menuItem8,
+            this.menuItem10});
             // 
             // menuItem1
             // 
@@ -147,6 +150,19 @@ namespace FriishProduce
             this.menuItem9.Index = 0;
             this.menuItem9.Text = "&Clear all identical strings";
             this.menuItem9.Click += new System.EventHandler(this.ClearIdentical);
+            // 
+            // menuItem10
+            // 
+            this.menuItem10.Index = 2;
+            this.menuItem10.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem11});
+            this.menuItem10.Text = "Help";
+            // 
+            // menuItem11
+            // 
+            this.menuItem11.Index = 0;
+            this.menuItem11.Text = "About";
+            this.menuItem11.Click += new System.EventHandler(this.About);
             // 
             // groupBox1
             // 
@@ -443,8 +459,9 @@ namespace FriishProduce
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu;
             this.Name = "LanguageEditor";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FriishProduce - Language JSON Editor";
+            this.Text = "Language JSON Editor for FriishProduce";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exit_Form);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -496,5 +513,7 @@ namespace FriishProduce
         private System.Windows.Forms.DataGridViewTextBoxColumn Translated;
         private System.Windows.Forms.MenuItem menuItem8;
         private System.Windows.Forms.MenuItem menuItem9;
+        private System.Windows.Forms.MenuItem menuItem10;
+        private System.Windows.Forms.MenuItem menuItem11;
     }
 }

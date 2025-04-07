@@ -45,6 +45,7 @@ namespace FriishProduce
             this.toolbarImportGameFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolbarGameScan = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolbarExport = new System.Windows.Forms.ToolStripButton();
             this.toolbarPreferences = new System.Windows.Forms.ToolStripButton();
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
@@ -94,7 +95,6 @@ namespace FriishProduce
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.new_project_menu = new System.Windows.Forms.ContextMenu();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -189,6 +189,7 @@ namespace FriishProduce
             // 
             this.toolbarImportGameFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.toolbarImportGameFile, "toolbarImportGameFile");
+            this.toolbarImportGameFile.Image = global::FriishProduce.Properties.Resources.page_white_cd;
             this.toolbarImportGameFile.Name = "toolbarImportGameFile";
             this.toolbarImportGameFile.Tag = "import_game_file";
             this.toolbarImportGameFile.Click += new System.EventHandler(this.OpenROM_Click);
@@ -207,6 +208,11 @@ namespace FriishProduce
             this.toolbarGameScan.Name = "toolbarGameScan";
             this.toolbarGameScan.Tag = "game_scan";
             this.toolbarGameScan.Click += new System.EventHandler(this.GameScan_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // toolbarExport
             // 
@@ -555,6 +561,7 @@ namespace FriishProduce
             // 
             this.tabControl.BackHighColor = System.Drawing.Color.WhiteSmoke;
             this.tabControl.BackLowColor = System.Drawing.SystemColors.Control;
+            this.tabControl.CloseButtonVisible = true;
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.FontBoldOnSelect = false;
             this.tabControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -575,7 +582,7 @@ namespace FriishProduce
             this.tabControl.TabCloseButtonImage = null;
             this.tabControl.TabCloseButtonImageDisabled = null;
             this.tabControl.TabCloseButtonImageHot = null;
-            this.tabControl.TabGlassGradient = true;
+            this.tabControl.TabCloseButtonVisible = false;
             this.tabControl.TabHeight = 24;
             this.tabControl.TabMaximumWidth = 250;
             this.tabControl.TabMinimumWidth = 75;
@@ -587,11 +594,6 @@ namespace FriishProduce
             // vistaMenu
             // 
             this.vistaMenu.ContainerControl = this;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // MainForm
             // 

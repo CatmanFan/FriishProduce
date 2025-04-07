@@ -49,14 +49,14 @@ namespace FriishProduce
             this.banner_tip = new System.Windows.Forms.Label();
             this.groupBox4 = new FriishProduce.GroupBoxEx();
             this.video_mode = new System.Windows.Forms.ComboBox();
-            this.channel_name = new System.Windows.Forms.TextBox();
             this.region = new System.Windows.Forms.ComboBox();
-            this.title_id_random = new System.Windows.Forms.PictureBox();
-            this.title_id = new System.Windows.Forms.TextBox();
-            this.channel_name_l = new System.Windows.Forms.Label();
-            this.title_id_l = new System.Windows.Forms.Label();
             this.video_mode_l = new System.Windows.Forms.Label();
             this.region_l = new System.Windows.Forms.Label();
+            this.title_id_l = new System.Windows.Forms.Label();
+            this.title_id = new System.Windows.Forms.TextBox();
+            this.channel_name_l = new System.Windows.Forms.Label();
+            this.channel_name = new System.Windows.Forms.TextBox();
+            this.title_id_random = new System.Windows.Forms.PictureBox();
             this.edit_save_data = new System.Windows.Forms.Button();
             this.forwarder_root_device = new System.Windows.Forms.ComboBox();
             this.extra = new System.Windows.Forms.Label();
@@ -197,6 +197,7 @@ namespace FriishProduce
             // 
             this.groupBox5.Controls.Add(this.banner);
             this.groupBox5.Controls.Add(this.banner_tip);
+            this.groupBox5.Flat = false;
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
@@ -228,6 +229,7 @@ namespace FriishProduce
             this.groupBox4.Controls.Add(this.channel_name_l);
             this.groupBox4.Controls.Add(this.channel_name);
             this.groupBox4.Controls.Add(this.title_id_random);
+            this.groupBox4.Flat = false;
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
@@ -250,12 +252,6 @@ namespace FriishProduce
             resources.ApplyResources(this.video_mode, "video_mode");
             this.video_mode.Name = "video_mode";
             // 
-            // channel_name
-            // 
-            resources.ApplyResources(this.channel_name, "channel_name");
-            this.channel_name.Name = "channel_name";
-            this.channel_name.TextChanged += new System.EventHandler(this.TextBox_Changed);
-            // 
             // region
             // 
             this.region.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -264,13 +260,23 @@ namespace FriishProduce
             this.region.Name = "region";
             this.region.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
             // 
-            // title_id_random
+            // video_mode_l
             // 
-            this.title_id_random.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.title_id_random, "title_id_random");
-            this.title_id_random.Name = "title_id_random";
-            this.title_id_random.TabStop = false;
-            this.title_id_random.Click += new System.EventHandler(this.Random_Click);
+            resources.ApplyResources(this.video_mode_l, "video_mode_l");
+            this.video_mode_l.Name = "video_mode_l";
+            this.video_mode_l.Tag = "video_mode";
+            // 
+            // region_l
+            // 
+            resources.ApplyResources(this.region_l, "region_l");
+            this.region_l.Name = "region_l";
+            this.region_l.Tag = "region";
+            // 
+            // title_id_l
+            // 
+            resources.ApplyResources(this.title_id_l, "title_id_l");
+            this.title_id_l.Name = "title_id_l";
+            this.title_id_l.Tag = "title_id";
             // 
             // title_id
             // 
@@ -285,23 +291,19 @@ namespace FriishProduce
             this.channel_name_l.Name = "channel_name_l";
             this.channel_name_l.Tag = "channel_name";
             // 
-            // title_id_l
+            // channel_name
             // 
-            resources.ApplyResources(this.title_id_l, "title_id_l");
-            this.title_id_l.Name = "title_id_l";
-            this.title_id_l.Tag = "title_id";
+            resources.ApplyResources(this.channel_name, "channel_name");
+            this.channel_name.Name = "channel_name";
+            this.channel_name.TextChanged += new System.EventHandler(this.TextBox_Changed);
             // 
-            // video_mode_l
+            // title_id_random
             // 
-            resources.ApplyResources(this.video_mode_l, "video_mode_l");
-            this.video_mode_l.Name = "video_mode_l";
-            this.video_mode_l.Tag = "video_mode";
-            // 
-            // region_l
-            // 
-            resources.ApplyResources(this.region_l, "region_l");
-            this.region_l.Name = "region_l";
-            this.region_l.Tag = "region";
+            this.title_id_random.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.title_id_random, "title_id_random");
+            this.title_id_random.Name = "title_id_random";
+            this.title_id_random.TabStop = false;
+            this.title_id_random.Click += new System.EventHandler(this.Random_Click);
             // 
             // edit_save_data
             // 
@@ -367,6 +369,7 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.extra);
             this.groupBox3.Controls.Add(this.manual_type);
             this.groupBox3.Controls.Add(this.forwarder_root_device);
+            this.groupBox3.Flat = false;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
@@ -484,6 +487,7 @@ namespace FriishProduce
             this.groupBox2.Controls.Add(this.current_wad);
             this.groupBox2.Controls.Add(this.baseName);
             this.groupBox2.Controls.Add(this.using_default_wad);
+            this.groupBox2.Flat = false;
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
@@ -562,6 +566,7 @@ namespace FriishProduce
             this.groupBox6.Controls.Add(this.image_interpolation_mode);
             this.groupBox6.Controls.Add(this.import_image);
             this.groupBox6.Controls.Add(this.pictureBox1);
+            this.groupBox6.Flat = false;
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
@@ -580,6 +585,7 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.rom_label_filename);
             this.groupBox1.Controls.Add(this.rom_label);
             this.groupBox1.Controls.Add(this.include_patch);
+            this.groupBox1.Flat = false;
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
