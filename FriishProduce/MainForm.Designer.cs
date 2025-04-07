@@ -94,6 +94,7 @@ namespace FriishProduce
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.new_project_menu = new System.Windows.Forms.ContextMenu();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -134,6 +135,7 @@ namespace FriishProduce
             this.toolbarImportGameFile,
             this.toolStripSeparator2,
             this.toolbarGameScan,
+            this.toolStripSeparator3,
             this.toolbarExport,
             this.toolbarPreferences});
             this.toolStrip.Name = "toolStrip";
@@ -586,6 +588,11 @@ namespace FriishProduce
             // 
             this.vistaMenu.ContainerControl = this;
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -680,6 +687,7 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem menuItem11;
         private System.Windows.Forms.ContextMenu new_project_menu;
         private System.Windows.Forms.MenuItem extract_wad_dol;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

@@ -105,16 +105,17 @@ namespace FriishProduce
         {
             #region -- Appearance --
 
-            tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
+            toolStrip.Renderer = new Theme.CustomToolStrip();
+            tabControl.BackgroundImage = mainPanel.BackgroundImage = Theme.GenerateBG(ClientRectangle);
 
             if (Theme.ChangeColors(this, false))
             {
-                if (mainPanel.BackgroundImage == null)
+                // if (mainPanel.BackgroundImage == null)
                     tabControl.BackgroundImage = mainPanel.BackgroundImage = Theme.GenerateBG(ClientRectangle);
-                tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
+                // tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
 
-                toolStrip.Renderer = new Theme.CustomToolStrip();
-                tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
+                // toolStrip.Renderer = new Theme.CustomToolStrip();
+                // tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
                 tabControl.TabBackHighColor = Theme.Colors.Form.BG;
                 tabControl.TabBackLowColor = Theme.Colors.Form.BG;
                 tabControl.TabBackHighColorDisabled = Theme.Colors.Form.Bottom;
@@ -128,6 +129,12 @@ namespace FriishProduce
                 tabControl.TabCloseButtonBorderColorDisabled = tabControl.TabCloseButtonBorderColor = Theme.Colors.Form.Border;
                 tabControl.TabCloseButtonForeColor = tabControl.ForeColor;
                 tabControl.TabCloseButtonForeColorDisabled = Theme.Colors.Form.Border;
+            }
+
+            if (mainPanel.BackgroundImage != null)
+            {
+                tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
+                tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
             }
 
             toolbarGameScan.Image = (Theme.Colors.ToolStrip_Top.GetBrightness() + Theme.Colors.ToolStrip_Bottom.GetBrightness()) / 2 > 0.66 ? Properties.Resources.retroarch : Properties.Resources.retroarch_w;
@@ -374,16 +381,20 @@ namespace FriishProduce
                 toolbarImportGameFile.Image = Properties.Resources.page_white_cd;
                 import_game_file.Text = Program.Lang.Format((import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
 
+                toolbarGameScan.Visible = toolStripSeparator3.Visible = game_scan.Visible = true;
+
                 tabControl.Visible = false;
             }
 
             else
             {
-                game_scan.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                game_scan.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[1];
                 save_project_as.Enabled = save_project.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
                 export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
                 toolbarImportGameFile.Image = (tabControl.SelectedForm as ProjectForm).FileTypeImage;
                 import_game_file.Text = Program.Lang.Format((import_game_file.Tag.ToString(), Name), (tabControl.SelectedForm as ProjectForm).FileTypeName);
+
+                toolbarGameScan.Visible = toolStripSeparator3.Visible = game_scan.Visible = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
             }
 
             import_game_file.Enabled = close_all.Enabled = close_project.Enabled = hasTabs;
@@ -396,7 +407,7 @@ namespace FriishProduce
             toolbarSave.Enabled             = save_project.Enabled;
             toolbarSaveAs.Enabled           = save_project_as.Enabled;
             toolbarCloseProject.Enabled     = close_project.Enabled;
-            toolbarGameScan.Enabled = game_scan.Enabled;
+            toolbarGameScan.Enabled         = game_scan.Enabled;
             toolbarExport.Enabled           = export.Enabled;
         }
 

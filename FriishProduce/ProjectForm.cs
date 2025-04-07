@@ -946,8 +946,11 @@ namespace FriishProduce
             get => new bool[]
             {
                 targetPlatform != Platform.Flash
+                && targetPlatform != Platform.RPGM, // LibRetro / game data (1)
+
+                targetPlatform != Platform.Flash
                 && targetPlatform != Platform.RPGM
-                && rom?.FilePath != null, // LibRetro / game data
+                && rom?.FilePath != null, // LibRetro / game data (2, less strict)
 
                 targetPlatform != Platform.Flash
                 && targetPlatform != Platform.RPGM
@@ -1563,8 +1566,8 @@ namespace FriishProduce
             randomTID();
             patch = null;
 
-            Program.MainForm.toolbarGameScan.Enabled = Program.MainForm.game_scan.Enabled = ToolbarButtons[0];
-            if (rom != null && AutoScan && ToolbarButtons[0]) GameScan(false);
+            Program.MainForm.toolbarGameScan.Enabled = Program.MainForm.game_scan.Enabled = ToolbarButtons[1];
+            if (rom != null && AutoScan && ToolbarButtons[1]) GameScan(false);
             setFilesText();
         }
 

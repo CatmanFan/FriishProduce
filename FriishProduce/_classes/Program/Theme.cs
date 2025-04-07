@@ -16,10 +16,10 @@ namespace FriishProduce
         public class colors
         {
             public Color ToolStrip_Top { get; set; } = Color.White;
-            public Color ToolStrip_Bottom { get; set; } = Color.Gainsboro;
-            public Color ToolStrip_Border { get; set; } = Color.FromArgb(200, 200, 200);
-            public Color LogoBG_Top { get; set; } = Color.FromArgb(228, 228, 228);
-            public Color LogoBG_Bottom { get; set; } = Color.FromArgb(250, 250, 250);
+            public Color ToolStrip_Bottom { get; set; } = Color.FromArgb(235, 235, 235);
+            public Color ToolStrip_Border { get; set; } = Color.FromArgb(220, 220, 220);
+            public Color LogoBG_Top { get; set; } = Color.FromArgb(248, 248, 248);
+            public Color LogoBG_Bottom { get; set; } = Color.FromArgb(240, 240, 240);
 
 
             public struct form
