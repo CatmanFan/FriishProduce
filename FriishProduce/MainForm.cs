@@ -148,11 +148,12 @@ namespace FriishProduce
             new_project_menu.MenuItems.Clear();
             new_project_menu.MenuItems.AddRange(platformsMenuItemList().Items);
 
-            for (int i = 0; i < new_project.MenuItems.OfType<MenuItem>().Count(); i++)
+            // -- System icons --
+            /* for (int i = 0; i < new_project.MenuItems.OfType<MenuItem>().Count(); i++)
             {
                 vistaMenu.SetImage(new_project.MenuItems[i], items.Icons[i]);
                 vistaMenu.SetImage(new_project_menu.MenuItems[i], items.Icons[i]);
-            }
+            } */
 
             #region -- Localization --
 
