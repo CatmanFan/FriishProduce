@@ -36,17 +36,21 @@ namespace FriishProduce
             this.browseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.browseROM = new System.Windows.Forms.OpenFileDialog();
             this.browseImage = new System.Windows.Forms.OpenFileDialog();
-            this.bannerMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.banner_details = new System.Windows.Forms.ToolStripMenuItem();
-            this.banner_sound = new System.Windows.Forms.ToolStripMenuItem();
-            this.play_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
-            this.replace_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
-            this.restore_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
-            this.browseSound = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.groupBox5 = new FriishProduce.GroupBoxEx();
             this.banner = new System.Windows.Forms.PictureBox();
             this.banner_tip = new System.Windows.Forms.Label();
+            this.groupBox3 = new FriishProduce.GroupBoxEx();
+            this.injection_method_options = new System.Windows.Forms.Button();
+            this.wiiu_display_l = new System.Windows.Forms.Label();
+            this.edit_save_data = new System.Windows.Forms.Button();
+            this.wiiu_display = new System.Windows.Forms.ComboBox();
+            this.injection_method_help = new System.Windows.Forms.PictureBox();
+            this.injection_methods = new System.Windows.Forms.ComboBox();
+            this.multifile_software = new System.Windows.Forms.CheckBox();
+            this.extra = new System.Windows.Forms.Label();
+            this.manual_type = new System.Windows.Forms.ComboBox();
+            this.forwarder_root_device = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new FriishProduce.GroupBoxEx();
             this.video_mode = new System.Windows.Forms.ComboBox();
             this.region = new System.Windows.Forms.ComboBox();
@@ -57,17 +61,6 @@ namespace FriishProduce
             this.channel_name_l = new System.Windows.Forms.Label();
             this.channel_name = new System.Windows.Forms.TextBox();
             this.title_id_random = new System.Windows.Forms.PictureBox();
-            this.edit_save_data = new System.Windows.Forms.Button();
-            this.forwarder_root_device = new System.Windows.Forms.ComboBox();
-            this.extra = new System.Windows.Forms.Label();
-            this.manual_type = new System.Windows.Forms.ComboBox();
-            this.injection_methods = new System.Windows.Forms.ComboBox();
-            this.injection_method_options = new System.Windows.Forms.Button();
-            this.groupBox3 = new FriishProduce.GroupBoxEx();
-            this.wiiu_display_l = new System.Windows.Forms.Label();
-            this.wiiu_display = new System.Windows.Forms.ComboBox();
-            this.injection_method_help = new System.Windows.Forms.PictureBox();
-            this.multifile_software = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.use_offline_wad = new System.Windows.Forms.RadioButton();
             this.baseID = new System.Windows.Forms.Label();
@@ -91,13 +84,12 @@ namespace FriishProduce
             this.groupBox1 = new FriishProduce.GroupBoxEx();
             this.rom_label_filename = new System.Windows.Forms.Label();
             this.rom_label = new System.Windows.Forms.Label();
-            this.bannerMenu.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.banner)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.injection_method_help)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkImg1)).BeginInit();
@@ -135,58 +127,6 @@ namespace FriishProduce
             this.browseImage.RestoreDirectory = true;
             this.browseImage.SupportMultiDottedExtensions = true;
             // 
-            // bannerMenu
-            // 
-            this.bannerMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.banner_details,
-            this.banner_sound});
-            this.bannerMenu.Name = "bannerMenu";
-            resources.ApplyResources(this.bannerMenu, "bannerMenu");
-            // 
-            // banner_details
-            // 
-            resources.ApplyResources(this.banner_details, "banner_details");
-            this.banner_details.Name = "banner_details";
-            this.banner_details.Tag = "banner_details";
-            this.banner_details.Click += new System.EventHandler(this.banner_customize_Click);
-            // 
-            // banner_sound
-            // 
-            this.banner_sound.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.play_banner_sound,
-            this.replace_banner_sound,
-            this.restore_banner_sound});
-            resources.ApplyResources(this.banner_sound, "banner_sound");
-            this.banner_sound.Name = "banner_sound";
-            this.banner_sound.Tag = "banner_sound";
-            // 
-            // play_banner_sound
-            // 
-            this.play_banner_sound.Name = "play_banner_sound";
-            resources.ApplyResources(this.play_banner_sound, "play_banner_sound");
-            this.play_banner_sound.Tag = "play_banner_sound";
-            this.play_banner_sound.Click += new System.EventHandler(this.play_banner_sound_Click);
-            // 
-            // replace_banner_sound
-            // 
-            this.replace_banner_sound.Name = "replace_banner_sound";
-            resources.ApplyResources(this.replace_banner_sound, "replace_banner_sound");
-            this.replace_banner_sound.Tag = "replace_banner_sound";
-            this.replace_banner_sound.Click += new System.EventHandler(this.replace_banner_sound_Click);
-            // 
-            // restore_banner_sound
-            // 
-            resources.ApplyResources(this.restore_banner_sound, "restore_banner_sound");
-            this.restore_banner_sound.Name = "restore_banner_sound";
-            this.restore_banner_sound.Tag = "restore_banner_sound";
-            this.restore_banner_sound.Click += new System.EventHandler(this.restore_banner_sound_Click);
-            // 
-            // browseSound
-            // 
-            resources.ApplyResources(this.browseSound, "browseSound");
-            this.browseSound.RestoreDirectory = true;
-            this.browseSound.SupportMultiDottedExtensions = true;
-            // 
             // backgroundWorker
             // 
             this.backgroundWorker.WorkerReportsProgress = true;
@@ -210,7 +150,7 @@ namespace FriishProduce
             resources.ApplyResources(this.banner, "banner");
             this.banner.Name = "banner";
             this.banner.TabStop = false;
-            this.banner.Click += new System.EventHandler(this.banner_sound_Click);
+            this.banner.Click += new System.EventHandler(this.banner_Click);
             // 
             // banner_tip
             // 
@@ -218,14 +158,115 @@ namespace FriishProduce
             this.banner_tip.Name = "banner_tip";
             this.banner_tip.Tag = "banner_tip";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.injection_method_options);
+            this.groupBox3.Controls.Add(this.wiiu_display_l);
+            this.groupBox3.Controls.Add(this.edit_save_data);
+            this.groupBox3.Controls.Add(this.wiiu_display);
+            this.groupBox3.Controls.Add(this.injection_method_help);
+            this.groupBox3.Controls.Add(this.injection_methods);
+            this.groupBox3.Controls.Add(this.multifile_software);
+            this.groupBox3.Controls.Add(this.extra);
+            this.groupBox3.Controls.Add(this.manual_type);
+            this.groupBox3.Controls.Add(this.forwarder_root_device);
+            this.groupBox3.Flat = false;
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Tag = "injection_method";
+            // 
+            // injection_method_options
+            // 
+            resources.ApplyResources(this.injection_method_options, "injection_method_options");
+            this.injection_method_options.Name = "injection_method_options";
+            this.injection_method_options.Tag = "injection_method_options";
+            this.injection_method_options.UseVisualStyleBackColor = true;
+            this.injection_method_options.Click += new System.EventHandler(this.openInjectorOptions);
+            // 
+            // wiiu_display_l
+            // 
+            resources.ApplyResources(this.wiiu_display_l, "wiiu_display_l");
+            this.wiiu_display_l.Name = "wiiu_display_l";
+            this.wiiu_display_l.Tag = "wiiu_display";
+            // 
+            // edit_save_data
+            // 
+            resources.ApplyResources(this.edit_save_data, "edit_save_data");
+            this.edit_save_data.Name = "edit_save_data";
+            this.edit_save_data.Tag = "edit_save_data";
+            this.edit_save_data.UseVisualStyleBackColor = true;
+            this.edit_save_data.Click += new System.EventHandler(this.edit_save_data_Click);
+            // 
+            // wiiu_display
+            // 
+            this.wiiu_display.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.wiiu_display.FormattingEnabled = true;
+            resources.ApplyResources(this.wiiu_display, "wiiu_display");
+            this.wiiu_display.Name = "wiiu_display";
+            this.wiiu_display.Tag = "wiiu_display";
+            this.wiiu_display.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
+            // injection_method_help
+            // 
+            this.injection_method_help.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.injection_method_help, "injection_method_help");
+            this.injection_method_help.Name = "injection_method_help";
+            this.injection_method_help.TabStop = false;
+            this.injection_method_help.Click += new System.EventHandler(this.injection_method_help_Click);
+            // 
+            // injection_methods
+            // 
+            this.injection_methods.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.injection_methods.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.injection_methods.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.injection_methods.FormattingEnabled = true;
+            resources.ApplyResources(this.injection_methods, "injection_methods");
+            this.injection_methods.Name = "injection_methods";
+            this.injection_methods.SelectedIndexChanged += new System.EventHandler(this.InjectorsList_SelectedIndexChanged);
+            // 
+            // multifile_software
+            // 
+            resources.ApplyResources(this.multifile_software, "multifile_software");
+            this.multifile_software.Name = "multifile_software";
+            this.multifile_software.Tag = "multifile_software";
+            this.multifile_software.UseVisualStyleBackColor = true;
+            this.multifile_software.CheckedChanged += new System.EventHandler(this.ValueChanged);
+            // 
+            // extra
+            // 
+            resources.ApplyResources(this.extra, "extra");
+            this.extra.Name = "extra";
+            // 
+            // manual_type
+            // 
+            this.manual_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.manual_type.FormattingEnabled = true;
+            resources.ApplyResources(this.manual_type, "manual_type");
+            this.manual_type.Name = "manual_type";
+            this.manual_type.Tag = "manual_type";
+            this.manual_type.SelectedIndexChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
+            // 
+            // forwarder_root_device
+            // 
+            this.forwarder_root_device.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.forwarder_root_device.FormattingEnabled = true;
+            this.forwarder_root_device.Items.AddRange(new object[] {
+            resources.GetString("forwarder_root_device.Items"),
+            resources.GetString("forwarder_root_device.Items1")});
+            resources.ApplyResources(this.forwarder_root_device, "forwarder_root_device");
+            this.forwarder_root_device.Name = "forwarder_root_device";
+            this.forwarder_root_device.Tag = "";
+            this.forwarder_root_device.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.title_id);
             this.groupBox4.Controls.Add(this.video_mode);
             this.groupBox4.Controls.Add(this.region);
             this.groupBox4.Controls.Add(this.video_mode_l);
             this.groupBox4.Controls.Add(this.region_l);
             this.groupBox4.Controls.Add(this.title_id_l);
-            this.groupBox4.Controls.Add(this.title_id);
             this.groupBox4.Controls.Add(this.channel_name_l);
             this.groupBox4.Controls.Add(this.channel_name);
             this.groupBox4.Controls.Add(this.title_id_random);
@@ -304,107 +345,6 @@ namespace FriishProduce
             this.title_id_random.Name = "title_id_random";
             this.title_id_random.TabStop = false;
             this.title_id_random.Click += new System.EventHandler(this.Random_Click);
-            // 
-            // edit_save_data
-            // 
-            resources.ApplyResources(this.edit_save_data, "edit_save_data");
-            this.edit_save_data.Name = "edit_save_data";
-            this.edit_save_data.Tag = "edit_save_data";
-            this.edit_save_data.UseVisualStyleBackColor = true;
-            this.edit_save_data.Click += new System.EventHandler(this.edit_save_data_Click);
-            // 
-            // forwarder_root_device
-            // 
-            this.forwarder_root_device.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.forwarder_root_device.FormattingEnabled = true;
-            this.forwarder_root_device.Items.AddRange(new object[] {
-            resources.GetString("forwarder_root_device.Items"),
-            resources.GetString("forwarder_root_device.Items1")});
-            resources.ApplyResources(this.forwarder_root_device, "forwarder_root_device");
-            this.forwarder_root_device.Name = "forwarder_root_device";
-            this.forwarder_root_device.Tag = "";
-            this.forwarder_root_device.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
-            // 
-            // extra
-            // 
-            resources.ApplyResources(this.extra, "extra");
-            this.extra.Name = "extra";
-            // 
-            // manual_type
-            // 
-            this.manual_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.manual_type.FormattingEnabled = true;
-            resources.ApplyResources(this.manual_type, "manual_type");
-            this.manual_type.Name = "manual_type";
-            this.manual_type.Tag = "manual_type";
-            this.manual_type.SelectedIndexChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
-            // 
-            // injection_methods
-            // 
-            this.injection_methods.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.injection_methods.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.injection_methods.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.injection_methods.FormattingEnabled = true;
-            resources.ApplyResources(this.injection_methods, "injection_methods");
-            this.injection_methods.Name = "injection_methods";
-            this.injection_methods.SelectedIndexChanged += new System.EventHandler(this.InjectorsList_SelectedIndexChanged);
-            // 
-            // injection_method_options
-            // 
-            resources.ApplyResources(this.injection_method_options, "injection_method_options");
-            this.injection_method_options.Name = "injection_method_options";
-            this.injection_method_options.Tag = "injection_method_options";
-            this.injection_method_options.UseVisualStyleBackColor = true;
-            this.injection_method_options.Click += new System.EventHandler(this.openInjectorOptions);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.injection_method_options);
-            this.groupBox3.Controls.Add(this.wiiu_display_l);
-            this.groupBox3.Controls.Add(this.edit_save_data);
-            this.groupBox3.Controls.Add(this.wiiu_display);
-            this.groupBox3.Controls.Add(this.injection_method_help);
-            this.groupBox3.Controls.Add(this.injection_methods);
-            this.groupBox3.Controls.Add(this.multifile_software);
-            this.groupBox3.Controls.Add(this.extra);
-            this.groupBox3.Controls.Add(this.manual_type);
-            this.groupBox3.Controls.Add(this.forwarder_root_device);
-            this.groupBox3.Flat = false;
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Tag = "injection_method";
-            // 
-            // wiiu_display_l
-            // 
-            resources.ApplyResources(this.wiiu_display_l, "wiiu_display_l");
-            this.wiiu_display_l.Name = "wiiu_display_l";
-            this.wiiu_display_l.Tag = "wiiu_display";
-            // 
-            // wiiu_display
-            // 
-            this.wiiu_display.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.wiiu_display.FormattingEnabled = true;
-            resources.ApplyResources(this.wiiu_display, "wiiu_display");
-            this.wiiu_display.Name = "wiiu_display";
-            this.wiiu_display.Tag = "wiiu_display";
-            this.wiiu_display.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
-            // 
-            // injection_method_help
-            // 
-            this.injection_method_help.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.injection_method_help, "injection_method_help");
-            this.injection_method_help.Name = "injection_method_help";
-            this.injection_method_help.TabStop = false;
-            this.injection_method_help.Click += new System.EventHandler(this.injection_method_help_Click);
-            // 
-            // multifile_software
-            // 
-            resources.ApplyResources(this.multifile_software, "multifile_software");
-            this.multifile_software.Name = "multifile_software";
-            this.multifile_software.Tag = "multifile_software";
-            this.multifile_software.UseVisualStyleBackColor = true;
-            this.multifile_software.CheckedChanged += new System.EventHandler(this.ValueChanged);
             // 
             // pictureBox2
             // 
@@ -622,15 +562,14 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.isClosing);
             this.Load += new System.EventHandler(this.Form_Shown);
-            this.bannerMenu.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.banner)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.injection_method_help)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkImg1)).EndInit();
@@ -652,8 +591,6 @@ namespace FriishProduce
         private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog browseManual;
         private System.Windows.Forms.OpenFileDialog browseROM;
         private System.Windows.Forms.OpenFileDialog browseImage;
-        private System.Windows.Forms.ContextMenuStrip bannerMenu;
-        private System.Windows.Forms.OpenFileDialog browseSound;
         private System.Windows.Forms.TextBox channel_name;
         private System.Windows.Forms.ComboBox region;
         private System.Windows.Forms.PictureBox title_id_random;
@@ -701,11 +638,6 @@ namespace FriishProduce
         internal System.Windows.Forms.RadioButton use_online_wad;
         private System.Windows.Forms.ComboBox wiiu_display;
         private System.Windows.Forms.Label wiiu_display_l;
-        private System.Windows.Forms.ToolStripMenuItem banner_sound;
-        private System.Windows.Forms.ToolStripMenuItem play_banner_sound;
-        private System.Windows.Forms.ToolStripMenuItem replace_banner_sound;
-        private System.Windows.Forms.ToolStripMenuItem restore_banner_sound;
         private System.Windows.Forms.Label banner_tip;
-        private System.Windows.Forms.ToolStripMenuItem banner_details;
     }
 }

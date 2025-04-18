@@ -43,7 +43,8 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-- [X] Re-add console icons?
+- [ ] Fix ROM patch not working
+- [ ] Fix Flash WADs crashing
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?

@@ -284,10 +284,6 @@
 			"banner":							"Banner de la chaîne",
 			"banner_tip":						"Cliquez sur l'aperçu en haut pour accéder aux options de personnalisation du banner.",
 			"banner_details":					"&Détails du banner ...",
-			"banner_sound":						"&Son du banner",
-			"play_banner_sound":				"&Jouer le son actuel",
-			"replace_banner_sound":				"&Remplacer ...",
-			"restore_banner_sound":				"Restaurer le son &original",
 
 			"injection_method":					"Méthode d'injection",
 			"injection_method_options":			"Paramètres de méthode d'injection ...",
@@ -319,7 +315,10 @@
 			"full_name":						"Nom complet :",
 			"year":								"Année :",
 			"players":							"Joueurs :",
-			"banner_region":					"Région du banner :"
+			"banner_region":					"Région du banner :",
+			"banner_sound":						"Remplacer le son du banner...",
+			"banner_sound_play":				"Jouer le son actuel du banner",
+			"banner_sound_restore":				"Restaurer le son original"
 		},
 
 		"controller": {

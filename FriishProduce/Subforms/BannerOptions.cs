@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +15,8 @@ namespace FriishProduce
     public partial class BannerOptions : Form
     {
         internal string origTitle;
+        internal string origSound;
+        internal string sound;
         internal int origYear;
         internal int origPlayers;
         internal int origRegion;
@@ -78,12 +82,16 @@ namespace FriishProduce
 
         private void isClosing(object sender, FormClosingEventArgs e)
         {
+            isPlaying = false;
+
             if (DialogResult != DialogResult.OK)
             {
                 title.Text = origTitle;
                 released.Value = origYear;
                 players.Value = origPlayers;
                 region.SelectedIndex = origRegion;
+
+                sound = origSound;
             }
         }
 
@@ -91,7 +99,7 @@ namespace FriishProduce
         {
             if (e.KeyCode == Keys.Enter && (sender as TextBox)?.Lines?.Length >= 2)
             {
-                System.Media.SystemSounds.Beep.Play();
+                SystemSounds.Beep.Play();
                 e.SuppressKeyPress = true;
             }
         }
@@ -100,6 +108,93 @@ namespace FriishProduce
         {
             if ((sender as TextBox)?.Lines?.Length >= 2)
                 (sender as TextBox).Lines = new string[] { (sender as TextBox).Lines[0], (sender as TextBox).Lines[1] };
+        }
+
+        public void LoadSound(string file)
+        {
+            isPlaying = false;
+
+            sound = file;
+            banner_sound_restore.Enabled = File.Exists(file) && file != null;
+            if (!banner_sound_restore.Enabled) sound = null;
+        }
+
+        private void isShown(object sender, EventArgs e)
+        {
+            banner_sound_restore.Enabled = File.Exists(sound) && sound != null;
+        }
+
+        private void banner_sound_replace_Click(object sender, EventArgs e)
+        {
+            browseSound.Filter = "WAV (*.wav)|*.wav" + Program.Lang.String("filter");
+            browseSound.Title = banner_sound.Text.Replace("&", "");
+            if (browseSound.ShowDialog() == DialogResult.OK || File.Exists(browseSound.FileName))
+                LoadSound(browseSound.FileName);
+        }
+
+        private void banner_sound_restore_Click(object sender, EventArgs e) => LoadSound(null);
+
+        private bool _isPlaying = false;
+        private bool isPlaying
+        {
+            get => _isPlaying;
+            set
+            {
+                bool isChanged = _isPlaying != value;
+                _isPlaying = value;
+
+                if (isChanged)
+                {
+                    if (value)
+                    {
+                        banner_sound_play.Image = Properties.Resources.control_stop;
+                    }
+
+                    else
+                    {
+                        if (player != null)
+                        {
+                            player.Stop();
+                            player = null;
+                        }
+
+                        banner_sound_play.Image = Properties.Resources.control_play;
+                        playerThread.Cancel();
+                    }
+                }
+            }
+        }
+
+        private System.Threading.CancellationTokenSource playerThread = new();
+        private SoundPlayer player = null;
+        private void banner_sound_play_Click(object sender, EventArgs e)
+        {
+            if (!isPlaying)
+            {
+                player = File.Exists(sound) && sound != null ? new(sound) : new(Properties.Resources.Sound_WiiVC);
+
+                playerThread = new();
+                Task.Run(() => PlaySound(playerThread.Token));
+            }
+
+            else isPlaying = false;
+        }
+
+        private void PlaySound(System.Threading.CancellationToken token)
+        {
+            token.ThrowIfCancellationRequested();
+
+            try
+            {
+                isPlaying = true;
+                player.PlaySync();
+                playerThread.Cancel();
+            }
+
+            finally
+            {
+                isPlaying = false;
+            }
         }
     }
 }

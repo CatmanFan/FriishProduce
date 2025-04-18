@@ -43,6 +43,11 @@ namespace FriishProduce
             this.label4 = new System.Windows.Forms.Label();
             this.region = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.banner_sound = new System.Windows.Forms.Button();
+            this.banner_sound_play = new System.Windows.Forms.Button();
+            this.banner_sound_restore = new System.Windows.Forms.Button();
+            this.browseSound = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.released)).BeginInit();
             this.bottomPanel2.SuspendLayout();
@@ -165,12 +170,51 @@ namespace FriishProduce
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // banner_sound
+            // 
+            resources.ApplyResources(this.banner_sound, "banner_sound");
+            this.banner_sound.Name = "banner_sound";
+            this.banner_sound.Tag = "banner_sound";
+            this.banner_sound.UseVisualStyleBackColor = true;
+            this.banner_sound.Click += new System.EventHandler(this.banner_sound_replace_Click);
+            // 
+            // banner_sound_play
+            // 
+            this.banner_sound_play.Image = global::FriishProduce.Properties.Resources.control_play;
+            resources.ApplyResources(this.banner_sound_play, "banner_sound_play");
+            this.banner_sound_play.Name = "banner_sound_play";
+            this.banner_sound_play.UseVisualStyleBackColor = true;
+            this.banner_sound_play.Click += new System.EventHandler(this.banner_sound_play_Click);
+            // 
+            // banner_sound_restore
+            // 
+            resources.ApplyResources(this.banner_sound_restore, "banner_sound_restore");
+            this.banner_sound_restore.Name = "banner_sound_restore";
+            this.banner_sound_restore.UseVisualStyleBackColor = true;
+            this.banner_sound_restore.Click += new System.EventHandler(this.banner_sound_restore_Click);
+            // 
+            // browseSound
+            // 
+            resources.ApplyResources(this.browseSound, "browseSound");
+            this.browseSound.RestoreDirectory = true;
+            this.browseSound.SupportMultiDottedExtensions = true;
+            // 
             // BannerOptions
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.banner_sound_restore);
+            this.Controls.Add(this.banner_sound_play);
+            this.Controls.Add(this.banner_sound);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.region);
@@ -191,6 +235,7 @@ namespace FriishProduce
             this.Tag = "banner";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.isClosing);
+            this.Shown += new System.EventHandler(this.isShown);
             ((System.ComponentModel.ISupportInitialize)(this.players)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.released)).EndInit();
             this.bottomPanel2.ResumeLayout(false);
@@ -214,5 +259,10 @@ namespace FriishProduce
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.ComboBox region;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button banner_sound;
+        private System.Windows.Forms.Button banner_sound_play;
+        private System.Windows.Forms.Button banner_sound_restore;
+        private System.Windows.Forms.OpenFileDialog browseSound;
     }
 }

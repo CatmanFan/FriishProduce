@@ -296,10 +296,6 @@
 			"banner":							"채널 배너",
 			"banner_tip":						"위의 미리보기 이미지를 클릭하여 배너 사용자 정의 옵션에 접속하세요.",
 			"banner_details":					"배너 상세정보...(&B)",
-			"banner_sound":						"배너 사운드(&S)",
-			"play_banner_sound":				"현재 사운드 재생(&P)",
-			"replace_banner_sound":				"사운드 교체...(&R)",
-			"restore_banner_sound":				"기본 사운드 복원(&D)",
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션...",
@@ -329,7 +325,10 @@
 			"full_name":						"전체 이름:",
 			"year":								"연도:",
 			"players":							"플레이어:",
-			"banner_region":					"배너 지역:"
+			"banner_region":					"배너 지역:",
+			"banner_sound":						"현재 사운드 교체...",
+			"banner_sound_play":				"현재 사운드 재생",
+			"banner_sound_restore":				"기본 사운드 복원"
 		},
 
 		"controller": {

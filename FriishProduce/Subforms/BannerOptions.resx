@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="players.Location" type="System.Drawing.Point, System.Drawing">
-    <value>374, 90</value>
+    <value>374, 91</value>
   </data>
   <data name="players.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 21</value>
@@ -138,10 +138,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;players.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="released.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 90</value>
+    <value>12, 91</value>
   </data>
   <data name="released.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 21</value>
@@ -159,10 +159,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;released.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="title.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
+    <value>12, 28</value>
   </data>
   <data name="title.MaxLength" type="System.Int32, mscorlib">
     <value>130</value>
@@ -189,7 +189,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;title.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -199,7 +199,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 73</value>
+    <value>226, 74</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 13</value>
@@ -223,13 +223,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 73</value>
+    <value>9, 74</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 13</value>
@@ -250,7 +250,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -259,7 +259,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 9</value>
+    <value>9, 10</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
@@ -280,7 +280,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="b_cancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -376,7 +376,7 @@
     <value>Bottom</value>
   </data>
   <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 182</value>
+    <value>0, 228</value>
   </data>
   <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 40</value>
@@ -394,7 +394,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -403,7 +403,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 131</value>
+    <value>9, 132</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 13</value>
@@ -424,10 +424,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="region.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 148</value>
+    <value>12, 149</value>
   </data>
   <data name="region.Size" type="System.Drawing.Size, System.Drawing">
     <value>426, 21</value>
@@ -445,10 +445,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;region.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 122</value>
+    <value>12, 123</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>426, 1</value>
@@ -466,7 +466,121 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 181</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 1</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="banner_sound.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="banner_sound.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 191</value>
+  </data>
+  <data name="banner_sound.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 24</value>
+  </data>
+  <data name="banner_sound.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="banner_sound.Text" xml:space="preserve">
+    <value>banner_sound</value>
+  </data>
+  <data name="&gt;&gt;banner_sound.Name" xml:space="preserve">
+    <value>banner_sound</value>
+  </data>
+  <data name="&gt;&gt;banner_sound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;banner_sound.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;banner_sound.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="banner_sound_play.Location" type="System.Drawing.Point, System.Drawing">
+    <value>382, 191</value>
+  </data>
+  <data name="banner_sound_play.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 24</value>
+  </data>
+  <data name="banner_sound_play.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;banner_sound_play.Name" xml:space="preserve">
+    <value>banner_sound_play</value>
+  </data>
+  <data name="&gt;&gt;banner_sound_play.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;banner_sound_play.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;banner_sound_play.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="banner_sound_restore.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIDSURBVDhPpVPJqiJBEHwf5T/pTdyv/QUiKi6gF0UU
+        PXjwoiDaB1FccWsXRMR9bbVdUFTMV5mD7XtvhoFhGoKuLjKiIjKrPwDgv/DbRrfbVXQ6Ha7dbvOtVksU
+        BEFsNBp8vV7nqtWq4mf9tw9GVjKysF6v4Xw+w+PxIJxOJ1gsFlCpVIRSqaT8yvlJlq7XK/sEwPfhcABJ
+        kuByudAeiubzeSmXy8kiLzLaFl7k3W4H2+0WRFEkbDYbQFf4oAjP80IqlaI4JMDycq+CWCwGJpNJhtFo
+        JBgMBnC5XFTT7/exjmPLXwKsWTwqo1Uklctl+dTVagXL5RIKhQLo9XrqB7qLRCK8LNBsNkVs1n6/J4Gv
+        xNlsBhaLBQaDAeh0Otq73W4QDAZFWYCNiQQwO9otFotUOJlMiKzVaiGdTpMATgNd+Hy+t0CtVuOx4xgj
+        Go2CSqWiwng8TmSNRgNqtRrsdjtNZjgcgtfrfUdg8+XwtOfzScT5fE7Wp9MpBAIBEuj1ejAajeB+v0M2
+        mwW32/1uIpurIpPJCNgDfJCIQNHxeAx+vx/YqOkAFGFkgeE9RkQymVQmEgkJu4+Fx+NRdoOXCU9G64wo
+        2Wy27xfpBZZfGQ6HBRaJImBPMDPOnV0eYESBNfXPV/mFUCik8Hg8nNPp5B0Oh2i1WkVG4s1mM8fWf/+Z
+        /h3w8QmajC8y8mezkgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="banner_sound_restore.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="banner_sound_restore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>413, 191</value>
+  </data>
+  <data name="banner_sound_restore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 24</value>
+  </data>
+  <data name="banner_sound_restore.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="&gt;&gt;banner_sound_restore.Name" xml:space="preserve">
+    <value>banner_sound_restore</value>
+  </data>
+  <data name="&gt;&gt;banner_sound_restore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;banner_sound_restore.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;banner_sound_restore.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="browseSound.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="browseSound.Filter" xml:space="preserve">
+    <value>WAV (*.wav)|*.wav</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -475,7 +589,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>450, 222</value>
+    <value>450, 268</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 11px</value>
@@ -485,6 +599,12 @@
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
+  </data>
+  <data name="&gt;&gt;browseSound.Name" xml:space="preserve">
+    <value>browseSound</value>
+  </data>
+  <data name="&gt;&gt;browseSound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>BannerOptions</value>

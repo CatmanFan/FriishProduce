@@ -649,6 +649,8 @@
     <None Include="Resources\icons\silk\tick.png" />
     <None Include="Resources\icons\silk\information.png" />
     <None Include="Resources\icons\silk\tick_circle.png" />
+    <None Include="Resources\icons\silk\control_play.png" />
+    <None Include="Resources\icons\silk\control_stop.png" />
     <Content Include="Resources\icons\wiki.gif" />
     <Content Include="version.xml" />
     <None Include="Resources\apps\lzh8_dec.exe" />

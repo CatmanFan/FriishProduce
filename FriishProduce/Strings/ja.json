@@ -209,10 +209,6 @@
 			"banner": "チャンネルバナー",
 			"banner_tip": "上のバナー画像をクリックすると、バナーをカスタマイズできます。",
 			"banner_details": "バナーの詳細...(&B)",
-			"banner_sound": "バナーの音(&S)",
-			"play_banner_sound": "現在の音を再生(&P)",
-			"replace_banner_sound": "音を差し替える...(&R)",
-			"restore_banner_sound": "元の音に戻す(&X)",
 			"injection_method": "インジェクト方法",
 			"injection_method_options": "インジェクト方法の設定...",
 			"controller": "コントローラー",
@@ -231,7 +227,10 @@
 			"full_name": "氏名:",
 			"year": "発売年:",
 			"players": "プレイ人数:",
-			"banner_region": "バナーの地域:"
+			"banner_region": "バナーの地域:",
+			"banner_sound": "バナーの音を差し替える...",
+			"banner_sound_play": "バナーの現在の音を再生",
+			"banner_sound_restore": "バナーの元の音に戻す"
 		},
 		"controller": {
 			"page1": "Wiiリモコン",
