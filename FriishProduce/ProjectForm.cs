@@ -193,7 +193,31 @@ namespace FriishProduce
         }
 
         protected ROM rom { get; set; }
-        protected string patch { get; set; }
+        private string _patch { get; set; }
+        protected string patch
+        {
+            get => _patch;
+            set
+            {
+                if (_patch != value)
+                {
+                    _patch = value;
+
+                    if (File.Exists(value))
+                    {
+                        include_patch.Checked = true;
+                        ValueChanged(null, new EventArgs());
+                    }
+
+                    else
+                    {
+                        _patch = null;
+                        include_patch.Checked = false;
+                        ValueChanged(null, new EventArgs());
+                    }
+                }
+            }
+        }
         protected string manual { get; set; }
         protected ImageHelper img { get; set; }
 
@@ -2255,22 +2279,18 @@ namespace FriishProduce
 
         private void include_patch_CheckedChanged(object sender, EventArgs e)
         {
-            string oldPatch = patch;
-
-            if (include_patch.Checked)
+            if (include_patch.Checked && patch == null)
             {
                 if (browsePatch.ShowDialog() == DialogResult.OK)
-                    patch = browsePatch.FileName;
-                else
                 {
-                    patch = null;
-                    include_patch.Checked = false;
+                    patch = browsePatch.FileName;
                 }
-            }
-            else
-                patch = null;
 
-            if (oldPatch != patch) ValueChanged(sender, e);
+                else patch = null;
+            }
+
+            else if (!include_patch.Checked)
+                patch = null;
         }
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)

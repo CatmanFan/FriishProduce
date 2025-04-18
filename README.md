@@ -43,7 +43,7 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-- [ ] Fix ROM patch not working
+- [X] Fix ROM patch not working
 - [ ] Fix Flash WADs crashing
 
 ### Potential
