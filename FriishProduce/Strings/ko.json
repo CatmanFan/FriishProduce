@@ -242,17 +242,17 @@
 			"browse_bios":						"바이오스 파일 선택...",
 			
 			"default_settings":					"기본값 설정",
-			"default_settings_app":				"Application",
-			"default_settings_plat":			"Platforms",
+			"default_settings_app":				"응용프로그램",
+			"default_settings_plat":			"플랫폼",
 			"default_injection_methods":		"기본 주입 방법",
 			"default_target_filename":			"내보낸 WAD의 기본 파일 이름",
 			"default_target_project":			"프로젝트:",
 			"default_target_wad":				"내보낸 WAD:",
 			"default_target_parameters":		"교체 가능한 매개변수:",
 
-			"default_content_options":			"Default content options",
-			"default_content_options_l":		"Select a platform from the list, then click \"{0}\" to change its default content options.",
-			"default_content_options_e":		"Edit...",
+			"default_content_options":			"기본 콘텐츠 옵션",
+			"default_content_options_l":		"목록에서 플랫폼을 선택한 다음, \"{0}\"을 클릭하여 기본 콘텐츠 옵션을 변경하세요.",
+			"default_content_options_e":		"편집...",
 
 			"use_online_wad_enabled":           "다운로드 가능한 WAD 기능 활성화",
 
@@ -445,8 +445,8 @@
 			"background_color":					"배경색",
 			"anti_aliasing":					"안티에일리어싱",
 			"zoom":								"확대/축소",
-			"zoom1":							"Custom",
-			"fullscreen":						"Fullscreen"
+			"zoom1":							"커스텀",
+			"fullscreen":						"전체화면"
 		},
 
 		"forwarder": {
