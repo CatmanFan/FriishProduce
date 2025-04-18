@@ -205,6 +205,20 @@ namespace FriishProduce
 
                     if (File.Exists(value))
                     {
+                        /* try
+                        { 
+                           rom.Patch(value);
+                        }
+
+                        catch (Exception ex)
+                        {
+                            if (Program.DebugMode)
+                                throw ex;
+                            else
+                                MessageBox.Error(ex.Message);
+                            return;
+                        } */
+
                         include_patch.Checked = true;
                         ValueChanged(null, new EventArgs());
                     }
@@ -212,6 +226,7 @@ namespace FriishProduce
                     else
                     {
                         _patch = null;
+                        // rom.Patch(null);
                         include_patch.Checked = false;
                         ValueChanged(null, new EventArgs());
                     }
@@ -1777,6 +1792,8 @@ namespace FriishProduce
 
                 try
                 {
+                    if (File.Exists(patch)) m.ROM.Patch(patch);
+
                     switch (targetPlatform)
                     {
                         case Platform.NES:

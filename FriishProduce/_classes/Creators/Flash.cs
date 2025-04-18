@@ -698,9 +698,19 @@ namespace FriishProduce.Injectors
                                 if (wide)
                                     h_value *= (416.0 / 304.0);
 
-                                // Original rectangle size values in Flash Placeholder: 304 (H) 228 (V) for SD resolution, 416 (H) for wide
                                 (int h, int v) = (Convert.ToInt32(Math.Round(h_value)), Convert.ToInt32(Math.Round(v_value)));
                                 (h, v) = (304, 228);
+
+                                txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
+                                modified = true;
+                            }
+
+                            // Default adjustment
+                            // **********************************************
+                            else
+                            {
+                                // Original rectangle size values in Flash Placeholder: 304 (H) 228 (V) for SD resolution, 416 (H) for wide
+                                (int h, int v) = (wide ? 416 : 304, 228);
 
                                 txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
                                 modified = true;

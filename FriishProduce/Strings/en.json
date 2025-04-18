@@ -122,7 +122,7 @@
 			"e_006":							"The application needed ({0}) was not found in the resources\\tools subdirectory.",
 			"e_007":							"Failed to create WAD or ZIP.",
 			"e_008":							"Failed to apply patch. Either the patch file and target ROM do not match, or the ROM's checksum is invalid.",
-			"e_009":							"Failed to download source WAD.",
+			"e_009":							"Unable to download WAD.",
 			"e_010":							"Failed to replace internal Virtual Console manual.\n{continue}",
 			"e_011":							"The file \"{0}\" could not be found in its original path. It may have been deleted or moved.",
 			"e_012":							"The folder \"{0}\" could not be found in its original path. It may have been deleted or moved.",
@@ -133,7 +133,8 @@
 			"e_017":							"\"{0}\" is not a valid project file.",
 			"e_018":							"Unable to save {0}.",
 			"e_019":							"Could not download update.",
-			"e_020":							"Could not find any modifiable WAD video modes.\n{continue}"
+			"e_020":							"Could not find any modifiable WAD video modes.\n{continue}",
+			"e_021":							"Unable to download file."
 		},
 
 		"html": {

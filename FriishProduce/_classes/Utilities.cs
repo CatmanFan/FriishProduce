@@ -333,6 +333,7 @@ namespace FriishProduce
         public static byte[] Get(string URL, int timeout = 200)
         {
             Start:
+            bool invalid = false;
             Logger.Log("Downloading from URL: " + URL);
 
             // Actual web connection is done here
@@ -347,8 +348,8 @@ namespace FriishProduce
                     )}, timeout * 1000) == -1)
                         throw new TimeoutException();
 
-                    if (ms.ToArray().Length == 0) throw new FileNotFoundException();
-                    else if (ms.ToArray().Length > 75) return ms.ToArray();
+                    if (ms.ToArray().Length == 0) invalid = true;
+                    else if (ms.ToArray().Length > 50) return ms.ToArray();
 
                     throw new WebException();
                 }
@@ -364,11 +365,8 @@ namespace FriishProduce
                         goto Start;
                     }
 
-                    else if (ex.GetType() == typeof(FileNotFoundException))
-                        throw ex;
-
                     else
-                        throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
+                        throw new Exception(invalid ? Program.Lang.Msg(9, 1) : string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
                 }
             }
         }

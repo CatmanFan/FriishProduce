@@ -120,7 +120,11 @@ namespace FriishProduce
 
         public void Patch(string filePath)
         {
-            if (!File.Exists(filePath) || string.IsNullOrWhiteSpace(filePath)) return;
+            if (!File.Exists(filePath) || string.IsNullOrWhiteSpace(filePath))
+            {
+                patched = null;
+                return;
+            }
 
             File.WriteAllBytes(Paths.WorkingFolder + "rom", origData);
             File.WriteAllBytes(Paths.WorkingFolder + "patch", File.ReadAllBytes(filePath));

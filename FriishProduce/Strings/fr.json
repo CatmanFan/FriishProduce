@@ -121,25 +121,26 @@
 			"e_006":							"L'application requise ({0}) n'est pas disponible dans le sous-répertoire «resources\\tools».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.",
 			"e_007":							"Échec de création du fichier WAD ou ZIP.",
 			"e_008":							"Échec d'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.",
-			"e_009":							"Échec du téléchargement de la chaîne de base en ligne.",
+			"e_009":							"Le fichier WAD ne peut pas être téléchargé.",
 			"e_010":							"Échec du remplacement du mode d'emploi interne.\n{continue}",
 			"e_011":							"Le fichier «{0}» n'a pas été trouvé dans son chemin prévu. Il peut avoir été déplacé ou supprimé.",
 			"e_012":							"Le dossier «{0}» n'a pas été trouvé dans son chemin prévu. Il peut avoir été déplacé ou supprimé.",
 			"e_013":							"Aucun point d'entrée d'injection n'a été trouvé. Il peut s'agir que la méthode d'injection utilisée par cette chaîne n'est toujours pas prise en charge.",
 			"e_014":							"Le fichier BIOS requis pour cette console est toujours indisponible.\nVeuillez le spécifier dans les préférences de FriishProduce.",
 			"e_015":							"Échec de création de l'image d'aperçu des données de sauvegarde.",
-			"e_016":							"Aucun mode d'emploi de Console virtuelle n'a été trouvé dans cette chaîne.",
+			"e_016":							"Cette chaîne ne contient aucun mode d'emploi de Console virtuelle.",
 			"e_017":							"«{0}» n'est pas un fichier de projet valide.",
 			"e_018":							"«{0}» ne peut pas être enregistré.",
 			"e_019":							"Échec du téléchargement de la mise à jour.",
-			"e_020":							"Aucun mode vidéo modifiable n'est disponible pour cette chaîne.\n{continue}"
+			"e_020":							"Cette chaîne ne contient aucun mode vidéo modifiable.\n{continue}",
+			"e_021":							"Le fichier ne peut pas être téléchargé."
 		},
 
 		"html": {
-			"000":								"L'émulateur Frodo va démarrer.<ol type=\"1\"><li>
-												Sur l'écran qui s'apparaît, entrez la commande suivante : <b>LOAD\"*\",8</b>\n
+			"000":								"L'émulateur Frodo va maintenant démarrer.<ol type=\"1\"><li>
+												Sur l'écran qui s'apparaît, entrez <b>LOAD\"*\",8</b>.\n
 												Si l'émulateur semble gelé et il n'y a aucun indicateur LED de disque dur, essayez d'ouvrir le fichier Frodo.fpr dès <i>File > Open</i>, puis appuyer sur F12 pour redémarrer l'émulateur et ressayez à nouveau.</li><li>
-												Une fois que le logiciel est chargé, entrez <b>RUN</b>.</li><li>
+												Une fois que le logiciel est chargé par le système, entrez <b>RUN</b>.</li><li>
 												Au moment de démarrage du jeu, cliquez sur <i>Tools > Patch and Save Snapshot</i>, et enregister l'instantané à «snap.fss». Vous pouvez également enregistrer une autre copie pour l'utiliser ultérieurement.</li></ol>
 												Tentatives restantes : <b>{0}</b>",
 

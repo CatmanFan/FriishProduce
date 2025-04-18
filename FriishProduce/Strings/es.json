@@ -121,7 +121,7 @@
 			"e_006":							"La aplicación necesaria ({0}) no se encontró en el subdirectorio \"resources\\tools\".",
 			"e_007":							"No se pudo exportar en formato WAD o ZIP.",
 			"e_008":							"No se pudo aplicar el parche, ya sea porque la ROM de destino y el parche no coinciden o porque el checksum de la ROM no es válida.",
-			"e_009":							"No se pudo descargar el canal de origen.",
+			"e_009":							"No se pudo descargar el canal WAD.",
 			"e_010":							"No se pudo modificar el manual electrónico del canal.\n{continue}",
 			"e_011":							"El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido.",
 			"e_012":							"La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida.",
@@ -132,7 +132,8 @@
 			"e_017":							"\"{0}\" no es un archivo de proyecto válido.",
 			"e_018":							"No se pudo guardar el proyecto \"{0}\".",
 			"e_019":							"No se pudo descargar la versión actualizada.",
-			"e_020":							"No se ha encontrado ningún modo de vídeo modificable en este canal.\n{continue}"
+			"e_020":							"No se ha encontrado ningún modo de vídeo modificable en este canal.\n{continue}",
+			"e_021":							"No se pudo descargar el archivo."
 		},
 
 		"html": {
