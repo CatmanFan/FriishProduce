@@ -454,7 +454,8 @@
 			"anti_aliasing":					"Anti-aliasing",
 			"zoom":								"Zoom",
 			"zoom0":							"{by_default}",
-			"zoom1":							"Custom",
+			"zoom1":							"{automatic}",
+			"zoom2":							"Custom",
 			"fullscreen":						"Fullscreen"
 		},
 

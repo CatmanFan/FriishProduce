@@ -43,8 +43,6 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-- [X] Fix ROM patch not working
-- [X] Fix Flash WADs crashing
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?

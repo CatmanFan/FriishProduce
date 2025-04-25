@@ -22,7 +22,7 @@ namespace FriishProduce
         private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = HTML.CreateToolTip();
 
         protected string Untitled;
-        protected string TIDCode;
+        protected (string Letter, string[] Exclude) TIDPrefix;
 
         protected bool isVirtualConsole
         {
@@ -705,62 +705,62 @@ namespace FriishProduce
 
             // Declare ROM and WAD metadata modifier
             // ********
-            TIDCode = null;
+            TIDPrefix = (null, new[] { "F", "J", "N", "L", "M", "P", "Q", "E", "C", "X" });
             switch (targetPlatform)
             {
                 case Platform.NES:
-                    TIDCode = "F";
+                    TIDPrefix = ("F", null);
                     rom = new ROM_NES();
                     showPatch = true;
                     break;
 
                 case Platform.SNES:
-                    TIDCode = "J";
+                    TIDPrefix = ("J", null);
                     rom = new ROM_SNES();
                     showPatch = true;
                     break;
 
                 case Platform.N64:
-                    TIDCode = "N";
+                    TIDPrefix = ("N", null);
                     rom = new ROM_N64();
                     showPatch = true;
                     break;
 
                 case Platform.SMS:
-                    TIDCode = "L";
+                    TIDPrefix = ("L", null);
                     rom = new ROM_SEGA() { IsSMS = true };
                     showPatch = true;
                     break;
 
                 case Platform.SMD:
-                    TIDCode = "M";
+                    TIDPrefix = ("M", null);
                     rom = new ROM_SEGA() { IsSMS = false };
                     showPatch = true;
                     break;
 
                 case Platform.PCE:
-                    TIDCode = "P";
+                    TIDPrefix = ("P", null);
                     rom = new ROM_PCE();
                     showPatch = true;
                     break;
 
                 case Platform.PCECD:
-                    TIDCode = "Q";
+                    TIDPrefix = ("Q", null);
                     rom = new Disc();
                     break;
 
                 case Platform.NEO:
-                    TIDCode = "E";
+                    TIDPrefix = ("E", null);
                     rom = new ROM_NEO();
                     break;
 
                 case Platform.C64:
-                    TIDCode = "C";
+                    TIDPrefix = ("C", null);
                     rom = new ROM_C64();
                     break;
 
                 case Platform.MSX:
-                    TIDCode = "X";
+                    TIDPrefix = ("X", null);
                     rom = new ROM_MSX();
                     showPatch = true;
                     break;
@@ -770,6 +770,7 @@ namespace FriishProduce
                     break;
 
                 case Platform.RPGM:
+                    // TIDPrefix = ("X", null);
                     rom = new RPGM();
                     banner_form.players.Enabled = false;
                     break;
@@ -1065,7 +1066,28 @@ namespace FriishProduce
 
         private void randomTID()
         {
-            title_id.Text = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
+            title_id.Text = TIDPrefix.Letter != null ? TIDPrefix.Letter + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
+
+            // Change title ID prefix to avoid 4:3 stretching on Wii U, if a list is provided
+            // ********
+            if (TIDPrefix.Exclude?.Length > 0)
+            {
+                Loop:
+                int verified = TIDPrefix.Exclude?.Length ?? 0;
+                while (verified > 0)
+                {
+                    for (int i = 0; i < TIDPrefix.Exclude?.Length; i++)
+                    {
+                        if (title_id.Text[0] == TIDPrefix.Exclude[i][0])
+                        {
+                            title_id.Text = GenerateTitleID().Substring(0, 1) + title_id.Text.Substring(1);
+                            goto Loop;
+                        }
+
+                        verified--;
+                    }
+                }
+            }
             ValueChanged(null, new EventArgs());
         }
 
