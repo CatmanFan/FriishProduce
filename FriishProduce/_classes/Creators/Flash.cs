@@ -675,15 +675,35 @@ namespace FriishProduce.Injectors
                     {
                         if (line.Contains("ortho_rect"))
                         {
-                            bool widescreen = Path.GetFileNameWithoutExtension(file).Contains("wide") && Settings["fullscreen"] != "yes";
+                            bool widescreen = Path.GetFileNameWithoutExtension(file).Contains("wide") && (Settings["fullscreen"].ToLower() is not "yes" and not "on" and not "true");
                             (double Width, double Height) swfSize = new(SWF.Header.Width, SWF.Header.Height);
                             // Default rectangle size values in Flash Placeholder: 304 (H) 228 (V) for SD resolution, 416 (H) for wide
                             (double Width, double Height) defaultSize = new(widescreen ? 416.0 : 304.0, 228.0);
                             (double Width, double Height) frameSize = new(widescreen ? 832.0 : 608.0, 456.0);
 
+                            // Custom value
+                            // **********************************************
+                            if (Settings["zoom"].Contains('_'))
+                            {
+                                (int h_setting, int v_setting) = (int.Parse(Settings["zoom"].Substring(0, Settings["zoom"].IndexOf('_'))), int.Parse(Settings["zoom"].Substring(Settings["zoom"].IndexOf('_') + 1)));
+
+                                // The smaller the rectangle, the larger the SWF appears
+                                double h_value = SWF.Header.Width / (h_setting / 100.0);
+                                double v_value = SWF.Header.Height / (v_setting / 100.0);
+
+                                // The value is automatically adjusted for widescreen presets to avoid being stretched out on 16:9 display
+                                if (widescreen)
+                                    h_value *= 416.0 / 304.0;
+
+                                (int h, int v) = (Convert.ToInt32(Math.Round(h_value)), Convert.ToInt32(Math.Round(v_value)));
+
+                                txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
+                                modified = true;
+                            }
+
                             // Automatic adjustment
                             // **********************************************
-                            if (Settings["zoom"].Contains("auto"))
+                            else if (Settings["zoom"].Contains("auto"))
                             {
                                 // Do calculation
                                 (double Width, double Height) = (frameSize.Width, frameSize.Height);
@@ -699,30 +719,9 @@ namespace FriishProduce.Injectors
                                 }
 
                                 // Round and convert to integer
-                                double padding = 6.0;
+                                double padding = 5.0;
                                 int h = Convert.ToInt32(Math.Round(Width + padding) / 2);
                                 int v = Convert.ToInt32(Math.Round(Height + padding) / 2);
-
-                                txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
-                                modified = true;
-                            }
-
-                            // Custom value
-                            // **********************************************
-                            else if (Settings["zoom"].Contains('_'))
-                            {
-                                (int h_setting, int v_setting) = (int.Parse(Settings["zoom"].Substring(0, Settings["zoom"].IndexOf('_'))), int.Parse(Settings["zoom"].Substring(Settings["zoom"].IndexOf('_') + 1)));
-
-                                // - The smaller the rectangle, the larger the SWF appears
-                                double h_value = SWF.Header.Width / (h_setting / 100.0);
-                                double v_value = SWF.Header.Height / (v_setting / 100.0);
-
-                                // - The value is automatically adjusted for widescreen presets to avoid being stretched out on 16:9 display
-                                if (widescreen)
-                                    h_value *= (416.0 / 304.0);
-
-                                (int h, int v) = (Convert.ToInt32(Math.Round(h_value)), Convert.ToInt32(Math.Round(v_value)));
-                                (h, v) = (304, 228);
 
                                 txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
                                 modified = true;
@@ -760,7 +759,7 @@ namespace FriishProduce.Injectors
 
                     if (modified)
                         File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
-                    if (stretch && Settings["fullscreen"] == "yes")
+                    if (stretch && (Settings["fullscreen"].ToLower() is "yes" or "on" or "true") && File.Exists(file.Replace(".pcf", ".wide.pcf")))
                         File.Copy(file, file.Replace(".pcf", ".wide.pcf"), true);
                 }
 
