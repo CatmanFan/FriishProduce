@@ -685,45 +685,23 @@ namespace FriishProduce.Injectors
                             // **********************************************
                             if (Settings["zoom"].Contains("auto"))
                             {
-                                // Declare variables
-                                (double Width, double Height, double SWF, double Frame) Ratios =
-                                (
-                                    frameSize.Width / swfSize.Width,
-                                    frameSize.Height / swfSize.Height,
-                                    swfSize.Width / swfSize.Height,
-                                    frameSize.Width / frameSize.Height
-                                );
-                                (double Width, double Height) = (frameSize.Width, frameSize.Height);
-
                                 // Do calculation
+                                (double Width, double Height) = (frameSize.Width, frameSize.Height);
                                 if (swfSize.Width > swfSize.Height)
                                 {
-                                    Width *= (swfSize.Width / frameSize.Width);
-                                    Height *= (swfSize.Width / frameSize.Width);
+                                    Width *= swfSize.Width / frameSize.Width;
+                                    Height *= swfSize.Width / frameSize.Width;
                                 }
                                 else
                                 {
-                                    Width *= (swfSize.Height / frameSize.Height);
-                                    Height *= (swfSize.Height / frameSize.Height);
+                                    Width *= swfSize.Height / frameSize.Height;
+                                    Height *= swfSize.Height / frameSize.Height;
                                 }
 
-
-                                /* double Scale = Ratios.SWF > Ratios.Frame ? swfSize.Width / frameSize.Width : swfSize.Height / frameSize.Height;
-                                // if (wRatio <= hRatio) Size = new(originalSize.Width, originalSize.Height * (maxSize.Width / maxSize.Height));
-                                (Width, Height) = (swfSize.Width / Scale, swfSize.Height / Scale);
-
-                                if (Width / Height != Ratios.Frame)
-                                {
-                                    double Ratio = Math.Min(Ratios.Width, Ratios.Height);
-
-                                    (Width, Height) = (Width * Ratio, Height * Ratio);
-                                } */
-
                                 // Round and convert to integer
-                                double padding = 5.0;
-                                double resize = 2.0;
-                                int h = Convert.ToInt32(Math.Round(Width + padding) / resize);
-                                int v = Convert.ToInt32(Math.Round(Height + padding) / resize);
+                                double padding = 6.0;
+                                int h = Convert.ToInt32(Math.Round(Width + padding) / 2);
+                                int v = Convert.ToInt32(Math.Round(Height + padding) / 2);
 
                                 txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
                                 modified = true;
