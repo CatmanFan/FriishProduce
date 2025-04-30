@@ -675,7 +675,7 @@ namespace FriishProduce.Injectors
                     {
                         if (line.Contains("ortho_rect"))
                         {
-                            bool widescreen = Path.GetFileNameWithoutExtension(file).Contains("wide") && (Settings["fullscreen"].ToLower() is not "yes" and not "on" and not "true");
+                            bool widescreen = Path.GetFileNameWithoutExtension(file).ToLower().EndsWith(".wide") && (Settings["fullscreen"].ToLower() is not "yes" and not "on" and not "true");
                             (double Width, double Height) swfSize = new(SWF.Header.Width, SWF.Header.Height);
                             // Default rectangle size values in Flash Placeholder: 304 (H) 228 (V) for SD resolution, 416 (H) for wide
                             (double Width, double Height) defaultSize = new(widescreen ? 416.0 : 304.0, 228.0);
@@ -688,14 +688,16 @@ namespace FriishProduce.Injectors
                                 (int h_setting, int v_setting) = (int.Parse(Settings["zoom"].Substring(0, Settings["zoom"].IndexOf('_'))), int.Parse(Settings["zoom"].Substring(Settings["zoom"].IndexOf('_') + 1)));
 
                                 // The smaller the rectangle, the larger the SWF appears
-                                double h_value = SWF.Header.Width / (h_setting / 100.0);
-                                double v_value = SWF.Header.Height / (v_setting / 100.0);
+                                (double Width, double Height) = (swfSize.Width, swfSize.Height);
+
+                                Width /= h_setting / 100.0;
+                                Height /= v_setting / 100.0;
 
                                 // The value is automatically adjusted for widescreen presets to avoid being stretched out on 16:9 display
                                 if (widescreen)
-                                    h_value *= 416.0 / 304.0;
+                                    Width *= 416.0 / 304.0;
 
-                                (int h, int v) = (Convert.ToInt32(Math.Round(h_value)), Convert.ToInt32(Math.Round(v_value)));
+                                (int h, int v) = (Convert.ToInt32(Math.Round(Width)), Convert.ToInt32(Math.Round(Height)));
 
                                 txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
                                 modified = true;

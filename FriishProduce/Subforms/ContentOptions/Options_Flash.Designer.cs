@@ -41,9 +41,9 @@ namespace FriishProduce
             this.save_data_enable = new System.Windows.Forms.CheckBox();
             this.display = new FriishProduce.GroupBoxEx();
             this.anti_aliasing = new System.Windows.Forms.CheckBox();
-            this.fullscreen = new System.Windows.Forms.CheckBox();
-            this.zoom_vl = new System.Windows.Forms.Label();
             this.quality_l = new System.Windows.Forms.Label();
+            this.standard = new System.Windows.Forms.CheckBox();
+            this.zoom_vl = new System.Windows.Forms.Label();
             this.zoom_hl = new System.Windows.Forms.Label();
             this.zoom_v = new FriishProduce.NumericUpDownEx();
             this.zoom_h = new FriishProduce.NumericUpDownEx();
@@ -82,7 +82,7 @@ namespace FriishProduce
             // 
             // controller_box
             // 
-            this.controller_box.Location = new System.Drawing.Point(12, 203);
+            this.controller_box.Location = new System.Drawing.Point(12, 284);
             this.controller_box.Size = new System.Drawing.Size(360, 54);
             // 
             // quality
@@ -219,26 +219,6 @@ namespace FriishProduce
             this.anti_aliasing.Text = "anti_aliasing";
             this.anti_aliasing.UseVisualStyleBackColor = true;
             // 
-            // fullscreen
-            // 
-            this.fullscreen.AutoSize = true;
-            this.fullscreen.Location = new System.Drawing.Point(10, 47);
-            this.fullscreen.Name = "fullscreen";
-            this.fullscreen.Size = new System.Drawing.Size(72, 17);
-            this.fullscreen.TabIndex = 18;
-            this.fullscreen.Tag = "fullscreen";
-            this.fullscreen.Text = "fullscreen";
-            this.fullscreen.UseVisualStyleBackColor = true;
-            // 
-            // zoom_vl
-            // 
-            this.zoom_vl.AutoSize = true;
-            this.zoom_vl.Location = new System.Drawing.Point(280, 47);
-            this.zoom_vl.Name = "zoom_vl";
-            this.zoom_vl.Size = new System.Drawing.Size(13, 13);
-            this.zoom_vl.TabIndex = 44;
-            this.zoom_vl.Text = "V";
-            // 
             // quality_l
             // 
             this.quality_l.AutoSize = true;
@@ -249,10 +229,30 @@ namespace FriishProduce
             this.quality_l.Tag = "quality";
             this.quality_l.Text = "quality";
             // 
+            // standard
+            // 
+            this.standard.AutoSize = true;
+            this.standard.Location = new System.Drawing.Point(10, 47);
+            this.standard.Name = "standard";
+            this.standard.Size = new System.Drawing.Size(69, 17);
+            this.standard.TabIndex = 18;
+            this.standard.Tag = "standard";
+            this.standard.Text = "standard";
+            this.standard.UseVisualStyleBackColor = true;
+            // 
+            // zoom_vl
+            // 
+            this.zoom_vl.AutoSize = true;
+            this.zoom_vl.Location = new System.Drawing.Point(281, 21);
+            this.zoom_vl.Name = "zoom_vl";
+            this.zoom_vl.Size = new System.Drawing.Size(13, 13);
+            this.zoom_vl.TabIndex = 44;
+            this.zoom_vl.Text = "V";
+            // 
             // zoom_hl
             // 
             this.zoom_hl.AutoSize = true;
-            this.zoom_hl.Location = new System.Drawing.Point(201, 47);
+            this.zoom_hl.Location = new System.Drawing.Point(202, 21);
             this.zoom_hl.Name = "zoom_hl";
             this.zoom_hl.Size = new System.Drawing.Size(14, 13);
             this.zoom_hl.TabIndex = 43;
@@ -260,7 +260,7 @@ namespace FriishProduce
             // 
             // zoom_v
             // 
-            this.zoom_v.Location = new System.Drawing.Point(295, 45);
+            this.zoom_v.Location = new System.Drawing.Point(296, 19);
             this.zoom_v.Maximum = new decimal(new int[] {
             600,
             0,
@@ -279,7 +279,7 @@ namespace FriishProduce
             // 
             // zoom_h
             // 
-            this.zoom_h.Location = new System.Drawing.Point(216, 45);
+            this.zoom_h.Location = new System.Drawing.Point(217, 19);
             this.zoom_h.Maximum = new decimal(new int[] {
             600,
             0,
@@ -301,7 +301,7 @@ namespace FriishProduce
             this.controls.Controls.Add(this.midi);
             this.controls.Controls.Add(this.qwerty_keyboard);
             this.controls.Controls.Add(this.mouse);
-            this.controls.Location = new System.Drawing.Point(12, 108);
+            this.controls.Location = new System.Drawing.Point(12, 189);
             this.controls.Name = "controls";
             this.controls.Size = new System.Drawing.Size(360, 89);
             this.controls.TabIndex = 18;
@@ -438,12 +438,12 @@ namespace FriishProduce
             // zoom
             // 
             this.zoom.Controls.Add(this.zoom_list);
-            this.zoom.Controls.Add(this.fullscreen);
+            this.zoom.Controls.Add(this.standard);
             this.zoom.Controls.Add(this.zoom_h);
             this.zoom.Controls.Add(this.zoom_v);
             this.zoom.Controls.Add(this.zoom_hl);
             this.zoom.Controls.Add(this.zoom_vl);
-            this.zoom.Location = new System.Drawing.Point(12, 263);
+            this.zoom.Location = new System.Drawing.Point(12, 108);
             this.zoom.Name = "zoom";
             this.zoom.Size = new System.Drawing.Size(360, 75);
             this.zoom.TabIndex = 45;
@@ -459,7 +459,7 @@ namespace FriishProduce
             "auto"});
             this.zoom_list.Location = new System.Drawing.Point(10, 18);
             this.zoom_list.Name = "zoom_list";
-            this.zoom_list.Size = new System.Drawing.Size(340, 21);
+            this.zoom_list.Size = new System.Drawing.Size(186, 21);
             this.zoom_list.TabIndex = 17;
             this.zoom_list.Tag = "zoom";
             this.zoom_list.SelectedIndexChanged += new System.EventHandler(this.valueChanged);
@@ -522,7 +522,7 @@ namespace FriishProduce
         private System.Windows.Forms.Label persistent_storage_per_movie_l;
         private System.Windows.Forms.ComboBox persistent_storage_per_movie;
         private System.Windows.Forms.Label quality_l;
-        private System.Windows.Forms.CheckBox fullscreen;
+        private System.Windows.Forms.CheckBox standard;
         private System.Windows.Forms.ColorDialog BGColor;
         private System.Windows.Forms.PictureBox background_color_img;
         private GroupBoxEx swf_metadata;

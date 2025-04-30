@@ -456,7 +456,7 @@
 			"zoom0":							"{by_default}",
 			"zoom1":							"{automatic}",
 			"zoom2":							"Custom",
-			"fullscreen":						"Fullscreen"
+			"standard":							"Force 4:3 display"
 		},
 
 		"forwarder": {

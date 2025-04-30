@@ -429,7 +429,7 @@
 			"anti_aliasing":					"Anti-aliasing",
 			"zoom":								"Zoom",
 			"zoom1":							"Valeur personnalisée",
-			"fullscreen":						"Plein écran"
+			"standard":							"Forcer l'affichage 4/3"
 		},
 
 		"forwarder": {

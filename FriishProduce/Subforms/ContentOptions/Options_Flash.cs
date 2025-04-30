@@ -122,7 +122,7 @@ namespace FriishProduce
                 // MIDI is counted separately
                 if (Options.ContainsKey("content_domain")) content_domain.Text = Options["content_domain"];
                 anti_aliasing.Checked = Options["anti_aliasing"] == "on";
-                fullscreen.Checked = Options["fullscreen"] == "yes";
+                standard.Checked = Options["fullscreen"] == "yes";
 
                 // Zoom / Ortho rect
                 // ****************
@@ -200,7 +200,7 @@ namespace FriishProduce
             Options["background_color"] = BGColor.Color.R + BGColor.Color.G + BGColor.Color.B > 0 ? $"{BGColor.Color.R} {BGColor.Color.G} {BGColor.Color.B} 255" : "0 0 0 0";
             Options["anti_aliasing"] = anti_aliasing.Checked ? "on" : "off";
             Options["zoom"] = zoom_h.Enabled && zoom_v.Enabled ? $"{zoom_h.Value}_{zoom_v.Value}" : zoom_list.SelectedIndex == 1 ? "auto" : "default";
-            Options["fullscreen"] = fullscreen.Checked ? "yes" : "no";
+            Options["fullscreen"] = standard.Checked ? "yes" : "no";
 
             base.SaveOptions();
         }

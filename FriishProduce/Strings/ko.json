@@ -446,7 +446,7 @@
 			"anti_aliasing":					"안티에일리어싱",
 			"zoom":								"확대/축소",
 			"zoom1":							"커스텀",
-			"fullscreen":						"전체화면"
+			"standard":							"Force 4:3 display"
 		},
 
 		"forwarder": {

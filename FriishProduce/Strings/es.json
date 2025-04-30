@@ -444,7 +444,7 @@
 			"anti_aliasing":					"Antialias",
 			"zoom":								"Zoom",
 			"zoom1":							"Valor personalizado",
-			"fullscreen":						"Pantalla completa"
+			"standard":							"Forzar a pantalla 4:3"
 		},
 
 		"forwarder": {
