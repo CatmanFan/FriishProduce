@@ -194,8 +194,7 @@ namespace FriishProduce
                 @"\p{IsCJKUnifiedIdeographs}|" +
                 @"\p{IsHangulSyllables}|" +
                 @"\p{IsHiragana}|" +
-                @"\p{IsKatakana}" +
-                @"\p{IsKatakana}" +
+                @"\p{IsKatakana}|" +
                 @"\p{IsCJKCompatibilityForms}").IsMatch(text) ? ScriptType.CJK
                  : Current.StartsWith("ar") || Current.StartsWith("he") || new System.Text.RegularExpressions.Regex(
                 @"\p{IsArabic}|" +

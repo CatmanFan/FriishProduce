@@ -1,6 +1,8 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace FriishProduce
 {
@@ -75,7 +77,93 @@ namespace FriishProduce
             return true;
         }
 
-        public virtual bool CheckZIPValidity(string[] strings, bool searchEndingOnly, bool forceLowercase, string path = null)
+        private Encoding[] _encodings = null;
+        public virtual Encoding[] Encodings
+        {
+            get
+            {
+                if (_encodings == null || _encodings?.Length == 0)
+                {
+                    List<Encoding> encodings = new();
+                    encodings.Add(Encoding.Default);
+                    encodings.Add(Encoding.GetEncoding(932)); // Shift-JIS
+                    encodings.Add(Encoding.GetEncoding(949)); // EUC-KR (1)
+                    encodings.Add(Encoding.GetEncoding(51949)); // EUC-KR (2)
+                    encodings.Add(Encoding.Unicode);
+                    encodings.Add(Encoding.BigEndianUnicode);
+                    encodings.Add(Encoding.UTF8);
+                    encodings.Add(Encoding.UTF7);
+                    encodings.Add(Encoding.UTF32);
+                    encodings.Add(Encoding.ASCII);
+
+                    _encodings = encodings.ToArray();
+                }
+
+                return _encodings;
+            }
+        }
+
+        public string ConvertToEncoded(string input)
+        {
+            var encodings = GetEncodedNames(input);
+            foreach (var encoding in encodings)
+            {
+                if (Program.Lang.GetScript(encoding) == Language.ScriptType.CJK)
+                {
+                    return encoding;
+                }
+            }
+
+            return input;
+        }
+
+        public string[] GetEncodedNames(string input)
+        {
+            List<string> encodings = new();
+            foreach (var encoding in Encodings)
+            {
+                try { encodings.Add(encoding.GetString(Encoding.Default.GetBytes(input))); }
+                catch { }
+            }
+
+            return encodings.ToArray();
+        }
+
+        public virtual ZipEntry GetZIPEntry(string line, bool searchEndingOnly, bool inclusive, bool caseInsensitive, ZipFile zip = null)
+        {
+            if (zip == null) zip = ZIP;
+
+            foreach (ZipEntry item in zip)
+                if (item.IsFile)
+                {
+                    int index = 0;
+
+                    NameCheck:
+                    try
+                    {
+                        string origName = caseInsensitive ? item.Name.ToLower() : item.Name;
+
+                        byte[] nameBytes = index == 1 ? Encoding.GetEncoding(1252).GetBytes(origName) : Encoding.Convert(Encoding.Default, Encodings[index], Encoding.Default.GetBytes(origName));
+                        string name = Encodings[index].GetString(nameBytes);
+
+                        if ((searchEndingOnly &&
+                            (name.EndsWith(line) || Path.GetFileNameWithoutExtension(name).EndsWith(line)))
+                         || (!searchEndingOnly &&
+                            ((inclusive && name.Contains(line)) || (!inclusive && name == line))))
+                            return item;
+                    }
+                    catch
+                    {
+                        if (index + 1 < Encodings.Length) index++;
+                        else return null;
+                        goto NameCheck;
+                    }
+                }
+
+            return null;
+        }
+
+        public virtual bool CheckZIPValidity(string[] strings, bool searchEndingOnly, bool caseInsensitive, string path = null)
         {
             if (path == null && FilePath != null) path = FilePath;
             if (!File.Exists(path)) return true;
@@ -84,15 +172,9 @@ namespace FriishProduce
             {
                 int applicable = 0;
 
-                foreach (ZipEntry item in ZIP)
-                    foreach (string line in strings)
-                        if (item.IsFile)
-                        {
-                            string name = forceLowercase ? item.Name.ToLower() : item.Name;
-                            if ((searchEndingOnly && (name.EndsWith(line) || Path.GetFileNameWithoutExtension(name).EndsWith(line)))
-                                || (!searchEndingOnly && name.Contains(line)))
-                                applicable++;
-                        }
+                foreach (string line in strings)
+                    if (GetZIPEntry(line, searchEndingOnly, true, caseInsensitive) != null)
+                        applicable++;
 
                 return applicable >= strings.Length;
             }

@@ -81,21 +81,31 @@ namespace FriishProduce
             {
                 WAD = new WAD();
 
-                if (File.Exists(path))
+                if (!string.IsNullOrWhiteSpace(path))
                 {
-                    Logger.Log($"Loading WAD file with title ID {tid}.");
-                    WAD = WAD.Load(path);
+                    if (File.Exists(path))
+                    {
+                        Logger.Log($"Loading WAD file with title ID {tid}.");
+                        WAD = WAD.Load(path);
+                    }
+
+                    else if (path.ToLower().StartsWith("http"))
+                    {
+                        Logger.Log($"Downloading WAD with title ID {tid}.");
+                        _progress.max += 1.0;
+
+                        WAD = WAD.Load(Web.Get(path));
+
+                        _updateProgress();
+                    }
                 }
 
-                else if (path.ToLower().StartsWith("http"))
+                else
                 {
-                    Logger.Log($"Downloading WAD with title ID {tid}.");
-                    _progress.max += 1.0;
-
-                    WAD = WAD.Load(Web.Get(path));
-
-                    _updateProgress();
+                    Logger.Log($"Loading blank WAD.");
+                    WAD = WAD.Load(Properties.Resources.StaticBase);
                 }
+
 
                 // Title ID check
                 // ****************

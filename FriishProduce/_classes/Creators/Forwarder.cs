@@ -1,4 +1,5 @@
-﻿using libWiiSharp;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using libWiiSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -80,10 +81,12 @@ namespace FriishProduce
             Directory.CreateDirectory(ROMFolder);
             File.WriteAllBytes(PackageFolder + "boot.dol", List[EmulatorIndex].File);
 
-            // If RPG Maker game, copy all files within the ROM folder (RTP not included as part of this, yet)
+            // If RPG Maker game, copy all files within the ROM folder
             // *******
             if (EmulatorIndex == 13)
             {
+                // Copy RTP first, if found
+                // *******
                 if (RTP.IsValid(Settings["rtp_folder"]))
                 {
                     foreach (var folder in Directory.EnumerateDirectories(Settings["rtp_folder"], "*.*", SearchOption.AllDirectories))
@@ -98,18 +101,75 @@ namespace FriishProduce
                         }
                     }
                 }
-                    
-                string origPath = Path.GetDirectoryName(ROM);
-                foreach (var folder in Directory.EnumerateDirectories(origPath, "*.*", SearchOption.AllDirectories))
+
+                bool isZip = true;
+                ZipFile gameZip = null;
+                try { gameZip = new(ROM); } catch { isZip = false; }
+
+                // Copy files from ROM folder, using .ldb file as reference
+                // *******
+                if (!isZip)
                 {
-                    string target = Path.Combine(ROMFolder, folder.Replace(origPath, "").TrimStart('\\'));
-                    if (!Directory.Exists(target)) Directory.CreateDirectory(target);
+                    string origPath = Path.GetDirectoryName(ROM);
+                    foreach (var folder in Directory.EnumerateDirectories(origPath, "*.*", SearchOption.AllDirectories))
+                    {
+                        string target = Path.Combine(ROMFolder, folder.Replace(origPath, "").TrimStart('\\'));
+                        if (!Directory.Exists(target)) Directory.CreateDirectory(target);
+                    }
+
+                    foreach (var file in Directory.EnumerateFiles(origPath, "*.*", SearchOption.AllDirectories))
+                    {
+                        string rawFile = file.Replace(origPath, "");
+                        if (!Path.GetExtension(file).ToLower().EndsWith("exe")) File.Copy(file, ROMFolder + rawFile.TrimStart('\\'), true);
+                    }
                 }
 
-                foreach (var file in Directory.EnumerateFiles(origPath, "*.*", SearchOption.AllDirectories))
+                // Extract from ZIP, using .ldb file as starting point
+                // *******
+                else
                 {
-                    string rawFile = file.Replace(origPath, "");
-                    if (!Path.GetExtension(file).ToLower().EndsWith("exe")) File.Copy(file, ROMFolder + rawFile.TrimStart('\\'), true);
+                    var rpgm = new RPGM();
+                    var ldb = rpgm.GetZIPEntry("ldb", true, true, true, gameZip);
+
+                    string directory = rpgm.ConvertToEncoded(ldb.Name);
+                    directory = directory.Remove(directory.Length - "RPG_RT.ldb".Length);
+
+                    // Create directories
+                    // *******
+                    foreach (ZipEntry entry in gameZip)
+                    {
+                        if (entry.IsDirectory && rpgm.ConvertToEncoded(entry.Name).Contains(directory))
+                        {
+                            string directoryName = rpgm.ConvertToEncoded(entry.Name);
+
+                            directoryName = directoryName.Replace(directory, null);
+                            if (directoryName.Length == directory.Length) directoryName = directoryName.Substring(directory.Length);
+
+                            string target = Path.Combine(ROMFolder, directoryName.TrimStart('\\'));
+                            if (!Directory.Exists(target)) Directory.CreateDirectory(target);
+                        }
+                    }
+
+                    // Extract files
+                    // *******
+                    foreach (ZipEntry entry in gameZip)
+                    {
+                        if (entry.IsFile && rpgm.ConvertToEncoded(entry.Name).Contains(directory))
+                        {
+                            string fileName = rpgm.ConvertToEncoded(entry.Name);
+
+                            fileName = fileName.Replace(directory, null);
+                            if (fileName.Length == directory.Length) fileName = fileName.Substring(directory.Length);
+
+                            using (MemoryStream ms = new())
+                            {
+                                gameZip.GetInputStream(entry).CopyTo(ms);
+                                File.WriteAllBytes(Path.Combine(ROMFolder, fileName.TrimStart('\\')), ms.ToArray());
+                            }
+                        }
+                    }
+
+                    rpgm.Dispose();
                 }
             }
 

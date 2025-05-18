@@ -815,7 +815,7 @@ namespace FriishProduce
                     break;
 
                 case Platform.RPGM:
-                    browseROM.Filter = Program.Lang.String("filter.rpgm");
+                    browseROM.Filter = Program.Lang.String("filter.rpgm") + "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
                     break;
             }
         }
@@ -1583,35 +1583,22 @@ namespace FriishProduce
                         return;
                     }
                     else IsEmpty = false;
-                    break;
 
-                // ZIP format
-                // ****************
-                case Platform.NEO:
-                    if (!rom.CheckZIPValidity(new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true, ROMpath))
+                    if (targetPlatform == Platform.RPGM)
                     {
-                        MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
-                        return;
+                        if ((rom as RPGM).GetTitle(ROMpath) != null)
+                        {
+                            banner_form.title.Text = (rom as RPGM).GetTitle(ROMpath);
+                            if (_bannerTitle.Length <= channel_name.MaxLength) channel_name.Text = banner_form.title.Text;
+                            resetImages(true);
+                        }
                     }
-                    else IsEmpty = false;
                     break;
 
                 // Disc format
                 // ****************
                 case Platform.PSX:
                     IsEmpty = false;
-                    break;
-
-                // RPG Maker format
-                // ****************
-                case Platform.RPGM:
-                    IsEmpty = false;
-                    if ((rom as RPGM).GetTitle(ROMpath) != null)
-                    {
-                        banner_form.title.Text = (rom as RPGM).GetTitle(ROMpath);
-                        if (_bannerTitle.Length <= channel_name.MaxLength) channel_name.Text = banner_form.title.Text;
-                        resetImages(true);
-                    }
                     break;
 
                 // Flash SWF format

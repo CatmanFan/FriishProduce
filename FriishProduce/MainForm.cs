@@ -779,6 +779,23 @@ namespace FriishProduce
                                 addTab(Platform.PSX, null, file);
                                 break;
 
+                            case ".zip":
+                                ROM rom = new RPGM();
+                                if (new RPGM().CheckValidity(file)) addTab(Platform.RPGM, null, file);
+
+                                else
+                                {
+                                    rom = new ROM_NEO();
+                                    if (new ROM_NEO().CheckValidity(file)) addTab(Platform.NEO, null, file);
+
+                                    else
+                                    {
+                                        rom.Dispose();
+                                        System.Media.SystemSounds.Beep.Play();
+                                    }
+                                }
+                                break;
+
                             case ".fppj":
                                 OpenProject(new string[] { file });
                                 break;
