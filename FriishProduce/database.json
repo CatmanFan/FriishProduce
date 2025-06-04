@@ -199,7 +199,6 @@
             "wad_titles": ["Hoshi no Kirby Super Deluxe", "Kirby Super Star", "Kirby's Fun Pak"]
         },
 
-
         {
             "id": "00010001-4a4157__",
             "region": [0, 1],
@@ -213,6 +212,14 @@
             "region": [0, 1, 3, 7],
             "emu_ver": [0],
             "titles": ["スーパーメトロイド", "Super Metroid", "Super Metroid", "슈퍼 메트로이드"]
+        },
+
+        {
+            "id": "00010001-4a4449__",
+            "region": [1, 3],
+            "emu_ver": [2],
+            "titles": ["スーパースター・ウォーズ", "Super Star Wars"],
+            "wad_titles": ["Super Star Wars"]
         },
 
         {
