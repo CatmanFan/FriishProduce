@@ -133,7 +133,7 @@
 			"e_018":							"{0} 저장할 수 없습니다.",
 			"e_019":							"업데이트를 다운로드할 수 없습니다.",
 			"e_020":							"수정 가능한 WAD 비디오 모드를 찾을 수 없습니다.\n{continue}",
-			"e_021":							"Unable to download file."
+			"e_021":							"파일을 다운로드할 수 없습니다."
 		},
 
 		"html": {
@@ -446,7 +446,7 @@
 			"anti_aliasing":					"안티에일리어싱",
 			"zoom":								"확대/축소",
 			"zoom1":							"커스텀",
-			"standard":							"Force 4:3 display"
+			"standard":							"강제 4:3 디스플레이"
 		},
 
 		"forwarder": {
