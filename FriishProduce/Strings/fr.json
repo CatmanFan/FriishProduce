@@ -110,6 +110,7 @@
 			"b_002":							"Test de connexion en cours ...",
 			"b_003":							"Vérification de la base de données {0} en cours ...",
 			"b_004":							"Mise à jour en cours ...",
+			"b_005":							"Téléchargement en cours ...",
 
 			"error":							"Oups, un problème est survenu !",
 			"e_000":							"Échec de connexion à Internet.\n{0}",
@@ -121,7 +122,7 @@
 			"e_006":							"L'application requise ({0}) n'est pas disponible dans le sous-répertoire «resources\\tools».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.",
 			"e_007":							"Échec de création du fichier WAD ou ZIP.",
 			"e_008":							"Échec d'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.",
-			"e_009":							"Le fichier WAD ne peut pas être téléchargé.",
+			"e_009":							"Échec du chargement du fichier WAD. Ce fichier peut être invalide ou corrompu, ou il n'a pas été téléchargé correctement.",
 			"e_010":							"Échec du remplacement du mode d'emploi interne.\n{continue}",
 			"e_011":							"Le fichier «{0}» n'a pas été trouvé dans son chemin prévu. Il peut avoir été déplacé ou supprimé.",
 			"e_012":							"Le dossier «{0}» n'a pas été trouvé dans son chemin prévu. Il peut avoir été déplacé ou supprimé.",
@@ -282,8 +283,7 @@
 			"title_id":							"Title ID :",
 			"region":							"Région cible :",
 			"video_mode":						"Mode vidéo :",
-			"banner":							"Banner de la chaîne",
-			"banner_tip":						"Cliquez sur l'aperçu en haut pour accéder aux options de personnalisation du banner.",
+			"banner":							"Personnalisation du banner",
 			"banner_details":					"&Détails du banner ...",
 
 			"injection_method":					"Méthode d'injection",

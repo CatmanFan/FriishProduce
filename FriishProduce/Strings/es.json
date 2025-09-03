@@ -110,6 +110,7 @@
 			"b_002":							"Probando la conexión a Internet...",
 			"b_003":							"Verificando la base de datos de {0}...",
 			"b_004":							"Actualización en curso...",
+			"b_005":							"Descargando...",
 			
 			"error":							"Se ha producido un error",
 			"e_000":							"No se pudo conectar a Internet.\n{0}",
@@ -121,7 +122,7 @@
 			"e_006":							"La aplicación necesaria ({0}) no se encontró en el subdirectorio \"resources\\tools\".",
 			"e_007":							"No se pudo exportar en formato WAD o ZIP.",
 			"e_008":							"No se pudo aplicar el parche, ya sea porque la ROM de destino y el parche no coinciden o porque el checksum de la ROM no es válida.",
-			"e_009":							"No se pudo descargar el canal WAD.",
+			"e_009":							"No se pudo cargar el archivo WAD. Es posible que no sea válido, esté dañado o no se haya descargado correctamente.",
 			"e_010":							"No se pudo modificar el manual electrónico del canal.\n{continue}",
 			"e_011":							"El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido.",
 			"e_012":							"La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida.",
@@ -293,8 +294,7 @@
 			"title_id":							"Title ID:",
 			"region":							"Región del canal:",
 			"video_mode":						"Modo de vídeo:",
-			"banner":							"Banner del canal",
-			"banner_tip":						"Haz clic en la vista previa de arriba para acceder a las opciones de personalización del banner.",
+			"banner":							"Opciones del banner",
 			"banner_details":					"&Detalles del banner...",
 
 			"injection_method":					"Método de inyección",

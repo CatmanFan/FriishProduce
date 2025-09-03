@@ -110,6 +110,7 @@
 			"b_002":							"Testing Internet connection...",
 			"b_003":							"Verifying {0} database...",
 			"b_004":							"Updating...",
+			"b_005":							"Downloading...",
 			"b_x":								"Press Shift to cancel the current process.",
 
 			"error":							"An error has occurred",
@@ -122,7 +123,7 @@
 			"e_006":							"The application needed ({0}) was not found in the resources\\tools subdirectory.",
 			"e_007":							"Failed to create WAD or ZIP.",
 			"e_008":							"Failed to apply patch. Either the patch file and target ROM do not match, or the ROM's checksum is invalid.",
-			"e_009":							"Unable to download WAD.",
+			"e_009":							"Unable to load WAD contents. This WAD may be invalid or incorrectly downloaded.",
 			"e_010":							"Failed to replace internal Virtual Console manual.\n{continue}",
 			"e_011":							"The file \"{0}\" could not be found in its original path. It may have been deleted or moved.",
 			"e_012":							"The folder \"{0}\" could not be found in its original path. It may have been deleted or moved.",
@@ -299,8 +300,7 @@
 			"title_id":							"Title ID:",
 			"region":							"Channel region:",
 			"video_mode":						"Video mode:",
-			"banner":							"Channel banner",
-			"banner_tip":						"Click the above preview image to access banner customization options.",
+			"banner":							"Banner options",
 			"banner_details":					"Banner &details...",
 
 			"injection_method":					"Injection method",

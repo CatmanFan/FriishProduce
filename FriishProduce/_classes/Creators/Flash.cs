@@ -707,8 +707,18 @@ namespace FriishProduce.Injectors
                             // **********************************************
                             else if (Settings["zoom"].Contains("auto"))
                             {
+                                double scaleFactor = Math.Min(swfSize.Width / frameSize.Width, swfSize.Height / frameSize.Height);
+                                (double Width, double Height) = (swfSize.Width * scaleFactor, swfSize.Height * scaleFactor);
+
+                                // Round and convert to integer
+                                double padding = 5.0;
+                                int h = Convert.ToInt32(Math.Round(Width + padding) / 2);
+                                int v = Convert.ToInt32(Math.Round(Height + padding) / 2);
+
+                                txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
+                                modified = true;
                                 // Do calculation
-                                (double Width, double Height) = (frameSize.Width, frameSize.Height);
+                                /*(double Width, double Height) = (frameSize.Width, frameSize.Height);
                                 if (swfSize.Width > swfSize.Height)
                                 {
                                     Width *= swfSize.Width / frameSize.Width;
@@ -726,7 +736,7 @@ namespace FriishProduce.Injectors
                                 int v = Convert.ToInt32(Math.Round(Height + padding) / 2);
 
                                 txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
-                                modified = true;
+                                modified = true;*/
                             }
 
                             // Default adjustment

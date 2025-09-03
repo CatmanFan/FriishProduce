@@ -92,11 +92,7 @@ namespace FriishProduce
                     else if (path.ToLower().StartsWith("http"))
                     {
                         Logger.Log($"Downloading WAD with title ID {tid}.");
-                        _progress.max += 1.0;
-
                         WAD = WAD.Load(Web.Get(path));
-
-                        _updateProgress();
                     }
                 }
 
@@ -116,6 +112,8 @@ namespace FriishProduce
                 // ****************
                 if (WAD == null || WAD?.NumOfContents <= 1)
                     throw new Exception(Program.Lang.Msg(9, 1));
+                try { var banner = WAD.BannerApp.Data; }
+                catch (NullReferenceException) { throw new Exception(Program.Lang.Msg(9, 1)); }
 
                 Logger.Log($"WAD loaded.");
             }

@@ -1786,18 +1786,19 @@ namespace FriishProduce
 
                 Program.MainForm.Wait(false, false, false);
                 if (!localFile) Web.InternetTest();
-                Program.MainForm.Wait(true, true, true, 0, 1);
 
                 // Get WAD data
                 // *******
                 if (localFile) m.GetWAD(inWadFile, baseID.Text);
                 else
                 {
+                    Program.MainForm.Wait(true, true, false, 0, 5);
                     var entry = channels.Entries.Where(x => x.GetUpperIDs().Contains(baseID.Text)).ToArray()[0];
                     var index = Array.IndexOf(entry.GetUpperIDs(), baseID.Text);
                     m.GetWAD(entry.GetWAD(index), entry.GetUpperID(index));
+                    Program.MainForm.Wait(false, false, false);
                 }
-                backgroundWorker.ReportProgress(m.Progress);
+                Program.MainForm.Wait(true, true, true, 0, 1);
 
                 try
                 {
