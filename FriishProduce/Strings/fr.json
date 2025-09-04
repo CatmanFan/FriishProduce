@@ -191,7 +191,7 @@
 
 			"import_game_file":					"&Ouvrir un fichier {0} ...",
 			"game_scan":						"&Charger les informations dès de la bibliothèque des jeux",
-			"export":							"&Exporter ...",
+			"export":							"Créer une &WAD ...",
 			
 			"extract_from_wad":					"&Extraire d'une chaîne Wii...",
 			"extract_wad_banner":				"&Banner d'aperçu",

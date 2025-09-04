@@ -201,7 +201,7 @@
 			
 			"import_game_file":					"{0} 가져오기...(&G)",
 			"game_scan":						"온라인으로 게임 데이터 검색(&S)",
-			"export":							"내보내기...(&E)",
+			"export":							"Make &WAD...",
 			
 			"extract_from_wad":					"WAD에서 압축해제...(&E)",
 			"extract_wad_banner":				"채널 배너(&B)",

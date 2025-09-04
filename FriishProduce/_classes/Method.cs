@@ -92,7 +92,7 @@ namespace FriishProduce
                     else if (path.ToLower().StartsWith("http"))
                     {
                         Logger.Log($"Downloading WAD with title ID {tid}.");
-                        WAD = WAD.Load(Web.Get(path));
+                        WAD = WAD.Load(Web.Get(path, 200, true));
                     }
                 }
 

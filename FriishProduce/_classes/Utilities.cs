@@ -330,32 +330,49 @@ namespace FriishProduce
             }
         }
 
-        public static byte[] Get(string URL, int timeout = 200)
+        private static void _downloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            Program.MainForm.Wait(true, false, true, e.ProgressPercentage, 5);
+        }
+
+        public static byte[] Get(string URL, int timeout = 200, bool showProgress = false)
         {
             Start:
+            byte[] output = null;
             bool invalid = false;
             Logger.Log("Downloading from URL: " + URL);
 
             // Actual web connection is done here
             // ****************
-            using (MemoryStream ms = new())
             using (WebClient x = new())
             {
+                if (showProgress && Program.GUI)
+                {
+                    Program.MainForm.Wait(true, true, true, 0, 5);
+                    x.DownloadProgressChanged += _downloadProgressChanged;
+                }
+
                 try
                 {
-                    if (Task.WaitAny
-                    (new Task[]{Task.Run(() => { try { x.OpenRead(URL).CopyTo(ms); return ms; } catch { return null; } }
-                    )}, timeout * 1000) == -1)
+                    var task = new Task<byte[]>[] { x.DownloadDataTaskAsync(URL) };
+                    if (Task.WaitAny(task, timeout * 1000) == -1)
                         throw new TimeoutException();
 
-                    if (ms.ToArray().Length == 0) invalid = true;
-                    else if (ms.ToArray().Length > 50) return ms.ToArray();
+                    if (showProgress && Program.GUI)
+                        Program.MainForm.Wait(false, false, false);
+                    
+                    output = task[0].Result;
+                    if (output?.Length == 0) invalid = true;
+                    else if (output?.Length > 50) return output;
 
                     throw new WebException();
                 }
 
                 catch (Exception ex)
                 {
+                    if (showProgress && Program.GUI)
+                        Program.MainForm.Wait(false, false, false);
+
                     // Go back to beginning and set compatibility mode to true in event of SSL/TLS secure channel failure (Windows 7)
                     // ****************
                     if (!CompatibilityMode && ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.SecureChannelFailure)

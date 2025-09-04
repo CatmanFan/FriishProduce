@@ -138,7 +138,7 @@
 			"close_all": "すべてのプロジェクトを閉じる(&N)",
 			"import_game_file": "{0}を取り込む...(&G)",
 			"game_scan": "ゲーム情報を読み出す(&S)",
-			"export": "エクスポート...(&E)",
+			"export": "WADを作る...(&W)",
 			"extract_from_wad": "WADから抽出...(&E)",
 			"extract_wad_banner": "チャンネルのバナー(&B)",
 			"extract_wad_icon": "チャンネルのアイコン(&I)",

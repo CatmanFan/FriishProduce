@@ -106,7 +106,7 @@
 			"015":								"Configuration has been reset.\nPlease configure your settings again.",
 
 			"b_000":							"Please wait...",
-			"b_001":							"Exporting...",
+			"b_001":							"Packing...",
 			"b_002":							"Testing Internet connection...",
 			"b_003":							"Verifying {0} database...",
 			"b_004":							"Updating...",
@@ -206,7 +206,7 @@
 
 			"import_game_file":					"&Import {0}...",
 			"game_scan":						"&Fill in game data",
-			"export":							"&Export...",
+			"export":							"Make &WAD...",
 			
 			"extract_from_wad":					"&Extract from WAD...",
 			"extract_wad_banner":				"Channel &banner",

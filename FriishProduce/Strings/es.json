@@ -200,7 +200,7 @@
 
 			"import_game_file":					"&Abrir un archivo de juego...",
 			"game_scan":						"&Obtener datos del juego de la base de datos en línea",
-			"export":							"&Exportar...",
+			"export":							"Crear un &WAD...",
 			
 			"extract_from_wad":					"&Extraer de un WAD...",
 			"extract_wad_banner":				"&Banner del canal",

@@ -1792,7 +1792,6 @@ namespace FriishProduce
                 if (localFile) m.GetWAD(inWadFile, baseID.Text);
                 else
                 {
-                    Program.MainForm.Wait(true, true, false, 0, 5);
                     var entry = channels.Entries.Where(x => x.GetUpperIDs().Contains(baseID.Text)).ToArray()[0];
                     var index = Array.IndexOf(entry.GetUpperIDs(), baseID.Text);
                     m.GetWAD(entry.GetWAD(index), entry.GetUpperID(index));
@@ -1859,10 +1858,28 @@ namespace FriishProduce
                         }
                     }
 
+                    else if (!localFile && ex.InnerException.Message == "TPL Header: Invalid Magic!")
+                    {
+                        if (wad_tries == 0)
+                        {
+                            wad_tries++;
+                            Logger.Log("Received \"TPL Header: Invalid Magic!\" error, download may have failed. Attempting to download WAD a second time.");
+                            goto Start;
+                        }
+
+                        else
+                        {
+                            Logger.Log("WAD is invalid or failed to load more than once. Process halted.");
+                            throw ex;
+                        }
+                    }
+
                     else
                     {
                         Logger.Log("Exportation failed. Process halted.");
                         Logger.Log($"Message: {ex.Message}");
+                        if (ex.InnerException != null) Logger.Log($"Inner Exception: {ex.InnerException.Message}");
+                        Logger.Log($"Stack Trace:\n{ex.StackTrace}");
                         throw ex;
                     }
                 }
