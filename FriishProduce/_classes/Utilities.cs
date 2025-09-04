@@ -358,9 +358,8 @@ namespace FriishProduce
                     if (Task.WaitAny(task, timeout * 1000) == -1)
                         throw new TimeoutException();
 
-                    if (showProgress && Program.GUI)
-                        Program.MainForm.Wait(false, false, false);
-                    
+                    Program.MainForm.Wait(true, false, true, 100, 5);
+
                     output = task[0].Result;
                     if (output?.Length == 0) invalid = true;
                     else if (output?.Length > 50) return output;

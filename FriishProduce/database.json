@@ -1,70 +1,70 @@
-﻿{
+﻿﻿{
+    // =========================================
     // HOW TO ADD BASES
-        // "id"           - The full ID of the channel in hex, except the last two characters (replace with '__' two underscores). This is the region component for the title ID and will be determined automatically by the app.
+    // DOCUMENTATION ON EACH VALUE
+    // =========================================
+    //
+    // "id"         | The full ID of the channel in hex, except the last two characters (replace with '__' two underscores). This is the region component for the title ID and will be determined automatically by the app.
+    //              | =========================================
+    //              | EXAMPLE: "00010001-464357__" (FCW_)
 
-        // Example: "00010001-464357__" (FCW_)
-        // _____________________________________________
-        
-        // "region"       - The regions for which the channel is available, in an array, listed by number.
+    // "region"     | The regions for which the channel is available, in an array, listed by number.
+    //              | =========================================
+    //              | Available regions:                       Final letter in TitleID
+    //              | "0": Japan                               J
+    //              | "1": USA                                 E
+    //              | "2": USA (Japanese import)               N
+    //              | "3": Europe                              P
+    //              | "4": Europe (Japanese import/PAL60)      L
+    //              | "5": Europe (American import/PAL60)      M
+    //              | "6": Korea (Japanese language)           Q
+    //              | "7": Korea (English language)            T
 
-        // Available regions:                       Final letter in TitleID
-        // "0": Japan                               J
-        // "1": USA                                 E
-        // "2": USA (Japanese import)               N
-        // "3": Europe                              P
-        // "4": Europe (Japanese import/PAL60)      L
-        // "5": Europe (American import/PAL60)      M
-        // "6": Korea (Japanese language)           Q
-        // "7": Korea (English language)            T
-        // _____________________________________________
+    // "emu_ver"    | The emulator version(s) corresponding to the WAD for each region, in an array.
+    //              | 1. This can be omitted if it isn't used by the emulator.
+    //              | 2. MUST be an integer only!
+    //              | =========================================
+    //              | Emulator version entries:
+    //              | NES & SNES:
+    //              | "0": Original
+    //              | "1": LZ77 ROM
+    //              | "2": LZH8 ROM
+    //              |
+    //              | N64:
+    //              | "0": Rev 1
+    //              | "1": Rev 1 (alternative savedata format)
+    //              | "2": Rev 2 (legacy configuration removed)
+    //              | "3": Rev 3 (ROMC)
+    //              |
+    //              | SMS & SMD:
+    //              | "1": Rev 1 (has regional banner_XX.wte files for savedata)
+    //              | "2": Rev 2 (may use 'patch' file, more settings)
+    //              | "3": Rev 3 (includes modules and controller config)
 
-        // "emu_ver"      - The emulator version(s) corresponding to the WAD for each region, in an array.
-            // - This can be omitted if it isn't used by the emulator.
-            // - MUST be an integer only!
+    // "titles"     | The regional software titles for the channel displayed in the UI, by order of regions listed.
+    //              | 1. The European title, if included, can be a duplicate English entry or the regionalised version of the game's title.
+    //              | 2. If the game has a Korean VC WAD released, the European title MUST be included so that the database can handle the array correctly.
+    //              |    Otherwise, if the game uses only a Japanese and universal English title pair or just the English one, there is no need for an additional European title entry.
+    //              | =========================================
+    //              | EXAMPLES:
+    //              | ["ゼルダの伝説", "The Legend of Zelda"]                                                           Universal English title
+    //              | ["スターフォックス６４", "Star Fox 64", "Lylat Wars"]                                              Separate American and European titles
+    //              | ["スーパードンキーコング２", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"]   w/ Korean version
 
-        // Emulator version entries:
-        // NES & SNES:
-            // "0": Original
-            // "1": LZ77 ROM
-            // "2": LZH8 ROM
-        // N64:
-            // "0": Rev 1
-            // "1": Rev 1 (alternative savedata format)
-            // "2": Rev 2 (legacy configuration removed)
-            // "3": Rev 3 (ROMC)
-        // SMS & SMD:
-            // "1": Rev 1 (has regional banner_XX.wte files for savedata)
-            // "2": Rev 2 (may use 'patch' file, more settings)
-            // "3": Rev 3 (includes modules and controller config)
-        // _____________________________________________
-
-        // "titles"       - The regional software titles for the channel displayed in the UI, by order of regions listed.
-            // - The European title, if included, can be a duplicate English entry or the regionalised version of the game's title.
-            // - If the game has a Korean VC WAD released, the European title MUST be included so that the database can handle the array correctly.
-            //   Otherwise, if the game uses only a Japanese and universal English title pair or just the English one, there is no need for an additional European title entry.
-
-        // Examples:
-            // ["ゼルダの伝説", "The Legend of Zelda"]                                                           Universal English title
-            // ["スターフォックス６４", "Star Fox 64", "Lylat Wars"]                                              Separate American and European titles
-            // ["スーパードンキーコング２", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"]   w/ Korean version
-        // _____________________________________________
-
-        // "wad_titles"     The name of the game in the MarioCube database.
-            // - If all available region names match one of the "titles" parameters, as shown below in the examples, do not add this on your own. The software will automatically do it itself.
-            //   This is only meant as an interim solution until an equivalent to WiiUDownloader (w/ built-in decryptor) can be released for (v)Wii!
-
-        // Examples:
-            // ["Super Mario Bros. 3"]                                                                          Univeral title
-            //                                                                                                  (only one MarioCube name, this can be left out since there is also a "titles" using the same text)
-
-            // ["Hoshi no Kirby - Yume no Izumi no Monogatari", "Kirby's Adventure"]                            Japanese and Western titles
-            //                                                                                                  (only the Japanese WAD version will use the first entry, the rest will do the second one)
-
-            // ["Sonic 3D Blast", "Sonic 3D Blast", "Sonic 3D - Flickies' Island"]                              Separate Japanese, American and European titles
-
-            // ["Star Fox 64", "Star Fox 64", "Lylat Wars", "Star Fox 64"]                                      Separate Japanese, American, European and Korean titles
-            //                                                                                                  (absolutely required to input J/U/E/K name entries in order, because the app will not be able to differentiate otherwise)
-        // _____________________________________________
+    // "wad_titles" | The name of the game in the MarioCube database.
+    //              | 1. If all available region names match one of the "titles" parameters, as shown below in the examples, do not add this on your own. The software will automatically do it itself.
+    //              | 2. This is only meant as an interim solution until an equivalent to WiiUDownloader (w/ built-in decryptor) can be released for (v)Wii!
+    //              | =========================================
+    //              | EXAMPLES:
+    //              | ["Super Mario Bros. 3"]                                                                          Univeral title
+    //              |                                                                                                  (only one MarioCube name, this can be left out since there is also a "titles" using the same text)
+    //              | ["Hoshi no Kirby - Yume no Izumi no Monogatari", "Kirby's Adventure"]                            Japanese and Western titles
+    //              |                                                                                                  (only the Japanese WAD version will use the first entry, the rest will do the second one)
+    //              | ["Sonic 3D Blast", "Sonic 3D Blast", "Sonic 3D - Flickies' Island"]                              Separate Japanese, American and European titles
+    //              | ["Star Fox 64", "Star Fox 64", "Lylat Wars", "Star Fox 64"]                                      Separate Japanese, American, European and Korean titles
+    //              |                                                                                                  (absolutely required to input J/U/E/K name entries in order, because the app will not be able to differentiate otherwise)
+    
+    // ENTRIES SHOULD BE LISTED BY ALPHABETICAL ORDER OF THEIR TITLE ID!!!
 
     "nes": [
         {
@@ -143,6 +143,14 @@
         },
 		
         {
+            "id": "00010001-46425a__",
+            "region": [0, 1, 3],
+            "emu_ver": [1],
+            "titles": ["メトロイド", "Metroid"],
+            "wad_titles": ["Metroid"]
+        },
+		
+        {
             "id": "00010001-46444e__",
             "region": [0, 1, 3],
             "emu_ver": [1],
@@ -163,6 +171,14 @@
             "region": [1, 5],
             "emu_ver": [1],
             "titles": ["Shadow of the Ninja"]
+        },
+		
+        {
+            "id": "00010001-464139__",
+            "region": [0, 1, 3],
+            "emu_ver": [1],
+            "titles": ["リンクの冒険", "Zelda II: The Adventure of Link"],
+            "titles": ["Zelda no Densetsu 2 - Link no Bouken", "Zelda II: The Adventure of Link"]
         },
 		
         {
@@ -409,6 +425,21 @@
             "emu_ver": [3],
             "titles": ["ゼルダの伝説 ムジュラの仮面", "The Legend of Zelda: Majora's Mask"],
             "wad_titles": ["Zelda no Densetsu - Mujura no Kamen", "Legend of Zelda, The - Majora's Mask"]
+        },
+		
+        {
+            "id": "00010001-4e4153__",
+            "region": [1, 3],
+            "emu_ver": [1, 1],
+            "titles": ["Cruis'n USA"]
+        },
+		
+        {
+            "id": "00010001-4e4154__",
+            "region": [0, 1, 3],
+            "emu_ver": [3],
+            "titles": ["マリオテニス64", "Mario Tennis"],
+            "wad_titles": ["Mario Tennis 64", "Mario Tennis"],
         },
         
         {
