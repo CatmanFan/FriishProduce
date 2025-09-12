@@ -178,22 +178,23 @@ namespace FriishProduce
                 // ------------------------------------------------
                 // Direct link is not included, for obvious reasons!
                 // ****************
+                string repo = "https://repo.mariocube.com/WADs/";
+                string repoMain = repo + "_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/";
                 string folder = int.TryParse(name[0].ToString(), out int result) ? "0-9" : name[0].ToString().ToUpper();
-                string URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + folder + "/" + Uri.EscapeDataString(name + " (Virtual Console)") + ".wad";
+                string URL = repoMain + folder + "/" + Uri.EscapeDataString(name + " (Virtual Console)") + ".wad";
+
                 if (GetUpperID(index).StartsWith("WNA")) // Flash Placeholder
                 {
-                    URL = "https://repo.mariocube.com/WADs/Flash%20Injects/Base/" + Uri.EscapeDataString(name) + ".wad";
-                    tID = "WNAP";
+                    URL = repo + "Flash%20Injects/Base/" + Uri.EscapeDataString(name) + ".wad";
                 }
-                else if (GetUpperID(index).StartsWith("HCJ")) // BBC iPlayer
+                else if (GetUpperID(index).StartsWith("HCJ") || GetUpperID(index).StartsWith("HCX")) // BBC iPlayer/YouTube
                 {
-                    int ver = 768;
-                    URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + folder + "/" + Uri.EscapeDataString(name + $" (v{ver}) (Channel)") + ".wad";
+                    int ver = (Regions[index] == 0 || GetUpperID(index).StartsWith("HCJ")) ? 768 : Regions[index] == 3 ? 1537 : 1536;
+                    URL = repoMain + folder + "/" + Uri.EscapeDataString(name + $" (v{ver}) (Channel)") + ".wad";
                 }
-                else if (GetUpperID(index).StartsWith("HCX")) // YouTube
+                else if (GetUpperID(index).StartsWith("HCM")) // Kirby TV (EU)
                 {
-                    int ver = Regions[index] == 0 ? 768 : Regions[index] == 3 ? 1537 : 1536;
-                    URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + folder + "/" + Uri.EscapeDataString(name + $" (v{ver}) (Channel)") + ".wad";
+                    URL = repoMain + folder + "/" + Uri.EscapeDataString(name + " (Channel).wad");
                 }
 
                 return URL;

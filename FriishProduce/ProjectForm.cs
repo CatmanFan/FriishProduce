@@ -1858,7 +1858,7 @@ namespace FriishProduce
                         }
                     }
 
-                    else if (!localFile && ex.InnerException.Message == "TPL Header: Invalid Magic!")
+                    else if (!localFile && ex.InnerException?.Message == "TPL Header: Invalid Magic!")
                     {
                         if (wad_tries == 0)
                         {

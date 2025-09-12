@@ -66,7 +66,7 @@ namespace FriishProduce
 
         private void IsShown(object sender, EventArgs e)
         {
-            Activate();
+            // Activate();
             try { CenterToParent(); } catch { CenterToScreen(); }
         }
     }

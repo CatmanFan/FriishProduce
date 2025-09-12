@@ -164,6 +164,8 @@
 
 			"t_injection_method_options":		"고급 에뮬레이터 설정을 변경합니다.",
 
+			"t_patch_expandedram":				"Enables Expansion Pak emulation.\nThis may not work for some WADs which use ROMC compression (e.g. Cruis'n USA).",
+
 			"t_multifile_software":				"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.\n\n
 												계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",
 

@@ -331,7 +331,7 @@ namespace FriishProduce
                     else
                     {
                         if (wait != null) wait.Visible = false;
-                        Select();
+                        // Select();
                     }
 
                     wait.progress.Value = progress;
@@ -357,7 +357,7 @@ namespace FriishProduce
                 else
                 {
                     if (wait != null) wait.Visible = false;
-                    Select();
+                    // Select();
                 }
 
                 wait.progress.Value = progress;

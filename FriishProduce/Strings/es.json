@@ -163,6 +163,8 @@
 
 			"t_injection_method_options":		"Establecer los ajustes predeterminados del emulador.",
 
+			"t_patch_expandedram":				"Utilizar la emulación del Expansion Pak.\nEs posible que esta opción no funcione con algunos canales que utilizan el método de compresión ROMC (p. ej. Cruis'n USA).",
+
 			"t_multifile_software":				"Cuando esta opción está habilitada, el programa tratará todos los archivos dentro de la misma carpeta seleccionada actualmente como parte del juego que se va a inyectar.\n\n
 												Asegúrate de que estos archivos estén en una carpeta separada.",
 

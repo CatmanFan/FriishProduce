@@ -169,6 +169,8 @@
 
 			"t_injection_method_options":		"Change advanced emulator settings.",
 
+			"t_patch_expandedram":				"Enables Expansion Pak emulation.\nThis may not work for some WADs which use ROMC compression (e.g. Cruis'n USA).",
+
 			"t_multifile_software":				"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n\n
 												Please make sure that your software files are in a separate folder.",
 

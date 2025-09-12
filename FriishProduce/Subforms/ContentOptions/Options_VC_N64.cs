@@ -20,6 +20,7 @@ namespace FriishProduce
             b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
 
             tip = HTML.CreateToolTip();
+            Program.Lang.ToolTip(tip, patch_expandedram, null, patch_expandedram.Text, Program.Lang.String("t_unsure_u", "html"));
 
             Theme.ChangeColors(this, false);
             Theme.BtnSizes(b_ok, b_cancel);

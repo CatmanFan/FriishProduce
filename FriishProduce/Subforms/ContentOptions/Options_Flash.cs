@@ -50,6 +50,7 @@ namespace FriishProduce
                 { "vff_cache_size", Program.Config.flash.vff_cache_size },
                 { "persistent_storage_total", Program.Config.flash.persistent_storage_total },
                 { "persistent_storage_per_movie", Program.Config.flash.persistent_storage_per_movie },
+                { "no_copy_save", "off" },
                 { "hbm_no_save", Program.Config.flash.hbm_no_save },
                 { "strap_reminder", Program.Config.flash.strap_reminder },
                 { "midi", null },
@@ -70,7 +71,7 @@ namespace FriishProduce
                 if (Controls.Contains(controller_box))
                 {
                     Controls.Remove(controller_box);
-                    zoom.Location = controller_box.Location;
+                    // zoom.Location = controller_box.Location;
                 }
 
                 midi.Enabled = false;
@@ -80,7 +81,7 @@ namespace FriishProduce
                 {
                     controls.Controls.Remove(midi);
                     controls.Height -= midi.Height;
-                    zoom.Location = controller_box.Location = new(controller_box.Location.X, controller_box.Location.Y - midi.Height);
+                    // zoom.Location = controller_box.Location = new(controller_box.Location.X, controller_box.Location.Y - midi.Height);
                 }
 
                 if (Controls.Contains(swf_metadata))
@@ -195,6 +196,7 @@ namespace FriishProduce
             Options["midi"] = DLSPath;
             Options["quality"] = quality.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
             Options["strap_reminder"] = strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
+            Options["no_copy_save"] = "off";
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
             Options["content_domain"] = content_domain.Text;
             Options["background_color"] = BGColor.Color.R + BGColor.Color.G + BGColor.Color.B > 0 ? $"{BGColor.Color.R} {BGColor.Color.G} {BGColor.Color.B} 255" : "0 0 0 0";

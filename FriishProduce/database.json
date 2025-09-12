@@ -1,13 +1,13 @@
-﻿﻿{
+﻿{
     // =========================================
     // HOW TO ADD BASES
     // DOCUMENTATION ON EACH VALUE
     // =========================================
-    //
+    
     // "id"         | The full ID of the channel in hex, except the last two characters (replace with '__' two underscores). This is the region component for the title ID and will be determined automatically by the app.
     //              | =========================================
     //              | EXAMPLE: "00010001-464357__" (FCW_)
-
+    
     // "region"     | The regions for which the channel is available, in an array, listed by number.
     //              | =========================================
     //              | Available regions:                       Final letter in TitleID
@@ -19,7 +19,7 @@
     //              | "5": Europe (American import/PAL60)      M
     //              | "6": Korea (Japanese language)           Q
     //              | "7": Korea (English language)            T
-
+    
     // "emu_ver"    | The emulator version(s) corresponding to the WAD for each region, in an array.
     //              | 1. This can be omitted if it isn't used by the emulator.
     //              | 2. MUST be an integer only!
@@ -40,7 +40,7 @@
     //              | "1": Rev 1 (has regional banner_XX.wte files for savedata)
     //              | "2": Rev 2 (may use 'patch' file, more settings)
     //              | "3": Rev 3 (includes modules and controller config)
-
+    
     // "titles"     | The regional software titles for the channel displayed in the UI, by order of regions listed.
     //              | 1. The European title, if included, can be a duplicate English entry or the regionalised version of the game's title.
     //              | 2. If the game has a Korean VC WAD released, the European title MUST be included so that the database can handle the array correctly.
@@ -50,13 +50,13 @@
     //              | ["ゼルダの伝説", "The Legend of Zelda"]                                                           Universal English title
     //              | ["スターフォックス６４", "Star Fox 64", "Lylat Wars"]                                              Separate American and European titles
     //              | ["スーパードンキーコング２", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"]   w/ Korean version
-
+    
     // "wad_titles" | The name of the game in the MarioCube database.
     //              | 1. If all available region names match one of the "titles" parameters, as shown below in the examples, do not add this on your own. The software will automatically do it itself.
     //              | 2. This is only meant as an interim solution until an equivalent to WiiUDownloader (w/ built-in decryptor) can be released for (v)Wii!
     //              | =========================================
     //              | EXAMPLES:
-    //              | ["Super Mario Bros. 3"]                                                                          Univeral title
+    //              | ["Super Mario Bros. 3"]                                                                          Universal title
     //              |                                                                                                  (only one MarioCube name, this can be left out since there is also a "titles" using the same text)
     //              | ["Hoshi no Kirby - Yume no Izumi no Monogatari", "Kirby's Adventure"]                            Japanese and Western titles
     //              |                                                                                                  (only the Japanese WAD version will use the first entry, the rest will do the second one)
@@ -65,7 +65,7 @@
     //              |                                                                                                  (absolutely required to input J/U/E/K name entries in order, because the app will not be able to differentiate otherwise)
     
     // ENTRIES SHOULD BE LISTED BY ALPHABETICAL ORDER OF THEIR TITLE ID!!!
-
+    
     "nes": [
         {
             "id": "00010001-464138__",
@@ -430,7 +430,7 @@
         {
             "id": "00010001-4e4153__",
             "region": [1, 3],
-            "emu_ver": [1, 1],
+            "emu_ver": [3],
             "titles": ["Cruis'n USA"]
         },
 		
@@ -860,6 +860,12 @@
             "id": "00010001-574e41__",
             "region": [3],
             "titles": ["Flash Placeholder"]
+        },
+		
+        {
+            "id": "00010001-48434d__",
+            "region": [3],
+            "titles": ["Kirby TV Channel"]
         },
         
         {

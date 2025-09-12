@@ -294,6 +294,18 @@ namespace FriishProduce
                     {
                         Exception inner2 = inner1.InnerException;
                         msg += "\n    - " + _message(inner2.Message, url);
+
+                        if (inner2.InnerException != null)
+                        {
+                            Exception inner3 = inner2.InnerException;
+                            msg += "\n      - " + _message(inner3.Message, url);
+
+                            if (inner3.InnerException != null)
+                            {
+                                Exception inner4 = inner3.InnerException;
+                                msg += "\n        - " + _message(inner4.Message, url);
+                            }
+                        }
                     }
                 }
             }
