@@ -7,6 +7,7 @@ nav:
   - Home: index.md
   - Tutorial: tutorial.md
   - FAQ: faq.md
+  - About: about.md
   - Translate: translate.md
 
 theme:
@@ -68,6 +69,7 @@ plugins:
           # nav_translations:
             # Home: Accueil
             # Tutorial: Tutoriel
+            # About: À propos
             # Translate: Traduire
 
         # - locale: es
@@ -77,6 +79,7 @@ plugins:
             # Home: Pagina principal
             # Tutorial: Tutorial
             # FAQ: Preguntas frecuentes
+            # About: Acerca de FriishProduce
             # Translate: Traducir
 
         # - locale: ja
@@ -86,6 +89,7 @@ plugins:
             # Home: ホーム
             # Tutorial: 使い方
             # Translate: 翻訳
+            # About: FriishProduceについて
             # FAQ: よくある質問
 
 markdown_extensions:

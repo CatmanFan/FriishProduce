@@ -183,6 +183,7 @@ namespace FriishProduce
             toolbarExport.Text = export.Text;
             toolbarCloseProject.Text = close_project.Text;
             toolbarGameScan.Text = game_scan.Text;
+            toolbarDonate.Text = donate.Text;
             toolbarPreferences.Text = preferences.Text = Program.Lang.String("preferences");
 
             vistaMenu.SetImage(new_project, toolbarNewProject.Image);
@@ -193,6 +194,7 @@ namespace FriishProduce
             vistaMenu.SetImage(close_project, toolbarCloseProject.Image);
             vistaMenu.SetImage(import_game_file, toolbarImportGameFile.Image);
             vistaMenu.SetImage(game_scan, Properties.Resources.retroarch);
+            vistaMenu.SetImage(donate, toolbarDonate.Image);
             vistaMenu.SetImage(preferences, toolbarPreferences.Image);
             // foreach (MenuItem item in new_project.MenuItems.OfType<MenuItem>())
             //     if (Enum.TryParse(item.Name, out Platform converted))
@@ -1162,6 +1164,14 @@ namespace FriishProduce
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+        }
+
+        private void Donate_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(Program.Lang.Msg(16), MessageBox.Buttons.YesNo) == MessageBox.Result.Yes)
+            {
+                System.Diagnostics.Process.Start("https://ko-fi.com/mr_lechkar/tip");
+            }
         }
 
         private void Website_Click(object sender, EventArgs e)

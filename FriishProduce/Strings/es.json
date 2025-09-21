@@ -104,6 +104,7 @@
 			"013":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínalas del archivo \"database.json\".",
 			"014":								"Se han restablecido los ajustes del método de inyección.\nPor favor, vuelva a configurarlos.",
 			"015":								"Se ha restablecida la configuración de FriishProduce.\nPor favor, vuelva a configurar tus ajustes.",
+			"016":								"Se abrirá un enlace de donación de Ko-fi.\n¿Seguro que quieres continuar?",
 
 			"b_000":							"Cargando...",
 			"b_001":							"Exportación en curso...",
@@ -218,7 +219,8 @@
 			"test_database":					"&Verificar la base de datos",
 			"clear_database":					"Restablecer la &base de datos",
 			"reset_preferences":				"&Restablecer la configuración",
-
+			
+			"donate":							"Hacer una &donación",
 			"wiki":								"&Wiki en línea",
 			"exit":								"&Salir",
 

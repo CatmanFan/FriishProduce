@@ -16,7 +16,8 @@ This program uses the following third-party components and apps:
 
 For icons and interface:
 
-* **[Farm-Fresh Web Icons](https://github.com/gammasoft/fatcow)** by FatCow.
+<!-- * **[Farm-Fresh Web Icons](https://github.com/gammasoft/fatcow)** by FatCow. -->
+* **[Silk Icons](https://web.archive.org/web/20070514055728/http://www.famfamfam.com/lab/icons/silk/)** by Mark James.
 * **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.
 * **[SCE-PS3 Rodin LATIN](https://github.com/skrptktty/ps3-firmware-beginners-luck/blob/master/PS3_411/update_files/dev_flash/data/font/SCE-PS3-RD-R-LATIN.TTF) font** from [this repo](https://github.com/skrptktty/ps3-firmware-beginners-luck) (Solar Storm License).
 

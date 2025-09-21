@@ -104,6 +104,7 @@
 			"013":								"Chaînes invalides trouvées dans la base de données :\n{0}\n\nVeuillez ouvrir et modifier le fichier «database.json» afin de les supprimer.",
 			"014":								"Les paramètres de la méthode d'injection actuelle ont été réinitialisés.\nEssayez de les configurer à nouveau.",
 			"015":								"Les paramètres de l'application ont été réinitialisés.\nEssayez de configurer vos paramètres à nouveau.",
+			"016":								"Vous serez redirigé vers Ko-fi afin de faire votre don.\nVoulez-vous continuer ?",
 			
 			"b_000":							"Veuillez patienter ...",
 			"b_001":							"Exportation en cours ...",
@@ -209,7 +210,8 @@
 			"test_database":					"&Verifier la base de données",
 			"clear_database":					"Réinitialiser la &base de données",
 			"reset_preferences":				"Réinitialiser la &configuration",
-
+			
+			"donate":							"Faire un &don",
 			"wiki":								"&Wiki en ligne",
 			"exit":								"&Quitter",
 

@@ -90,11 +90,14 @@ namespace FriishProduce
             this.menuItem12 = new System.Windows.Forms.MenuItem();
             this.clear_update = new System.Windows.Forms.MenuItem();
             this.menuItem10 = new System.Windows.Forms.MenuItem();
+            this.donate = new System.Windows.Forms.MenuItem();
+            this.menuItem13 = new System.Windows.Forms.MenuItem();
             this.wiki = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.new_project_menu = new System.Windows.Forms.ContextMenu();
+            this.toolbarDonate = new System.Windows.Forms.ToolStripButton();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -137,7 +140,8 @@ namespace FriishProduce
             this.toolbarGameScan,
             this.toolStripSeparator3,
             this.toolbarExport,
-            this.toolbarPreferences});
+            this.toolbarPreferences,
+            this.toolbarDonate});
             this.toolStrip.Name = "toolStrip";
             // 
             // toolbarNewProject
@@ -494,6 +498,8 @@ namespace FriishProduce
             this.menuItem4.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.updater,
             this.menuItem10,
+            this.donate,
+            this.menuItem13,
             this.wiki,
             this.about});
             this.menuItem4.Tag = "help";
@@ -541,10 +547,22 @@ namespace FriishProduce
             this.menuItem10.Index = 1;
             resources.ApplyResources(this.menuItem10, "menuItem10");
             // 
+            // donate
+            // 
+            this.donate.Index = 2;
+            this.donate.Tag = "donate";
+            resources.ApplyResources(this.donate, "donate");
+            this.donate.Click += new System.EventHandler(this.Donate_Click);
+            // 
+            // menuItem13
+            // 
+            this.menuItem13.Index = 3;
+            resources.ApplyResources(this.menuItem13, "menuItem13");
+            // 
             // wiki
             // 
             this.vistaMenu.SetImage(this.wiki, ((System.Drawing.Image)(resources.GetObject("wiki.Image"))));
-            this.wiki.Index = 2;
+            this.wiki.Index = 4;
             this.wiki.Tag = "wiki";
             resources.ApplyResources(this.wiki, "wiki");
             this.wiki.Click += new System.EventHandler(this.Website_Click);
@@ -552,7 +570,7 @@ namespace FriishProduce
             // about
             // 
             this.vistaMenu.SetImage(this.about, ((System.Drawing.Image)(resources.GetObject("about.Image"))));
-            this.about.Index = 3;
+            this.about.Index = 5;
             this.about.Tag = "about_app";
             resources.ApplyResources(this.about, "about");
             this.about.Click += new System.EventHandler(this.About_Click);
@@ -594,6 +612,14 @@ namespace FriishProduce
             // vistaMenu
             // 
             this.vistaMenu.ContainerControl = this;
+            // 
+            // toolbarDonate
+            // 
+            this.toolbarDonate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolbarDonate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolbarDonate, "toolbarDonate");
+            this.toolbarDonate.Name = "toolbarDonate";
+            this.toolbarDonate.Click += new System.EventHandler(this.Donate_Click);
             // 
             // MainForm
             // 
@@ -690,6 +716,9 @@ namespace FriishProduce
         private System.Windows.Forms.ContextMenu new_project_menu;
         private System.Windows.Forms.MenuItem extract_wad_dol;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.MenuItem donate;
+        private System.Windows.Forms.MenuItem menuItem13;
+        private System.Windows.Forms.ToolStripButton toolbarDonate;
     }
 }
 
