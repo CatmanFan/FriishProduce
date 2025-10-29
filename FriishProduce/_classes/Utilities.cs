@@ -285,28 +285,14 @@ namespace FriishProduce
                 Exception inner = ex.InnerException;
                 msg += "\n\n- " + _message(inner.Message, url);
 
-                if (inner.InnerException != null)
+                inner = inner.InnerException ?? null;
+                string indents = "";
+
+                while (inner != null)
                 {
-                    Exception inner1 = ex.InnerException;
-                    msg += "\n  - " + _message(inner1.Message, url);
-
-                    if (inner1.InnerException != null)
-                    {
-                        Exception inner2 = inner1.InnerException;
-                        msg += "\n    - " + _message(inner2.Message, url);
-
-                        if (inner2.InnerException != null)
-                        {
-                            Exception inner3 = inner2.InnerException;
-                            msg += "\n      - " + _message(inner3.Message, url);
-
-                            if (inner3.InnerException != null)
-                            {
-                                Exception inner4 = inner3.InnerException;
-                                msg += "\n        - " + _message(inner4.Message, url);
-                            }
-                        }
-                    }
+                    indents += "  ";
+                    msg += $"\n{indents}- " + _message(inner.Message, url);
+                    inner = inner.InnerException ?? null;
                 }
             }
 
@@ -349,6 +335,8 @@ namespace FriishProduce
 
         public static byte[] Get(string URL, int timeout = 200, bool showProgress = false)
         {
+            bool deductTries = false;
+
             Start:
             byte[] output = null;
             bool invalid = false;
@@ -360,7 +348,8 @@ namespace FriishProduce
             {
                 if (showProgress && Program.GUI)
                 {
-                    Program.MainForm.Wait(true, true, true, 0, 5);
+                    Program.MainForm.Wait(true, true, true, 0, 5, deductTries ? 2 : 1);
+                    deductTries = false;
                     x.DownloadProgressChanged += _downloadProgressChanged;
                 }
 
@@ -390,11 +379,15 @@ namespace FriishProduce
                     {
                         Logger.Log("Failed to download from URL. Starting over in compatibility mode.");
                         CompatibilityMode = true;
-                        goto Start;
                     }
 
-                    else
+                    if (Program.MainForm.Wait_CheckTries() == 0)
                         throw new Exception(invalid ? Program.Lang.Msg(9, 1) : string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
+                    else
+                    {
+                        deductTries = true;
+                        goto Start;
+                    }
                 }
             }
         }

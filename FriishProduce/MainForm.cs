@@ -292,15 +292,25 @@ namespace FriishProduce
             new_project_menu.Show(toolStrip, new(Cursor.Position.X - Left - (Width - ClientSize.Width) + 8, Cursor.Position.Y - Top - (Height - ClientSize.Height) + 8), LeftRightAlignment.Right);
         }
 
-        /// <summary>
-        /// Displays wait dialog.
-        /// </summary>
-        /// <param name="reset">Resets the dialog.</param>
-        /// <param name="show">Shows or hides the dialog.</param>
-        /// <param name="msg">The message to display.</param>
-        /// <param name="progress">Progress value</param>
-        /// <param name="showProgress">Whether to display the progress bar.</param>
-        public void Wait(bool show, bool reset, bool showProgress, int progress = 0, int msg = 0) => Wait(show, reset, showProgress, progress, Program.Lang.Msg(msg, 2));
+        public int Wait_CheckTries()
+        {
+            int result = -1;
+
+            if (InvokeRequired)
+            {
+                Invoke(new MethodInvoker(delegate
+                {
+                    if (wait.downloadTries.HasValue) result = wait.downloadTries.Value;
+                }));
+            }
+
+            else
+            {
+                if (wait.downloadTries.HasValue) result = wait.downloadTries.Value;
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// Displays wait dialog.
@@ -310,7 +320,17 @@ namespace FriishProduce
         /// <param name="msg">The message to display.</param>
         /// <param name="progress">Progress value</param>
         /// <param name="showProgress">Whether to display the progress bar.</param>
-        public void Wait(bool show, bool reset, bool showProgress, int progress, string msg)
+        public void Wait(bool show, bool reset, bool showProgress, int progress = 0, int msg = 0, int download = 0) => Wait(show, reset, showProgress, progress, Program.Lang.Msg(msg, 2), download);
+
+        /// <summary>
+        /// Displays wait dialog.
+        /// </summary>
+        /// <param name="reset">Resets the dialog.</param>
+        /// <param name="show">Shows or hides the dialog.</param>
+        /// <param name="msg">The message to display.</param>
+        /// <param name="progress">Progress value</param>
+        /// <param name="showProgress">Whether to display the progress bar.</param>
+        public void Wait(bool show, bool reset, bool showProgress, int progress, string msg, int download)
         {
             if (InvokeRequired)
             {
@@ -323,7 +343,7 @@ namespace FriishProduce
                         if (reset || wait == null)
                         {
                             if (wait != null) wait.Visible = false;
-                            wait = new(showProgress, msg) { Visible = false };
+                            wait = new(showProgress, msg, download >= 1) { Visible = false };
                         }
 
                         if (!wait.Visible)
@@ -337,6 +357,7 @@ namespace FriishProduce
                     }
 
                     wait.progress.Value = progress;
+                    if (download == 2 && wait.downloadTries.HasValue) wait.downloadTries -= 1;
                 }));
             }
 
@@ -349,7 +370,7 @@ namespace FriishProduce
                     if (reset || wait == null)
                     {
                         if (wait != null) wait.Visible = false;
-                        wait = new(showProgress, msg) { Visible = false };
+                        wait = new(showProgress, msg, download >= 1) { Visible = false };
                     }
 
                     if (!wait.Visible)
@@ -363,6 +384,7 @@ namespace FriishProduce
                 }
 
                 wait.progress.Value = progress;
+                if (download == 2 && wait.downloadTries.HasValue) wait.downloadTries -= 1;
             }
         }
 
@@ -1197,7 +1219,7 @@ namespace FriishProduce
                 {
                     string msg = string.Format(Program.Lang.Msg(3, 2), Program.Lang.Console(p));
 
-                    Wait(true, true, true, 0, msg);
+                    Wait(true, true, true, 0, msg, 0);
 
                     ChannelDatabase c = new(p);
                     int index = 0;

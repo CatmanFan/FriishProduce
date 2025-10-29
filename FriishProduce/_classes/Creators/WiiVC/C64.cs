@@ -183,7 +183,7 @@ namespace FriishProduce.Injectors
             // Run Frodo
             // ****************
             if (Program.GUI)
-                using (MessageBoxHTML h = new(string.Format(Program.Lang.HTML(0, false), tries)))
+                using (MessageBoxHTML h = new($"{Program.Lang.HTML(0, false)}<br>{string.Format(Program.Lang.String("tries"), "<b>" + tries + "</b>")}"))
                 {
                     h.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
                     h.ShowDialog();

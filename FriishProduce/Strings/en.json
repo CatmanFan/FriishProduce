@@ -44,7 +44,8 @@
 			"vc":								"Virtual Console",
 			"vc_options":						"Virtual Console options",
 			"additional":						"These settings also apply to {0}.",
-			"continue":							"Injection will continue as intended."
+			"continue":							"Injection will continue as intended.",
+			"tries":                            "Attempts remaining: {0}"
 		},
 
 		"platforms": {
@@ -144,8 +145,7 @@
 												Enter the following command in the emulator: <b>LOAD\"*\",8</b>\n
 												If the C64 console freezes and there is no drive LED indicator, open Frodo.fpr from <i>File > Open</i>, then press F12 to restart the emulator and try again.</li><li>
 												Once the software is loaded, enter <b>RUN</b>.</li><li>
-												As soon as the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\". You can also save another copy to use it for later.</li></ol>
-												Attempts remaining: <b>{0}</b>",
+												As soon as the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\". You can also save another copy to use it for later.</li></ol>",
 
 			"001":								"About SNES VC (under construction)",
 

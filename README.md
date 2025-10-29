@@ -49,6 +49,8 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 - [ ] Restructuring, trimming features and cleaning code
 - [ ] Add default WAD bases option
 - [ ] Add title.png/xyz selector for RPG Maker games
+- [ ] Add option to use original WAD banner
+- [ ] Add option to change banner icon size type
 
 ---
 

@@ -684,7 +684,7 @@ namespace FriishProduce
         {
             targetPlatform = platform;
             IsEmpty = true;
-            banner_form = new BannerOptions(platform);
+            banner_form = new BannerOptions(platform, this);
             savedata = new Savedata(platform);
             LoadChannelDatabase();
 
@@ -1322,6 +1322,13 @@ namespace FriishProduce
             }
         }
 
+        /* public void ToggleNintendoFilter()
+        {
+            if (img.NintendoFilter == null) img.NintendoFilter = false;
+            img.NintendoFilter = !img.NintendoFilter;
+            LoadImage();
+        } */
+
         #region Load Data Functions
         private string GenerateTitleID()
         {
@@ -1527,6 +1534,15 @@ namespace FriishProduce
                     targetPlatform,
                     _bannerRegion
                 );
+            /* banner_form.SetImages(preview.Banner
+                (
+                    img?.VCPic,
+                    banner_form.title.Text,
+                    (int)banner_form.released.Value,
+                    (int)banner_form.players.Value,
+                    targetPlatform,
+                    _bannerRegion
+                ), img); */
 
             if (!bannerOnly)
             {

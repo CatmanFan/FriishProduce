@@ -44,7 +44,8 @@
 			"vc":								"Consola Virtual",
 			"vc_options":						"Ajustes de la Consola Virtual",
 			"additional":						"Estas opciones también son válidas para {0}.",
-			"continue":							"La exportación continuará según lo previsto."
+			"continue":							"La exportación continuará según lo previsto.",
+			"tries":                            "Intentos restantes: {0}"
 		},
 
 		"platforms": {
@@ -143,8 +144,7 @@
 												Ingresa el comando <b>LOAD\"*\",8</b> en el emulador.\n
 												Si la consola C64 no responde y todavía no hay ningún indicador LED de la unidad, abre Frodo.fpr desde <i>File > Open</i>, luego pulsa F12 para reiniciar el emulador y vuelve a intentar la prueba.</li><li>
 												Una vez cargado el juego, ingresa <b>RUN</b>.</li><li>
-												En cuanto empiece el juego, haz clic en <i>Tools > Patch and Save Snapshot</i> y guarda el archivo como \"snap.fss\". También puedes guardar otra copia para usarlo más tarde.</li></ol>
-												Intentos restantes: <b>{0}</b>",
+												En cuanto empiece el juego, haz clic en <i>Tools > Patch and Save Snapshot</i> y guarda el archivo como \"snap.fss\". También puedes guardar otra copia para usarlo más tarde.</li></ol>",
 
 			"t_use_online_wad_enabled":			"Esto se puede utilizar para descargar cualquier canal de origen que esté disponible en la base de datos actual sin necesidad de tener un archivo WAD existente, pero solo utiliza la función de descarga desde la Web, porque el cliente NUS de libWiiSharp no permite descifrar canales de la Consola Virtual de ninguna forma.\n\n
 												La legalidad de esta función es dudosa, por lo que es mejor tener esta opción deshabilitada.",

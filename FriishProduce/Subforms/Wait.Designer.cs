@@ -35,6 +35,7 @@ namespace FriishProduce
             this.progress = new System.Windows.Forms.ProgressBar();
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
+            this.downloadLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -116,12 +117,27 @@ namespace FriishProduce
             this.bottomPanel1.Size = new System.Drawing.Size(384, 40);
             this.bottomPanel1.TabIndex = 3;
             // 
+            // downloadLabel
+            // 
+            this.downloadLabel.AutoSize = true;
+            this.downloadLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.downloadLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.downloadLabel.Location = new System.Drawing.Point(12, 36);
+            this.downloadLabel.Margin = new System.Windows.Forms.Padding(3, 0, 2, 0);
+            this.downloadLabel.Name = "downloadLabel";
+            this.downloadLabel.Size = new System.Drawing.Size(29, 15);
+            this.downloadLabel.TabIndex = 29;
+            this.downloadLabel.Text = "tries";
+            this.downloadLabel.UseMnemonic = false;
+            this.downloadLabel.Visible = false;
+            // 
             // Wait
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(384, 92);
             this.ControlBox = false;
+            this.Controls.Add(this.downloadLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bottomPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -152,5 +168,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel bottomPanel2;
         private System.Windows.Forms.Panel bottomPanel1;
         public System.Windows.Forms.ProgressBar progress;
+        private System.Windows.Forms.Label downloadLabel;
     }
 }

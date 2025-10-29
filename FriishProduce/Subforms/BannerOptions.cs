@@ -14,6 +14,7 @@ namespace FriishProduce
 {
     public partial class BannerOptions : Form
     {
+        private ProjectForm target;
         internal string origTitle;
         internal string origSound;
         internal string sound;
@@ -22,11 +23,12 @@ namespace FriishProduce
         internal int origRegion;
         private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = HTML.CreateToolTip();
 
-        public BannerOptions(Platform platform)
+        public BannerOptions(Platform platform, ProjectForm form)
         {
             InitializeComponent();
             if (DesignMode) return;
 
+            target = form;
             region.Items.AddRange(new string[] { Program.Lang.String("automatic"), Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e"), Program.Lang.String("region_k") });
             region.SelectedIndex = Program.Config.application.default_banner_region;
 
@@ -65,6 +67,16 @@ namespace FriishProduce
             Theme.BtnSizes(b_ok, b_cancel);
             Theme.BtnLayout(this, b_ok, b_cancel);
         }
+
+        /*public void SetImages(Bitmap bannerImg, ImageHelper helper)
+        {
+            iconImg.Image = helper != null ? helper.IconVCPic : null;
+        }*/
+
+        /*private void Icon_Click(Bitmap bannerImg, ImageHelper helper)
+        {
+            target.ToggleNintendoFilter();
+        }*/
 
         private void OK_Click(object sender, EventArgs e)
         {

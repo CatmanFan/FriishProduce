@@ -23,6 +23,7 @@ namespace FriishProduce
 
         public InterpolationMode InterpMode { get; set; }
         public bool FitAspectRatio { get; set; }
+        public bool? NintendoFilter { get; set; }
         private (int X, int Y, int width, int height) saveIconL
         {
             get
@@ -160,15 +161,16 @@ namespace FriishProduce
         {
             if (src == null) src = Source;
 
-            bool NintendoFilter = platform is Platform.NES
-                                           or Platform.SNES
-                                           or Platform.N64
-                                           or Platform.Flash
-                                           or Platform.GB
-                                           or Platform.GBC
-                                           or Platform.GBA
-                                           or Platform.GCN
-                                           or Platform.RPGM;
+            if (NintendoFilter == null)
+                NintendoFilter = platform is Platform.NES
+                                          or Platform.SNES
+                                          or Platform.N64
+                                          or Platform.Flash
+                                          or Platform.GB
+                                          or Platform.GBC
+                                          or Platform.GBA
+                                          or Platform.GCN
+                                          or Platform.RPGM;
 
             // --------------------------------------------------
 
@@ -235,7 +237,7 @@ namespace FriishProduce
                     g.Clear(Color.White);
                     g.DrawImage(Working, 0, 0, 128, 96);
 
-                    if (NintendoFilter)
+                    if (NintendoFilter.Value)
                     {
                         for (int a = 0; a <= 4; a++)
                             for (int b = 0; b <= 4; b++)

@@ -12,6 +12,18 @@ namespace FriishProduce
 {
     public partial class Wait : Form
     {
+        private int? _downloadTries;
+        public int? downloadTries
+        {
+            get => _downloadTries;
+            set
+            {
+                if (_downloadTries.HasValue)
+                    downloadLabel.Text = string.Format(Program.Lang.String("b_005_tries", "messages"), value);
+                _downloadTries = value;
+            }
+        }
+
         public string Msg
         {
             get => label1.Text;
@@ -30,7 +42,7 @@ namespace FriishProduce
             }
         }
 
-        public Wait(bool showProgress, string msg = null)
+        public Wait(bool showProgress, string msg = null, bool download = false)
         {
             InitializeComponent();
 
@@ -39,7 +51,16 @@ namespace FriishProduce
 
             Text = Program.Lang.ApplicationTitle;
             // if (Program.GUI) label1.Font = Program.MainForm.Font;
-            label1.Text = msg ?? Program.Lang.String("busy0");
+            label1.Text = msg ?? Program.Lang.String("b_000", "messages");
+
+            if (download == true)
+            {
+                downloadTries = 10;
+                downloadLabel.Text = string.Format(Program.Lang.String("tries"), downloadTries);
+                downloadLabel.Visible = true;
+                ClientSize = new Size(ClientSize.Width, ClientSize.Height + 12);
+                Size = SizeFromClientSize(ClientSize);
+            }
 
             progress.Visible = showProgress;
 
